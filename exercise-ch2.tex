@@ -64,6 +64,83 @@
   \]
   for every $1 \le j \le N$.
   It follows that $|I_2| < \epsilon$
-  and $\lim_{|\Gamma| \rightarrow 0} I_2 = 0$.
+  and consequently $\lim_{|\Gamma| \rightarrow 0} I_2 = 0$.
   The proof of $\int_a^b g \rmd \psi = \int_a^b fg \rmd \phi$ is thus completed.
+
+\end{exercise}
+
+\begin{exercise}{2.16}
+  In view of Corollary 2.7 (Jordan's Theorem),
+  we assume that $\phi$ is monotone increasing.
+  Suppose $\sup f = M$ and $\{y_j\}_1^L$ are the jump discontinuities.
+  By the continuity of $\phi$ at $\{y_j\}$,
+  for each $j$ there exists a closed interval $I_j$ containing $y_j$ such that
+  \begin{equation}
+    \left| \phi(y) - \phi(z) \right| < \frac{\epsilon}{4 M L}
+    \label{eq:estOfPhi}
+  \end{equation}
+  for any $y, z \in I_j$.
+  By the uniform continuity of $f$ on $[a,b] \setminus \bigcup I_j^\circ$,
+  select $\delta'$ so small that
+  \begin{equation}
+    \left| f(y) - f(z) \right| < \frac{\epsilon}{2 V(\phi)}
+    \label{eq:estOfF}
+  \end{equation}
+  for $y,z \in [a,b] \setminus \bigcup I_j^\circ$ and $|y-z| < \delta'$.
+  Now suppose $\Gamma = \{x_k\}$ is a partition of $[a,b]$ satisfying
+  $\left| \Gamma \right| < \min \left\{ \delta', |I_1|, \cdots, |I_L| \right\}$.
+  Divide the closed intervals in $\Gamma$ into two subcollections:
+  Let  $I \in \Gamma_1$
+  if $I$ has nonempty intersection with any $y_j$
+  and let $I \in \Gamma_2$ otherwise.
+  Next we estimate the difference between the upper and lower Riemann-Stieltjes sums.
+  First by \eqref{eq:estOfPhi} we have
+  \[
+    \left| \sum_{[x_{k-1}, x_k] \in I_1}
+    \left( M_k - m_k \right) \left( \phi(x_k) - \phi(x_{k-1}) \right) \right|
+    \le 2M \cdot L \cdot \frac{\epsilon}{4ML}
+    \le \frac{\epsilon}{2}
+  \]
+  since there are at most $L$ intervals in the subcollection $\Gamma_1$.
+  Second by \eqref{eq:estOfF} we have
+  \[
+    \left| \sum_{[x_{k-1}, x_k] \in I_2}
+    \left( M_k - m_k \right) \left( \phi(x_k) - \phi(x_{k-1}) \right) \right|
+    \le \frac{\epsilon}{2V(\phi)} \cdot V(\phi)
+    \le \frac{\epsilon}{2}.
+  \]
+  We have shown $\lim_{|\Gamma| \rightarrow} (U_\Gamma - L_\Gamma) = 0$.
+  It follows from $L_\Gamma \le R_\Gamma \le U_\Gamma$ that
+  the integral $\int_a^b f \rmd \phi = \lim R_\Gamma$ exists.
+\end{exercise}
+
+\begin{exercise}{2.17}
+  In view of Corollary 2.7 (Jordan's Theorem),
+  we assume that $\phi$ is monotone increasing.
+  Set $S_n = \int_{-n}^n f \rmd \phi$.
+  We show that the sequence $\{S_n\}$ is Cauchy.
+  Let $\phi(-\infty) = M^-$ and $\phi(+\infty) = M^+$.
+  Since $\phi$ is monotone increasing,
+  there exists $N_1 > 0$ so large that
+  $\phi(x) > M^+ - \sqrt{\epsilon} / 2$ for all $x > N_1$
+  and $\phi(x) < M^- + \sqrt{\epsilon} / 2$ for all $x < -N_1$.
+  Since $f$ is continuous and $f(\infty) = 0$,
+  there exists $N_2 > 0$ so large that
+  $|f(x)| < \sqrt{\epsilon}$ for all $|x| > N_2$.
+  Now if $n \ge m > \max\{N_1, N_2\}$, we have
+  \[
+    \begin{aligned}
+      \left| S_n - S_m \right| =
+      & \left| \int_{-n}^{-m} f \rmd \phi + \int_m^n f \rmd \phi \right| \\
+      \le & \left( \sup_{|x| \ge m} |f| \right)
+      \left( V(\phi;[-n,-m]) + V(\phi;[m,n]) \right) \\
+      \le & \frac{\sqrt{\epsilon}}{2}
+      \left( \phi(-m) - \phi(-\infty) + \phi(+\infty) - \phi(m) \right) \\
+      < & \sqrt{\epsilon}
+      \left( \frac{\sqrt{\epsilon}}{2} + \frac{\sqrt{\epsilon}}{2} \right) \\
+      = &\epsilon,
+    \end{aligned}
+  \]
+  where the first inequality follows from Theorem 2.24.
+  Thus the improper integral $\int_{-\infty}^{+\infty} f \rmd \phi = \lim S_n$ exists. 
 \end{exercise}
