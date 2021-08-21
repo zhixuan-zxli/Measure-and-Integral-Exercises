@@ -91,9 +91,9 @@
   $\left| \Gamma \right| < \min \left\{ \delta', |I_1|, \cdots, |I_L| \right\}$.
   Divide the closed intervals in $\Gamma$ into two subcollections:
   Let  $I \in \Gamma_1$
-  if $I$ has nonempty intersection with any $y_j$
+  if $I$ has nonempty intersection with $\{y_j\}$
   and let $I \in \Gamma_2$ otherwise.
-  Next we estimate the difference between the upper and lower Riemann-Stieltjes sums.
+  We estimate the difference between the upper and lower Riemann-Stieltjes sums as follows.
   First by \eqref{eq:estOfPhi} we have
   \[
     \left| \sum_{[x_{k-1}, x_k] \in I_1}
@@ -109,7 +109,7 @@
     \le \frac{\epsilon}{2V(\phi)} \cdot V(\phi)
     \le \frac{\epsilon}{2}.
   \]
-  We have shown $\lim_{|\Gamma| \rightarrow} (U_\Gamma - L_\Gamma) = 0$.
+  We have shown $\lim_{|\Gamma| \rightarrow 0} (U_\Gamma - L_\Gamma) = 0$.
   It follows from $L_\Gamma \le R_\Gamma \le U_\Gamma$ that
   the integral $\int_a^b f \rmd \phi = \lim R_\Gamma$ exists.
 \end{exercise}
@@ -134,7 +134,7 @@
       & \left| \int_{-n}^{-m} f \rmd \phi + \int_m^n f \rmd \phi \right| \\
       \le & \left( \sup_{|x| \ge m} |f| \right)
       \left( V(\phi;[-n,-m]) + V(\phi;[m,n]) \right) \\
-      \le & \frac{\sqrt{\epsilon}}{2}
+      \le & \sqrt{\epsilon}
       \left( \phi(-m) - \phi(-\infty) + \phi(+\infty) - \phi(m) \right) \\
       < & \sqrt{\epsilon}
       \left( \frac{\sqrt{\epsilon}}{2} + \frac{\sqrt{\epsilon}}{2} \right) \\
@@ -142,5 +142,31 @@
     \end{aligned}
   \]
   where the first inequality follows from Theorem 2.24.
-  Thus the improper integral $\int_{-\infty}^{+\infty} f \rmd \phi = \lim S_n$ exists. 
+  Thus the improper integral $\int_{-\infty}^{+\infty} f \rmd \phi = \lim S_n$ exists.
+\end{exercise}
+
+\begin{exercise}{2.31}
+  For the first part,
+  note that the Riemann-Stieltjes sum
+  \[
+    R_\Gamma(\rmd f; [a,b]) = \sum f(x_j) - f(x_{j-1}) = f(b) - f(a)
+  \]
+  is independent of the partition $\Gamma$.
+  For the second part, we have by the Mean-Value Theorem
+  \[
+    \sum f(x_j) - f(x_{j-1}) = \sum f'(\xi_j) \left( x_j - x_{j-1} \right)
+  \]
+  with $\xi_j \in (x_{j-1}, x_j)$.
+  Since $f'$ is Riemann integrable,
+  by taking the limit $|\Gamma| \rightarrow 0$ of both sides we obtain
+  $\int_a^b \rmd f = \int_a^b f' \rmd x$.
+\end{exercise}
+
+\begin{exercise}{2.32}
+  Since $af(a)$ and $bf(b)$ are finite,
+  it follows from Theorem 2.21 (integration by parts) that
+  the (Riemann) integrability of $f \rmd x$
+  is equivalent to that of $x \rmd f$.
+  But $x$ is continuous and $f$ is of bounded variation on $[a,b]$,
+  the integrability follows from Theorem 2.24.
 \end{exercise}
