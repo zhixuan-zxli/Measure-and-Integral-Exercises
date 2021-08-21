@@ -1,0 +1,69 @@
+
+\begin{exercise}{2.14}
+  This is the example following (2.28).
+  Take $[a,b] = [-1, 1], c=0$, and
+  \[
+    f(x) = \left\{
+    \begin{aligned}
+      0 & \quad \text{if} \quad -1 \le x < 0 \\
+      1 & \quad \text{if} \quad 0 \le x \le 1,
+    \end{aligned}
+    \right.
+    \quad
+    \phi(x) = \left\{
+    \begin{aligned}
+      0 & \quad \text{if} \quad -1 \le x \le 0 \\
+      1 & \quad \text{if} \quad 0 < x \le 1.
+    \end{aligned}
+    \right.
+  \]
+  $R_\Gamma(f\rmd \phi; [-1, 1])$ can be 0 or 1 for any $\Gamma$ straddling $0$,
+  so $\int_{-1}^1 f\rmd \phi$ does not exist.
+  Since $\phi \equiv 0$ on $[-1, 0]$,
+  $R_\Gamma(f \rmd \phi; [-1, 0])$ equals to zero for any $\Gamma$
+  and hence $\int_{-1}^0 f \rmd \phi = 0$.
+  Finally, if $\Gamma = \{x_j\}$ is a partion of $[0, 1]$, then
+  \[
+    R_\Gamma(f \rmd \phi; [0, 1]) = f(\xi_1) \left( \phi(x_1) - \phi(x_0) \right)
+    = 1 \cdot (1-0) = 1.
+  \]
+  Hence $\int_0^1 f \rmd \phi = 1$.
+\end{exercise}
+
+\begin{exercise}{2.15}
+  Let $\Gamma = \{x_j\}_1^N$ be a partition of $[a,b]$. Then
+  \[
+    S_\Gamma = \sum \left\vert \psi(x_j) - \psi(x_{j-1}) \right\vert
+    = \sum \left\vert \int_{x_{j-1}}^{x_j} f \rmd \phi \right\vert
+    \le \left(\sup |f|\right) \sum V(\phi; [x_{j-1}, x_j])
+    \le \left(\sup |f|\right) V(\phi; [a,b]),
+  \]
+  where the first inequality follows from Theorem 2.24.
+  This holds for all $\Gamma$ and thus $\psi$ is of bounded variation.
+  If $g$ is continuous on $[a,b]$,
+  both $\int_a^b g \rmd \psi$ and $\int_a^b fg \rmd \phi$ exist
+  by Theorem 2.24.
+  Consider the Riemann-Stieltjes sum for $g \rmd \psi$, we have
+  \begin{align*}
+    & \sum g(\xi_j) \left( \psi(x_j) - \psi(x_{j-1}) \right) \\
+    = & \sum g(\xi_j) f(\eta_j) \left( \phi(x_j) - \phi(x_{j-1}) \right) \\
+    = & \sum g(\xi_j) f(\xi_j) \left( \phi(x_j) - \phi(x_{j-1}) \right)
+    + \sum g(\xi_j) \left( f(\eta_j) - f(\xi_j) \right)
+    \left( \phi(x_j) - \phi(x_{j-1}) \right) \\
+    \coloneqq & I_1 + I_2,
+  \end{align*}
+  where the first equality follows from Theorem 2.27 (Mean-Value Theorem)
+  with each $\eta_j \in [x_{j-1}, x_j]$.
+  The term $I_1$ is the Riemann-Stieltjes sum for $gf \rmd \phi$
+  and tends to $\int_a^b fg \rmd \phi$ as $|\Gamma| \rightarrow 0$.
+  Using the uniform continuity of $f$ on $[a,b]$,
+  we can select $|\Gamma|$ so small that
+  \[
+    \left\vert f(\eta_j) - f(\xi_j) \right\vert <
+    \frac{\epsilon} {\left( \sup g \right) V(\phi)}
+  \]
+  for every $1 \le j \le N$.
+  It follows that $|I_2| < \epsilon$
+  and $\lim_{|\Gamma| \rightarrow 0} I_2 = 0$.
+  The proof of $\int_a^b g \rmd \psi = \int_a^b fg \rmd \phi$ is thus completed.
+\end{exercise}

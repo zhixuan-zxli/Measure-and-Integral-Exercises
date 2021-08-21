@@ -1,0 +1,40 @@
+% Preamble
+\documentclass[11pt]{article}
+
+% Packages
+\usepackage[a4paper, margin=2.0cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+
+%\setlength\parindent{0pt}
+
+% Self-defined commands
+\newcommand{\bbR}{\mathbb{R}}
+
+\newcommand{\rmd}{\mathrm{d}}
+
+\DeclareMathOperator*\lolim{\underline{lim}}
+\DeclareMathOperator*\uplim{\overline{lim}}
+
+\theoremstyle{definition}
+\newtheorem{innerexercise}{Exercise}
+\newenvironment{exercise}[1]
+{\pushQED{\qed}\renewcommand\theinnerexercise{#1}\innerexercise}
+{\popQED\endinnerexercise}
+
+% Document
+\begin{document}
+
+  \title{Solutions to Measure and Integral}
+%  \author{Zhixuan Li}
+  \maketitle
+
+  \section{Preliminaries}
+
+  \section{Functions of Bounded Variation and the Riemann-Stieltjes Integral}
+  \input{exercise-ch2}
+
+\end{document}
