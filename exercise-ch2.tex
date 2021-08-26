@@ -1,4 +1,6 @@
 
+Credit: 1-7 by Muhan; 8-13 by Heqing; 14-32 by Zhixuan.
+
 \begin{exercise}{2.1}
   Since $|\sin{\frac{1}{x}}|\leq1$ for $0<x\leq 1$,
   we have $|f(x)|\leq x$ for $0<x\leq 1$,
@@ -152,6 +154,209 @@ are of bounded variation if $f$ and $g$ are so and $|g|\geq \epsilon$.
 \end{exercise}
 
 
+\begin{exercise}{2.8}
+Let $f$ be of bounded variation on $(-\infty,+\infty)$, that is
+\begin{equation}\label{jordan}
+V(-\infty,+\infty)
+=\lim _{a \to -\infty \atop  b \to+\infty}V[a,b]<\infty,
+\end{equation}
+where the limit exists in the sense that it is independent of how $a\to-\infty$ and $b\to+\infty$.
+
+By Theorem 2.2(i) and  (\ref{jordan}), $f$ is of bounded variation on every interval
+$[a,b]$ and
+\begin{equation}\label{j2}
+V[a,b]\leq V(-\infty,+\infty)
+\end{equation}
+for every $a,b$ with $-\infty<a<b<+\infty$.
+By the analogue of Theorem 2.2(i) for $P$ and $N$ (see Exercise 3) and (\ref{j2}), it follows that $P[0,x]$and $N[0,x]$ are bounded and increasing on $[0,+\infty)$. Moreover, by Theorem 2.6 applied to $[0,x]$, $f(x)=[f(0)+P[0,x]]-N[0,x]$ when $0\leq x<+\infty$. Since $P[0,x]$ is bounded and increasing, so is $f(0)+P[0,x]$. Similarly, we have $f(x)=[f(0)-P[x,0]]+N[x,0]$ when $-\infty<x<0$.
+
+Now we define
+\[
+  f_1(x)=\left\{\begin{array}{ll}
+                  f(0)+P[0,x] & \text { if } x\geq0 \\
+                  f(0)-P[x,0] & \text { if } x < 0,
+  \end{array} \quad f_2(x)= \begin{cases} N[0,x]& \text { if } x\geq0 \\
+  -N[x,0] & \text { if } x < 0 .\end{cases}\right.
+\]
+Then $f(x)=f_1(x)-f_2(x)$, where $f_1$ and $f_2$ are increasing bounded functions.
+\end{exercise}
+
+\begin{exercise}{2.9}
+(a)
+  Since $\phi$ and $\psi$ are of bounded variation, by Theorem 2.13, the curve $C$ is rectifiable, i.e. $L<+\infty$. Given $\epsilon>0$, we must find $\delta>0$ so that $L-l(\Gamma)<\epsilon$ if $|\Gamma|<\delta$. By the definition of $L$, $L=\sup_{\Gamma}l(\Gamma)$, we can choose a fixed partition $\bar{\Gamma}=\{\bar{t}_j\}_{j=0}^k$ of $[a,b]$ such that $l(\bar{\Gamma})>L-\epsilon/2$. Using the uniform continuity of $\phi$ and $\psi$ on $[a,b]$, pick $\eta>0$ such that
+  \begin{enumerate}
+    \item[(i)] $|\phi(t)-\phi(t^\prime)|<\epsilon/[4\sqrt{2}(k+1)]$ and $|\psi(t)-\psi(t^\prime)|<\epsilon/[4\sqrt{2}(k+1)]$ if $|t-t^\prime|<\eta$.
+
+    Now let $\Gamma$ be any partition that satisfies
+    \item[(ii)] $|\Gamma|<\eta$,
+    \item[(iii)] $|\Gamma|<\min_j(\bar{t}_j-\bar{t}_{j-1}).$
+  \end{enumerate}
+  Write $\Gamma=\{t_i\}_{i=0}^m$ and
+  $$l(\Gamma)=\sum_{i=1}^{m}\left(\left[\phi\left(t_{i}\right)-\phi\left(t_{i-1}\right)\right]^{2}+\left[\psi\left(t_{i}\right)-\psi\left(t_{i-1}\right)\right]^{2}\right)^{1 / 2}=\sideset{}{'}{\sum}+\sideset{}{''}{\sum} ,$$
+  where $\sideset{}{''}{\sum}$ is extended over all $i$ such that $(t_{i-1},t_i)$ contains some $\bar{t}_j$. By (iii), any $(t_{i-1},t_i)$ can  contain at most one $\bar{t}_j$, and therefore the number of terms  $\sideset{}{''}{\sum}$ is at most $k+1$. Let $\Gamma\cup\bar{\Gamma}$ denote the partition formed by the union of the points of $\Gamma$ and $\bar{\Gamma}$. Then $\Gamma\cup\bar{\Gamma}$ is a refinement of both $\Gamma$ and $\bar{\Gamma}$. Moreover, $$l(\Gamma\cup\bar{\Gamma})=\sideset{}{'}{\sum}+\sideset{}{'''}{\sum},$$
+  where $\sideset{}{'''}{\sum}$ is obtained from $\sideset{}{''}{\sum}$ by replacing each term by $$\left(\left[\phi\left(t_{i}\right)-\phi\left(\bar{t}_j\right)\right]^{2}+\left[\psi\left(t_{i}\right)-\psi\left(\bar{t}_j\right)\right]^{2}\right)^{1 / 2}+\left(\left[\phi\left(\bar{t}_j\right)-\phi\left({t}_{i-1}\right)\right]^{2}+\left[\psi\left(\bar{t}_j\right)-\psi\left({t}_{j-1}\right)\right]^{2}\right)^{1 / 2},$$
+  $\bar{t}_j$ being the point of $\bar{\Gamma}$ in $(t_{j-1},t_j)$. By (i) and (ii), each of these two terms is less than $\epsilon/[4(k+1)]$, and therefore
+  \begin{equation*}
+    \sideset{}{'''}{\sum}<2(k+1)\frac{\epsilon}{4(k+1)}=\frac{\epsilon}{2}.
+  \end{equation*}
+  Hence,
+  $$l(\Gamma)\geq\sideset{}{'}{\sum}=l(\Gamma\cup \bar{\Gamma})-\sideset{}{'''}{\sum}>l(\Gamma\cup \bar{\Gamma})-\frac{\epsilon}{2}\geq l(\bar{\Gamma})-\frac{\epsilon}{2}>L-\frac{\epsilon}{2}-\frac{\epsilon}{2}=L-\epsilon.$$
+  We complete the proof by choosing $\delta=\min\{\eta,\min_j(\bar{t}_j-\bar{t}_{j-1})\}$.
+  (b)
+  Given a partition $\Gamma=\{t_i\}_{i=0}^m$
+  of the interval $[a,b]$.
+  Since $\phi$ and $\psi$ are differentiable on $[a,b]$, the mean-value theorem implies that there exist $\eta_i,\sigma_i\in (t_{i-1},t_i)$ such that
+  $$\phi(t_i)-\phi(t_{i-1})=\phi^\prime(\eta_i)(t_i-t_{i-1}),\quad \psi(t_i)-\psi(t_{i-1})=\phi^\prime(\sigma_i)(t_i-t_{i-1}).$$
+  Then
+  \begin{equation*}
+    \begin{aligned}
+      l(\Gamma)=\sum_{i=1}^m\sqrt{[\phi^\prime(\eta_i)]^2+[\psi^\prime(\sigma_i)]^2}(t_i-t_{i-1}).
+    \end{aligned}
+  \end{equation*}
+  Now we consider the Riemann sum
+  $$R_\Gamma=\sum_{i=1}^m\sqrt{[\phi^\prime(\xi_i)]^2+[\psi^\prime(\xi_i)]^2}(t_i-t_{i-1}),\quad (\xi_i\in[t_{i-1},t_i]).$$
+  We will use the inequalities
+  \begin{equation*}
+    \left|\sqrt{x_1^2+x_2^2}-\sqrt{y_1^2+y_2^2}\right|\leq \sqrt{(x_1-y_1)^2+(x_2-y_2)^2}\leq |x_1-y_1|+|x_2-y_2|,
+  \end{equation*}
+  where the first inequaliy is nothing but the reverse triangle inequality.
+  Hence,
+  \begin{equation*}
+    \begin{aligned}
+      |l(\Gamma)-R_\Gamma|&=\left|\sum_{i=1}^m\sqrt{[\phi^\prime(\eta_i)]^2+[\psi^\prime(\sigma_i)]^2}-\sum_{i=1}^m\sqrt{[\phi^\prime(\xi_i)]^2+[\psi^\prime(\xi_i)]^2}\right|(t_i-t_{i-1})\\&\leq\sum_{i=1}^m\left|\sqrt{[\phi^\prime(\eta_i)]^2+[\psi^\prime(\sigma_i)]^2}-\sqrt{[\phi^\prime(\xi_i)]^2+[\psi^\prime(\xi_i)]^2}\right|(t_i-t_{i-1})\\
+      &\leq\sum_{i=1}^m|\phi^\prime(\eta_i)-\psi^\prime(\xi_i)|(t_i-t_{i-1})+\sum_{i=1}^m|\psi^\prime(\sigma_i)-\psi^\prime(\xi_i)|(t_i-t_{i-1})\\
+      &\leq [U_\Gamma(\phi^\prime)-L_\Gamma(\phi^\prime)]+[U_\Gamma(\psi^\prime)-L_\Gamma(\psi^\prime)],
+    \end{aligned}
+  \end{equation*}
+  where $U_\Gamma$ and $L_\Gamma$ are the upper and lower Riemann sums for $\Gamma$, respectively. Since $\phi^\prime$ and $\psi^\prime$ are continuous on $[a,b]$ and then are Riemann integrable on $[a,b]$, we have
+  $$\lim_{|\Gamma|\to 0}[U_\Gamma(\phi^\prime)-L_\Gamma(\phi^\prime)]=0,\quad \lim_{|\Gamma|\to 0}[U_\Gamma(\psi^\prime)-L_\Gamma(\psi^\prime)]=0.$$
+  Note that $\phi$ and $\psi$ are continuously differentiable on $[a,b]$ and then are of bounded variation on $[a,b]$ by Example 6. Using the result of part (a) we find
+  \[L=\lim_{|\Gamma|\to0}l(\Gamma)=\lim_{|\Gamma|\to0}R_\Gamma=\int_a^b\left([\phi^\prime(t)]^2+[\psi^\prime(t)]^2\right)^{1/2}\mathrm{d}t. \qedhere \]
+\end{exercise}
+
+\begin{exercise}{2.10}
+Let $a=\lambda_1<\lambda_2<\cdots<\lambda_m=b$ and
+$\phi(x)$ be a step function on $[a,b]$ such that $\phi$ is constant on each interval $(\lambda_{i-1},\lambda_i)$.
+Let
+$$\phi(\lambda_i+)=\lim_{x\to\lambda_i+}\phi(x),i=1,2,\cdots,m-1,$$
+and
+$$\phi(\lambda_i-)=\lim_{x\to\lambda_i-}\phi(x),i=2,\cdots,m,$$
+denote the limits from the right and left at $\lambda_i$, and let $a_i=\phi(\lambda_{i}+)-\phi(\lambda_{i}-)$, $i=2,\cdots,m-1$, $a_1=\phi(\lambda_1+)-\phi(\lambda_1)$, and $a_m=\phi(\lambda_m)-\phi(\lambda_m-)$ denote the jumps of $\phi$. By Remark 3 (page 28), for $f(x)=e^{-sx}$, we have
+$$\sum_{k=1}^ma_ke^{-s\lambda_k}=\sum_{k=1}^mf(\lambda_k)a_k=\int_a^bf\mathrm{d}\phi.$$
+\end{exercise}
+
+\begin{exercise}{2.11}
+Suppose that $I=\int_a^bf\mathrm{d}\phi$ exists and hence is finite, that is, if given $\epsilon>0$, there is a $\delta>0$ such that $|I-R_{\Gamma}|<\epsilon/2$ for any $\Gamma$ satisfying $|\Gamma|<\delta$ and for any choice of intermediate points. For such $\delta$, we have
+$$|R_\Gamma-R_{\Gamma^\prime}|\leq|R_\Gamma-I|+|I-R_{\Gamma^\prime}|<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon,\quad \text{if}\quad |\Gamma|,|\Gamma^\prime|<\delta.$$
+
+Conversely, suppose that for $\epsilon_n=1/n$, there exist $\delta_n>0$ such that $|R_{\Gamma_n}-R_{\Gamma^\prime_n}|<\epsilon_n$ if $|\Gamma_n|,|\Gamma^\prime_n|<\delta_n$. We may assume that $\delta_1\geq \delta_2\geq\cdots\geq\delta_n\geq\cdots$.
+Consider a sequence $\{R_{\Gamma_n}\}_{n=1}^{\infty}$ for some choice of partitions $\Gamma_n$ with $|\Gamma_n|<\delta_n$.
+For any $\epsilon>0$, we choose a positive integer $N$ such
+that $\epsilon_N< \epsilon$, then
+\begin{equation}\label{11}
+|R_{\Gamma_n}-R_{\Gamma_m}|<\epsilon,\quad \text{if} \quad n,m\geq N.
+\end{equation}
+Hence, $\{R_{\Gamma_n}\}_{n=1}^{\infty}$ is a Cauchy sequence in $\mathbf{R^1}$ and then there is a number $I$ such that $I=\lim_{n\to\infty} R_{\Gamma_n}$.
+Letting $m\to+\infty$ in (\ref{11}) and then we have
+\begin{equation*}		|R_{\Gamma_N}-I|\leq\epsilon.
+\end{equation*}
+For such $\epsilon$ and $N$ in (\ref{11}), we choose $\delta\in(0,\delta_N]$, then for any $\Gamma$ satisfying $|\Gamma|<\delta$,
+\begin{equation*}
+  \begin{aligned}
+    |R_{\Gamma}-I|&\leq |R_{\Gamma}-R_{\Gamma_	N}|+|R_{\Gamma_N}-I|\\
+    &\leq \epsilon_N+\epsilon\\&<2\epsilon.
+  \end{aligned}
+\end{equation*}
+It follows that $\int_a^bf\mathrm{d}\phi=I$.
+\end{exercise}
+
+\begin{exercise}{2.12}
+We will give the argument for the upper sums; the one for the lower sums is similar.
+If $\phi$ is a constant, then $\lim_{|\Gamma|\to0}U_\Gamma=\inf_{\Gamma}U_\Gamma=0$.
+This completes the proof.
+
+Now we assume that $\phi$ is not a constant.
+Let $\inf_{\Gamma}U_\Gamma=U$. Given $\epsilon>0$, we must find $\delta>0$ such that $U_{\Gamma}<U+\epsilon$ if $|\Gamma|<\delta$. Choose $\bar{\Gamma}=\{\bar{x}_j\}_{j=0}^k$ such that $U_{\bar{\Gamma}}<U+\epsilon/2$, and let $M=\sup_{[a,b]}|f|$. Since $f$ and $\phi$ have no common discontinuities, we have the fact that  either $f$ or $\phi$ is continuous at each point $\bar{x}_j$ of $\bar{\Gamma}$. There exits $\eta_1>0$ such that
+$$|\phi(x)-\phi(\bar{x}_j)|<\frac{\epsilon}{8(k+1)M}$$
+if $|x-\bar{x}_j|<\eta_1$ and  $\phi$ is continuous at $\bar{x}_j$.
+We can find such $\eta$ because there are only a finte number of such points $\bar{x}_j$.
+Similarly, we can find $\eta_2>0$ such that
+$$|f(x)-f(\bar{x}_j)|<\frac{\epsilon}{8(k+1)[\phi(b)-\phi(a)]}$$
+if $|x-\bar{x}_j|<\eta_2$ and $f$ is continuous at $\bar{x}_j$.
+Note that here $\phi$ is monotone increasing and finite, so $0<\phi(b)-\phi(a)<+\infty$.
+
+We set $\delta=\min\{\eta_1,\eta_2,\min_j(\bar{x}_j-\bar{x}_{j-1})\}$.
+Now let $\Gamma=\{x_i\}_{i=0}^m$ be any partition for which $|\Gamma|<\delta$.
+It is enough to show that $U_{\Gamma}<U+\epsilon.$
+Write
+$$U_\Gamma=\sum_{i=1}^mM_i[\phi(x_i)-\phi(x_{i-1})]=\sideset{}{'}{\sum}+\sideset{}{''}{\sum},$$
+where $\sideset{}{'}{\sum}$ is as in the proof of Theorem 2.9. Then $U_{\Gamma\cup\bar{\Gamma}}=\sideset{}{'}{\sum}+\sideset{}{'''}{\sum}$, where $\sideset{}{'''}{\sum}$ is obtained from $\sideset{}{''}{\sum}$ by replacing each of the terms $M_i[\phi(x_i)-\phi(x_{i-1})]$ by
+\begin{equation}\label{230}
+\sup _{\left[x_{i-1}, \bar{x}_{j}\right]} f(x)\left[\phi\left(\bar{x}_{j}\right)-\phi\left(x_{i-1}\right)\right]+\sup _{\left[\bar{x}_{j}, x_{i}\right]} f(x)\left[\phi\left(x_{i}\right)-\phi\left(\bar{x}_{j}\right)\right],
+\end{equation}
+$\bar{x}_{j}$ being the point of $\bar{\Gamma}$ in $(x_{i-1},x_i)$. Hence, $U_{\Gamma}-U_{\Gamma\cup\bar{\Gamma}}=\sideset{}{''}{\sum}-\sideset{}{'''}{\sum}$.
+At least one of $\sup _{\left[x_{i-1}, \bar{x}_{j}\right]}f$ and $\sup _{\left[\bar{x}_{j}, x_{i}\right]} f$ equals $M_i$. If it is the first, the difference between $M_i[\phi(x_i)-\phi(x_{i-1})]$ and (\ref{230}) is easily seen to be
+$$\left(M_{i}-\sup _{\left[\bar{x}_{j}, x_{i}\right]} f\right)\left[\phi\left(x_{i}\right)-\phi\left(\bar{x}_{j}\right)\right].$$
+If it is the second, the difference is
+$$\left(M_{i}-\sup _{\left[x_{i-1}, \bar{x}_{j}\right]} f\right)\left[\phi\left(\bar{x}_{j}\right)-\phi\left(x_{i-1}\right)\right].$$
+In either case, the difference is at most $2M\epsilon/[8(k+1)M]+2\epsilon/[8(k+1)]=\epsilon/[2(k+1)]$ in absolute value. Here the second term $2\epsilon/[8(k+1)]$ comes from, for example, $f$ is continuous at $\bar{x}_j$,
+\begin{equation*}
+  \begin{aligned}
+    \left(M_{i}-\sup _{\left[\bar{x}_{j}, x_{i}\right]} f\right)\left[\phi\left(x_{i}\right)-\phi\left(\bar{x}_{j}\right)\right] \leq&\left(|M_i-f(\bar{x}_j)|+|f(\bar{x}_j)-\sup _{\left[\bar{x}_{j}, x_{i}\right]} f|\right)\left[\phi\left(x_{i}\right)-\phi\left(\bar{x}_{j}\right)\right]\\
+    \leq&\frac{2\epsilon}{8(k+1)[\phi(b)-\phi(a)]}\left[\phi\left(x_{i}\right)-\phi\left(\bar{x}_{j}\right)\right]\\
+    \leq&\frac{2\epsilon}{8(k+1)}.
+  \end{aligned}
+\end{equation*}
+Hence,
+\begin{equation*}
+  U_{\Gamma}\leq U_{\Gamma\cup\bar{\Gamma}}+(k+1)\frac{\epsilon}{2(k+1)}\leq U_{\bar{\Gamma}}+\frac{\epsilon}{2}<U+\frac{\epsilon}{2}+\frac{\epsilon}{2}=U+\epsilon,
+\end{equation*}
+which completes the proof.
+\end{exercise}
+
+\begin{exercise}{2.13}
+Let $\Gamma=\{a=x_0<x_1<\cdots<x_m=b\}$ and $x_{i-1}\leq\xi_i\leq x_i$.
+
+(i) Suppose $\int_a^bf\mathrm{d}\phi$ exists. Then for any constant $c$,
+\begin{equation*}
+  \begin{aligned}
+    cR_\Gamma(f;\phi)&=c\sum_{i=1}^mf(\xi_i)[\phi(x_i)-\phi(x_{i-1})]\\
+    &=\sum_{i=1}^mcf(\xi_i)[\phi(x_i)-\phi(x_{i-1})]\\
+    &=\sum_{i=1}^mf(\xi_i)[c\phi(x_i)-c\phi(x_{i-1})],
+  \end{aligned}
+\end{equation*}
+that is, $cR_\Gamma(f;\phi)=	R_\Gamma(cf;\phi)=	R_\Gamma(f;c\phi)$. Since $\int_a^bf\mathrm{d}\phi$ exists, we get
+$$\lim_{|\Gamma|\to 0}	R_\Gamma(cf;\phi)=\lim_{|\Gamma|\to 0}	R_\Gamma(f;c\phi)=c\int_a^bf\mathrm{d}\phi,$$
+that is $\int_a^bcf\mathrm{d}\phi$ and $\int_a^bf\mathrm{d}(c\phi)$ exist and
+$$\int_a^bcf\mathrm{d}\phi=\int_a^bf\mathrm{d}(c\phi)=c\int_a^bf\mathrm{d}\phi.$$
+
+(ii) Suppose $\int_a^bf_1\mathrm{d}\phi$ and $\int_a^bf_2\mathrm{d}\phi$ exist. Then
+\begin{equation*}
+  \begin{aligned}
+    R_\Gamma(f_1;\phi)+R_\Gamma(f_2;\phi)&=\sum_{i=1}^mf_1(\xi_i)[\phi(x_i)-\phi(x_{i-1})]+\sum_{i=1}^mf_2(\xi_i)[\phi(x_i)-\phi(x_{i-1})]\\
+    &=\sum_{i=1}^m[f_1(\xi_i)+f_2(\xi_i)][\phi(x_i)-\phi(x_{i-1})]\\&=R_\Gamma(f_1+f_2;\phi).
+  \end{aligned}
+\end{equation*}
+Since $\int_a^bf_1\mathrm{d}\phi$ and  $\int_a^bf_2\mathrm{d}\phi$ both exist, we get
+$$\lim_{|\Gamma|\to 0}	R_\Gamma(f_1+f_2;\phi)=\int_a^bf_1\mathrm{d}\phi+\int_a^bf_2\mathrm{d}\phi,$$
+that is, $\int_a^b(f_1+f_2)\mathrm{d}\phi$ exists and
+$$\int_a^b(f_1+f_2)\mathrm{d}\phi=\int_a^bf_1\mathrm{d}\phi+\int_a^bf_2\mathrm{d}\phi.$$
+
+(iii) Suppose $\int_a^bf\mathrm{d}\phi_1$ and $\int_a^bf\mathrm{d}\phi_2$ exist. Then
+\begin{equation*}
+  \begin{aligned}
+    R_\Gamma(f;\phi_1)+R_\Gamma(f;\phi_2)&=\sum_{i=1}^mf(\xi_i)[\phi_1(x_i)-\phi_1(x_{i-1})]+\sum_{i=1}^mf(\xi_i)[\phi_2(x_i)-\phi_2(x_{i-1})]\\
+    &=\sum_{i=1}^mf(\xi_i)\left\{[\phi_1(x_i)+\phi_2(x_i)]-[\phi_1(x_{i-1})+\phi_2(x_{i-1})]\right\}\\&=R_\Gamma(f;\phi_1+\phi_2).
+  \end{aligned}
+\end{equation*}
+Since $\int_a^bf\mathrm{d}\phi_1$ and  $\int_a^bf\mathrm{d}\phi_2$ both exist, we get
+$$\lim_{|\Gamma|\to 0}	R_\Gamma(f;\phi_1+\phi_2)=\int_a^bf\mathrm{d}\phi_1+\int_a^bf\mathrm{d}\phi_2,$$
+that is, $\int_a^bf\mathrm{d}(\phi_1+\phi_2)$ exists and
+\[
+  \int_a^bf\mathrm{d}(\phi_1+\phi_2)=\int_a^bf\mathrm{d}\phi_1+\int_a^bf\mathrm{d}\phi_2.
+  \qedhere
+\]
+\end{exercise}
 
 \begin{exercise}{2.14}
   This is the example following (2.28).
