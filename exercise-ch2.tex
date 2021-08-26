@@ -1,4 +1,158 @@
 
+\begin{exercise}{2.1}
+  Since $|\sin{\frac{1}{x}}|\leq1$ for $0<x\leq 1$,
+  we have $|f(x)|\leq x$ for $0<x\leq 1$,
+  which is also true for $x=0$.
+  Thus as $x$ tends to zero,
+  $f(x)$ also tends to zero and equals $f(0)$.
+  We have proved that $f$ is bounded and continuous.
+  Now consider the partition
+  $\Gamma=\{x_0=1,x_k=\frac{2}{k\pi}\text{ for }1\leq k\leq 2n, x_{2n+1}=1\}$.
+  Since $f(x_{2n-1})=\pm\frac{2}{(2n-1)\pi}$ and $f(x_{2n})=0$,
+  we have
+  \[
+    V[f;0,1]\geq S_{\Gamma}[f;0,1]>\sum_{k=1}^{n}|f(x_{2k-1})-f(x_{2k})|=\sum_{k=1}^{n}\frac{2}{(2k-1)\pi}.
+  \]
+  From knowledge in calculus,
+  we know that the right hand sum of series tends to infinity
+  when $n$ tends to infinity and thus $V[f;0,1]=+\infty$.
+\end{exercise}
+
+\begin{exercise}{2.2}
+(i) For any $x\in [a,b]$, consider the partition $\Gamma=\{a,x,b\}$.
+We have $V=V[f;a,b]\geq S_{\Gamma}[f;a,b]=|f(b)-f(x)|+|f(x)-f(a)|$.
+We can deduce that
+\[
+  \frac{f(b)+f(a)-V}{2}\leq f(x)\leq \frac{V+f(a)+f(b)}{2},
+\]
+which implies that $f$ is bounded.\\
+(ii) For any partition $\Gamma$, we have
+\allowdisplaybreaks
+\begin{align*}
+  S_{\Gamma}[cf;0,1]&=|c|\cdot S_{\Gamma}[f;0,1];\\
+  S_{\Gamma}[f+g;0,1]&=\sum_{i=0}^m|(f+g)(x_i)-(f+g)(x_{i-1})|\\
+  &=\sum_{i=0}^m|f(x_i)-f(x_{i-1})+g(x_i)-g(x_{i-1})|\\
+  &\leq\sum_{i=0}^m|f(x_i)-f(x_{i-1})|+\sum_{i=0}^m|g(x_i)-g(x_{i-1})|\\
+  &=S_{\Gamma}[f;0,1]+S_{\Gamma}[g;0,1];\\
+  S_{\Gamma}[fg;0,1]&=\sum_{i=0}^m|(fg)(x_i)-(fg)(x_{i-1})|\\
+  &=\sum_{i=0}^m|g(x_i)[f(x_i)-f(x_{i-1})]+f(x_{i-1})[g(x_i)-g(x_{i-1})]|\\
+  &\leq M\cdot(\sum_{i=0}^m|f(x_i)-f(x_{i-1})|+\sum_{i=0}^m|g(x_i)-g(x_{i-1})|)\\
+  &=M\cdot (S_{\Gamma}[f;0,1]+S_{\Gamma}[g;0,1]).\\
+  S_{\Gamma}[f/g;0,1]&=\sum_{i=0}^m|(f/g)(x_i)-(f/g)(x_{i-1})|\\
+  &=\sum_{i=0}^m\bigg|\frac{f(x_i)-f(x_{i-1})}{g(x_i)}+f(x_{i-1})\frac{g(x_{i-1})-g(x_i)}{g(x_{i-1})g(x_i)}\bigg|\\
+  &\leq \sum_{i=0}^m\frac{1}{\epsilon}|f(x_i)-f(x_{i-1})|+\frac{M}{\epsilon^2}\cdot|g(x_i)-g(x_{i-1})|\\
+  &=\frac{1}{\epsilon}S_{\Gamma}[f;0,1]+\frac{M}{\epsilon^2}\cdot S_{\Gamma}[g;0,1]
+\end{align*}
+where by (i) we may assume that $M>0$ is an upper bound for both $f$ and $g$.
+From these inequalities we can deduce that $cf$, $f+g$, $fg$ and $f/g$
+are of bounded variation if $f$ and $g$ are so and $|g|\geq \epsilon$.
+\end{exercise}
+
+\begin{exercise}{2.3}
+  For any partition $\Gamma$ of $[a',b']$,
+  we can extend it to a partition $\Gamma'$ of $[a,b]$ by just adding two points $a$ and $b$.
+  Then by definition we have
+  \[
+    P_{\Gamma}[f;a',b']\leq P_{\Gamma'}[f;a,b]\leq P[a,b]
+  \]
+  and
+  \[
+    N_{\Gamma}[f;a',b']\leq N_{\Gamma'}[f;a,b]\leq N[a,b]
+  \]
+  By taking supremum over all partitions of $[a',b']$ on the left hand side of the inequalities
+  we get the desired result.
+\end{exercise}
+
+\begin{exercise}{2.4}
+  For any partition $\Gamma=\{x_0,x_1,...,x_m\}$ of the interval $[a,b]$
+  and any $\varepsilon>0$,
+  there exists $N$ sufficiently large and when $k>N$,
+  we have $|f(x_i)-f_k(x_i)|<\frac{\varepsilon}{2m}$
+  for all $0\leq i\leq m.$
+  Then for such $k$ we have
+  \begin{align*}
+    S_{\Gamma}[f;a,b]&=\sum_{i=1}^m|f(x_i)-f(x_{i-1})|\\
+    &\leq \sum_{i=1}^m|f(x_i)-f_k(x_i)|+|f_k(x_i)-f_k(x_{i-1})|+|f_k(x_{i-1})-f(x_{i-1})|\\
+    &\leq m\cdot \frac{\varepsilon}{2m}+M+m\cdot \frac{\varepsilon}{2m}=M+\varepsilon
+  \end{align*}
+  Since $\varepsilon$ is arbitrary,
+  we have $S_{\Gamma}[f;a,b]\leq M$ and by taking supremum over all partitions of $[a,b]$,
+  we get $V[f;a,b]\leq M.$
+
+  Consider the functions $f_k$ defined over $[0,1]$
+  where $f_k(x)=x\sin{\frac{1}{x}}$ on $(\frac{1}{k},1]$
+  and equals 0 on $[0,\frac{1}{k}].$
+  Then they are of bounded variation
+  since they are of bounded variation on $[0,\frac{1}{k}]$ and $[\frac{1}{k},1]$
+  and $V[f_k;0,1]=V[f_k;0,\frac{1}{k}]+V[f_k;\frac{1}{k},1].$
+  However, their limit function is $f(x)=x\sin{\frac{1}{x}}$ for $0<x\leq 1$ and $f(0)=0$
+  which is of unbounded variation by exercise 1.
+\end{exercise}
+
+\begin{exercise}{2.5}
+  First we claim that $f$ is bounded on $[a,b]$.
+  Otherwise, since $f$ is bounded on $[a+\varepsilon,b]$ for any $\varepsilon>0$,
+  we can find a sequence $\{a_n\}$ converging to $a$ such that $|f(a_n)-f(a_{n-1})|>1$.
+  Choose $N>M+1$ and on $[a_N,b]$ consider the partition $\Gamma=\{a_N,a_{N-1},...,a_1,b\}$,
+  then $V[f;a_N,b]\geq S_{\Gamma}[f;a_N,b]\geq N-1>M$, contradiction.
+
+  Now suppose $|f(x)|\leq L$ for some $L>0$.
+  For any partition $\Gamma=\{x_0=a,x_1,...,x_m=b\}$,
+  we have $S_{\Gamma}[f;a,b]\leq |f(a)-f(x_1)|+V[f;x_1,b]\leq 2L+M$.
+  Take the supremum over all partitions of $[a,b]$ and we have $V[f;a,b]$ is finite.
+
+  Suppose $f$ is continuous at $a$, that is, $\lim_{x\rightarrow{a+0}}f(x)=f(a)$,
+  then for any $\varepsilon>0$,
+  there exists $\delta>0$ such that $|f(x)-f(a)|<\varepsilon$ when $0\leq x-a<\delta$.
+  Now for any partition $\Gamma=\{x_0=a,x_1,...,x_m=b\}$,
+  we may assume $|x_1-a|<\delta$, otherwise we can refine it.
+  Then $S_{\Gamma}[f;a,b]\leq |f(a)-f(x_1)|+V[f;x_1,b]\leq\varepsilon+M$.
+  Since $\varepsilon$ is arbitrary,
+  we have $S_{\Gamma}[f;a,b]\leq M$ and in consequence $V[f;a,b]\leq M.$
+\end{exercise}
+
+\begin{exercise}{2.6}
+  For any $0<\varepsilon<1$,
+  $f$ is finite and of bounded variation on $[\varepsilon,1]$
+  and $f'(x)=2x\sin{\frac{1}{x}}-\cos{\frac{1}{x}}$ is continuous on $[\varepsilon,1]$.
+  By Corollary 2.10,
+  we have
+  \[
+    V[f;\varepsilon,1]=\int_{\epsilon}^1|f'|dx\leq\int_{\epsilon}^1 2x+1 dx=2-(\varepsilon^2+\varepsilon)<2.
+  \]
+  By the previous exercise we can deduce that $V[f;0,1]<+\infty.$
+\end{exercise}
+
+\begin{exercise}{2.7}
+  For any $\varepsilon>0$,
+  since $f$ is continuous at $\Bar{x}$,
+  there exists $\delta>0$ such that when $|x-\Bar{x}|<\delta$
+  we have $|f(x)-f(\Bar{x})|<\varepsilon$.
+  Now for any such $x$, we may assume without loss of generality that $\Bar{x}<x\leq b$.
+  For any $\varepsilon'>0$,
+  there exists a partition $\Gamma$ of $[a,b]$
+  such that $S_{\Gamma}\geq V[a,b]-\varepsilon'$.
+  Let $\Gamma'=\Gamma\cup \{x,\Bar{x}\}$ and then
+  $S_{\Gamma'}\geq S_{\Gamma}\geq V[a,b]-\varepsilon'$.
+  On the other hand
+  $S_{\Gamma'}\leq |f(x)-f(\Bar{x})|+V[a,\Bar{x}]+V[x,b]=|f(x)-f(\Bar{x})|+V[a,b]-V[\Bar{x},x]$.
+  Thus $V[\Bar{x},x]\leq |f(x)-f(\Bar{x})|+\varepsilon'$ and
+  consequently $V[\Bar{x},x]\leq |f(x)-f(\Bar{x})|<\varepsilon$
+  by letting $\varepsilon'$ tend to zero.
+  Since $V[\Bar{x},x]=V(x)-V(\Bar{x})$,
+  we have proved that $V(x)$ is continuous at $\Bar{x}$.
+
+  Now by the formulas $P(x)=\frac{V(x)+f(x)-f(a)}{2}$ and $N(x)=\frac{V(x)-f(x)+f(a)}{2}$,
+  we have
+  \begin{align*}
+    |P(x)-P(\Bar{x})|&=\bigg|\frac{V(x)-V(\Bar{x})+f(x)-f(\Bar{x})}{2}\bigg|<\varepsilon, \\
+    |N(x)-N(\Bar{x})|&=\bigg|\frac{V(x)-V(\Bar{x})-f(x)+f(\Bar{x})}{2}\bigg|<\varepsilon, \\
+  \end{align*}
+  which implies the continuity of $P$ and $N$ at $\Bar{x}$.
+\end{exercise}
+
+
+
 \begin{exercise}{2.14}
   This is the example following (2.28).
   Take $[a,b] = [-1, 1], c=0$, and
