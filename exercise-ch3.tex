@@ -1,0 +1,156 @@
+
+\begin{exercise}{3.11}
+  Suppose $E$ is measurable and $\mea{E} < + \infty$.
+  Select an open set $G$ such that $G \supset E$ and $\mea{G-E} < \epsilon$.
+  By Theorem 1.11, there exists a countable collection $\{I_k\}$
+  of nonoverlapping intervals such that $G = \bigcup I_k$
+  and therefore $\mea{G} = \sum \mea{I_k}$.
+  Choose $N$ so large that $\sum_{N+1}^{\infty} \mea{I_k} < \epsilon$.
+  Now take $S = \bigcup_1^N I_k, N_1 = \bigcup_{N+1}^\infty I_k$
+  and $N_2 = G - E$.
+  Then $E = (S \cup N_1) - N_2$, $\mea{N_1} < \epsilon$ and $\mea{N_2} < \epsilon$
+  as desired.
+
+  Conversely, suppose $E = (S \cup N_1) - N_2$,
+  $\outmea{N_1} < \epsilon$ and $\outmea{N_2} < \epsilon$.
+  We may assume $N_2 \subset (S \cup N_1)$ by taking appropriate intersection.
+  Select an open set $G$ with $G \supset S$ and $\mea{G - S} < \epsilon$.
+  Then select an open set $G_1$ with $G_1 \supset N_1$
+  and $\mea{G_1} < \outmea{N_1} + \epsilon < 2 \epsilon$.
+  By subadditivity of outer measure, we have
+  \[
+    \begin{aligned}
+      \outmea{(G \cup G_1) - E} &= \outmea{(G \cup G_1) - (S \cup N_1) \cup N_2} \\
+      &\le \outmea{(G \cup G_1) - (S \cup N_1)} + \outmea{N_2} \\
+      &< \mea{G-S} + \outmea{G_1 - N_1} + \epsilon \\
+      &< \epsilon + \outmea{G_1} + \epsilon \\
+      &< 4\epsilon.
+    \end{aligned}
+  \]
+  We have shown that $E$ can be approximated by open sets from outside.
+  Thus $E$ is measurable.
+\end{exercise}
+
+\begin{exercise}{3.12}
+  First let us fix $E_1$ to be a finite open interval.
+
+  Step 1.
+  Since the measure of an interval is equal to its volume,
+  the assertion $\mea{E_1 \times E_2} = \mea{E_1} \mea{E_2}$ holds
+  for $E_2$ being an open interval.
+
+  Step 2.
+  Suppose $E_2$ is an open set.
+  By Theorem 1.10,
+  we can write $E_2 = \bigcup I_k$
+  where $\{I_k\}$ is a collection of disjoint open intervals.
+  Then by what has been proved,
+  \[
+    E_1 \times E_2 = E_1 \times \left( \bigcup I_k \right)
+    = \bigcup \left(E_1 \times I_k\right)
+  \]
+  is a countable union of disjoint measurable sets in $\bbR^2$
+  and hence measurable.
+  Moreover,
+  \[
+    \mea{E_1 \times E_2} = \sum \mea{E_1 \times I_k}
+    = \mea{E_1} \sum \mea{I_k} = \mea{E_1} \mea{E_2}.
+  \]
+
+  Step 3. If $\mea{E_2} = 0$, then we can find an open set $G \supset E_2$
+  with $\mea{G} < \epsilon$. Then
+  $\outmea{E_1 \times E_2} \le \mea{E_1 \times G} < \epsilon \mea{E_1}$
+  for arbitrary $\epsilon > 0$.
+  Hence $\mea{E_1 \times E_2} = 0$.
+
+  Step 4. Suppose $E_2 = \bigcap G_k$ is a $G_\delta$ set with finite measure.
+  We may assume $\mea{G_1} < \infty$ and $\{G_k\}$ is decreasing.
+  Then by what has been proved,
+  \[
+    E_1 \times E_2 = E_1 \times \left( \bigcap G_k \right)
+    = \bigcap \left( E_1 \times G_k \right)
+  \]
+  is a countable decreasing intersection of measurable sets
+  and hence measurable.
+  Moreover,
+  \[
+    \mea{E_1 \times E_2}
+    = \lim \mea{E_1 \times G_k}
+    = \mea{E_1} \lim \mea{G_k} = \mea{E_1} \mea{E_2}.
+  \]
+
+  Step 5. Suppose $E_2$ is of finite measure.
+  Write $E_2 = G - Z$ where $G$ is a $G_{\delta}$ set with finite measure
+  and $Z$ has measure zero. Then by what has been proved,
+  \[
+    E_1 \times E_2 = E_1 \times \left( G-Z \right)
+    = E_1 \times G - E_1 \times Z
+  \]
+  is the difference of two measurable sets and hence measurable.
+  It also follows easily that
+  $\mea{E_1 \times E_2} = \mea{E_1}\mea{G} - \mea{E_1}\mea{Z} = \mea{E_1}\mea{E_2}$.
+
+  Step 6. Suppose $E_2$ is of infinite measure.
+  We can write $E_2 = \bigcup E_k$
+  where the collection $\{E_k\}$ is increasing and each $\mea{E_k} < \infty$.
+  Then $E_1 \times E_2$ is a countable increasing union of measurable sets
+  and hence measurable.
+  Moreover, $\mea{E_1 \times E_2} = \mea{E_1} \lim {E_k} = \infty$.
+
+  We have proved that the assertion $\mea{E_1 \times E_2} = \mea{E_1} \mea{E_2}$
+  holds for $E_1$ being a finite open interval and $E_2$ an arbitrary measurable set.
+  By reversing the roles of $E_1$ and $E_2$
+  and going through the above steps again,
+  we can show that the assertion holds for arbitrary measurable $E_1$ and $E_2$.
+\end{exercise}
+
+\begin{exercise}{3.13}
+  First recall that
+  \[
+    \outmea{E} = \inf \left\{ \mea{G} : G \text{ is open and } G \subset E\right\}.
+  \]
+  Since $\mea{F} \le \mea{G}$ for all closed $F \subset E$
+  and all open $G \supset E$,
+  taking infimum and supremem we obtain
+  $\inmea{E} \le \outmea{E}$.
+  This proves part (i).
+
+  Suppose $E$ has finite measure.
+  Lemma 3.22 states that for an arbirary $\epsilon > 0$
+  there exists a closed set $F \subset E$ with
+  $\mea{E} - \mea{F} = \mea{E-F} < \epsilon$.
+  It follows that $\inmea{E} = \mea{E} = \outmea{E}$.
+  Conversely, suppose $\inmea{E} = \outmea{E} < \infty$.
+  For each $k \in \bbZ^+$,
+  select an open set $G_k$ and a closed set $F_k$ such that
+  \[
+    F_k \subset E \subset G_k, \quad \mea{G_k} - \mea{F_k} < 1/k.
+  \]
+  Let $G = \bigcap G_k$.
+  Then $G$ is a $G_\delta$ (and hence measurable) set.
+  Moreover, since $G - E \subset G_k - F_k$, we have
+  \[
+    \outmea{G-E} \le \mea{G_k - F_k} = \mea{G_k} - \mea{F_k} < 1/k
+  \]
+  for every $k \in \bbZ^+$,
+  and hence $G-E$ has measure zero.
+  Finally, being the difference of two measurable sets,
+  $E = G - (G-E)$ is measurable.
+  This completes the proof of part (ii).
+\end{exercise}
+
+\begin{exercise}{3.14}
+  Let $E_1$ be a nonmeasurable subset of $[-2, -1]$.
+  Let $E_2 = [0, +\infty)$ and $E = E_1 \cup E_2$.
+  Clearly $E$ is nonmeasurable.
+  Moreover we have
+  \[
+    \begin{aligned}
+      \outmea{E} \ge \outmea{E_2} = \infty \quad &\Rightarrow \quad \outmea{E} = \infty, \\
+      \inmea{E} \ge \mea{[0, n]} = n \text{ for every } n \in \bbZ^+
+      \quad &\Rightarrow \quad \inmea{E} = \infty.
+    \end{aligned}
+  \]
+  Hence part (ii) of Exercise 13 is false if $\outmea{E} = \infty$.
+\end{exercise}
+
