@@ -79,7 +79,7 @@
     = \mea{E_1} \lim \mea{G_k} = \mea{E_1} \mea{E_2}.
   \]
 
-  Step 5. Suppose $E_2$ is of finite measure.
+  Step 5. Suppose $E_2$ has finite measure.
   Write $E_2 = G - Z$ where $G$ is a $G_{\delta}$ set with finite measure
   and $Z$ has measure zero. Then by what has been proved,
   \[
@@ -90,7 +90,7 @@
   It also follows easily that
   $\mea{E_1 \times E_2} = \mea{E_1}\mea{G} - \mea{E_1}\mea{Z} = \mea{E_1}\mea{E_2}$.
 
-  Step 6. Suppose $E_2$ is of infinite measure.
+  Step 6. Suppose $E_2$ has infinite measure.
   We can write $E_2 = \bigcup E_k$
   where the collection $\{E_k\}$ is increasing and each $\mea{E_k} < \infty$.
   Then $E_1 \times E_2$ is a countable increasing union of measurable sets
@@ -119,7 +119,7 @@
   Lemma 3.22 states that for an arbirary $\epsilon > 0$
   there exists a closed set $F \subset E$ with
   $\mea{E} - \mea{F} = \mea{E-F} < \epsilon$.
-  It follows that $\inmea{E} = \mea{E} = \outmea{E}$.
+  It follows easily that $\inmea{E} = \mea{E} = \outmea{E}$.
   Conversely, suppose $\inmea{E} = \outmea{E} < \infty$.
   For each $k \in \bbZ^+$,
   select an open set $G_k$ and a closed set $F_k$ such that
@@ -128,12 +128,12 @@
   \]
   Let $G = \bigcap G_k$.
   Then $G$ is a $G_\delta$ (and hence measurable) set.
-  Moreover, since $G - E \subset G_k - F_k$, we have
+  Moreover, it follows from $G - E \subset G_k - F_k$ that
   \[
     \outmea{G-E} \le \mea{G_k - F_k} = \mea{G_k} - \mea{F_k} < 1/k
   \]
-  for every $k \in \bbZ^+$,
-  and hence $G-E$ has measure zero.
+  for every $k \in \bbZ^+$.
+  Hence $G-E$ has measure zero.
   Finally, being the difference of two measurable sets,
   $E = G - (G-E)$ is measurable.
   This completes the proof of part (ii).
