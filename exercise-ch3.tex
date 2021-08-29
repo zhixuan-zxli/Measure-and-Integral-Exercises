@@ -218,3 +218,111 @@
   Thus $\mea{P} \le v(P)$ and the proof of $\mea{P} = v(P)$ is completed.
 \end{exercise}
 
+\begin{exercise}{3.17}
+  Let $C$ be the Cantor set and $G = [0, 1] - C$.
+  Recall that the Cantor-Lebesgue function $f$ is continuous
+  and maps $[0, 1]$ onto $[0, 1]$.
+%  By definition we see that
+  Oberseve that
+  \[
+    f(G) = \left\{ \frac{k}{2^n} : n \in \bbZ^+, 1 \le k \le 2^n-1 \right\}
+  \]
+  is a countable subset of $[0, 1]$ and therefore has measure zero.
+  Let $E$ be a nonmeasurable subset of $[0, 1] - f(G)$.
+  Since $E \cap f(G) = \emptyset$,
+  we must have $f^{-1}(E) \subset C$.
+  Since $\mea{C} = 0$,
+  we see that $f^{-1}(E)$ has measure zero.
+  But by construction $E = f (f^{-1}(E))$ is nonmeasurable.
+\end{exercise}
+
+\begin{exercise}{3.18}
+  Suppose $E \subset \bbR^n$ and $\bfh \in \bbR^n$.
+%  We show that $\outmea{E_{\bfh}} \le \outmea{E}$.
+  Suppose $\{I_k\}$ is a cover of $E$ by intervals and
+  $\sum v(I_k) < \outmea{E} + \epsilon$.
+  Then $\{I_{k, \bfh}\}$ is a cover of $E_{\bfh}$ and
+  \[
+    \outmea{E_{\bfh}} \le \sum v(I_{k, \bfh}) = \sum v(I_k) < \outmea{E} + \epsilon,
+  \]
+  since the volume of an interval is translation-invariant.
+  But $\epsilon$ is arbitrary, so $\outmea{E_{\bfh}} \le \outmea{E}$.
+  By symmetry we have $\outmea{E} \le \outmea{E_{\bfh}}$.
+
+  If $E$ is measurable, for each $\epsilon > 0$
+  there exists an open set $G$ such that $G \supset E$ and $\mea{G-E} < \epsilon$.
+  But $G_{\bfh}$ is open,
+  $G_{\bfh} \supset E_{\bfh}$
+  and $\outmea{G_{\bfh} - E_{\bfh}} = \mea{G - E} < \epsilon$
+  by what has been proved.
+  Therefore $E_{\bfh}$ is measurable.
+\end{exercise}
+
+To complete Exercise 19,
+we extend Lemma 3.37 to multidimensions.
+
+\begin{lemma}
+  Let $E \subset \bbR^n$ be a measurable set with $\mea{E} > 0$.
+  Then the set of differences
+  $\{d : d = x-y, x \in E, y \in E\}$
+  contains a an interval centered at the origin.
+\end{lemma}
+\begin{proof}
+  Given $\epsilon > 0$, there exists an open set $G$
+  such that $G \supset E$ and $\mea{G} \le (1+\epsilon) \mea{E}$.
+  By Theorem 1.11, we can write $G = \bigcup I_k$
+  where $\{I_k\}$ are nonoverlapping intervals
+  and each $I_k$ has equal sides.
+  Set $E_k = E \cap I_k$.
+  Then $\mea{G} = \sum \mea{I_k}$ and $\mea{E} = \sum \mea{E_k}$,
+  and there must exist at least one $\calI \in \{I_k\}$ and one $\calE \in \{E_k\}$
+  such that $\mea{\calI} \le (1+\epsilon) \mea{\calE}$.
+  Suppose $\calI$ has side length $l > 0$.
+  We claim that $\calE \bigcap \calE_{\bfh} \neq \emptyset$
+  for all sufficiently small $|\bfh|$.
+
+  If $\calE \bigcap \calE_{\bfh} = \emptyset$ for some $\bfh$
+  with $d = |\bfh| > 0$ and $d \le \sqrt{n} l$,
+  then we must have $\mea{\calI \cup \calI_{\bfh}} \ge 2 \mea{\calE}$
+  since the left-hand-side contains both $\calE$ and $\calE_{\bfh}$.
+  Observe that %the volume of the union of the intervals
+  \[
+    \mea{\calI \cup \calI_{\bfh}} \le l^n + l^n - \left( l - \frac{d}{\sqrt{n}} \right)^n
+    = \left[ 2 - \left( 1 - \frac{d}{\sqrt{n} l} \right)^n \right] l^n,
+  \]
+  where the maximum is attained when
+  $\bfh = (d / \sqrt{n}, \cdots, d / \sqrt{n})$.
+  Combining the estimate for $\mea{\calE}$, we obtain
+  \[
+    \frac{2}{1 + \epsilon} \le  2 - \left( 1 - \gamma \right)^n,
+  \]
+  where $\gamma = d / \sqrt{n} l \in (0, 1]$.
+  However, this inequality must be violated
+  by sufficiently small $\epsilon$ and $\gamma$.
+  Therefore, there exists a sufficiently small $d > 0$
+  such that $\calE \cap \calE_{\bfh} \neq \emptyset$
+  for all $|\bfh| < d$.
+  This completes the proof of the Lemma.
+\end{proof}
+
+\begin{exercise}{3.19}
+  In $\bbR^n$ we define an equivalence relation by saying
+  $x \sim y$ if $x - y \in \bbQ^n$;
+  that is, $x \sim y$ if every compoenent of $x-y$ is rational.
+  Using Axiom of Choice,
+  we construct a set $E$ that consists of exactly one element
+  from each equivalence class.
+  If the set of differences of $E$ contains an interval centered at the origin,
+  it must contain a nonzero number in $\bbQ^n$,
+  which is impossible by the construction of $E$.
+  By the preceding Lemma,
+  either $E$ is nonmeasurable or $E$ has measure zero.
+
+  Denote by $E_q$ the translate of $E$ by a rational number $q$.
+  Then $E_q \cap E_r \neq \emptyset$ if $q$ and $r$ are distinct rational numbers.
+  Since $\bbR^n$ is the countable disjoint union of all $E_q$
+  where $q$ ranges over $\bbQ^n$,
+  $\bbR^n$ would have measure zero if $E$ did.
+  Thus $E$ is nonmeasurable.
+\end{exercise}
+
