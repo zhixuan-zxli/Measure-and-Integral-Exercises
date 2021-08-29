@@ -34,12 +34,13 @@
 \begin{exercise}{3.12}
   First let us fix $E_1$ to be a finite open interval.
 
-  Step 1.
+  \begin{enumerate}[noitemsep]
+  \item
   Since the measure of an interval is equal to its volume,
   the assertion $\mea{E_1 \times E_2} = \mea{E_1} \mea{E_2}$ holds
   for $E_2$ being an open interval.
 
-  Step 2.
+  \item
   Suppose $E_2$ is an open set.
   By Theorem 1.10,
   we can write $E_2 = \bigcup I_k$
@@ -57,13 +58,15 @@
     = \mea{E_1} \sum \mea{I_k} = \mea{E_1} \mea{E_2}.
   \]
 
-  Step 3. If $\mea{E_2} = 0$, then we can find an open set $G \supset E_2$
+  \item
+  If $\mea{E_2} = 0$, then we can find an open set $G \supset E_2$
   with $\mea{G} < \epsilon$. Then
   $\outmea{E_1 \times E_2} \le \mea{E_1 \times G} < \epsilon \mea{E_1}$
   for arbitrary $\epsilon > 0$.
   Hence $\mea{E_1 \times E_2} = 0$.
 
-  Step 4. Suppose $E_2 = \bigcap G_k$ is a $G_\delta$ set with finite measure.
+  \item
+  Suppose $E_2 = \bigcap G_k$ is a $G_\delta$ set with finite measure.
   We may assume $\mea{G_1} < \infty$ and $\{G_k\}$ is decreasing.
   Then by what has been proved,
   \[
@@ -79,7 +82,8 @@
     = \mea{E_1} \lim \mea{G_k} = \mea{E_1} \mea{E_2}.
   \]
 
-  Step 5. Suppose $E_2$ has finite measure.
+  \item
+  Suppose $E_2$ has finite measure.
   Write $E_2 = G - Z$ where $G$ is a $G_{\delta}$ set with finite measure
   and $Z$ has measure zero. Then by what has been proved,
   \[
@@ -90,12 +94,14 @@
   It also follows easily that
   $\mea{E_1 \times E_2} = \mea{E_1}\mea{G} - \mea{E_1}\mea{Z} = \mea{E_1}\mea{E_2}$.
 
-  Step 6. Suppose $E_2$ has infinite measure.
+  \item
+  Suppose $E_2$ has infinite measure.
   We can write $E_2 = \bigcup E_k$
   where the collection $\{E_k\}$ is increasing and each $\mea{E_k} < \infty$.
   Then $E_1 \times E_2$ is a countable increasing union of measurable sets
   and hence measurable.
   Moreover, $\mea{E_1 \times E_2} = \mea{E_1} \lim {E_k} = \infty$.
+  \end{enumerate}
 
   We have proved that the assertion $\mea{E_1 \times E_2} = \mea{E_1} \mea{E_2}$
   holds for $E_1$ being a finite open interval and $E_2$ an arbitrary measurable set.
@@ -111,12 +117,12 @@
   \]
   Since $\mea{F} \le \mea{G}$ for all closed $F \subset E$
   and all open $G \supset E$,
-  taking infimum and supremem we obtain
+  taking infimum and supremum we obtain
   $\inmea{E} \le \outmea{E}$.
   This proves part (i).
 
   Suppose $E$ has finite measure.
-  Lemma 3.22 states that for an arbirary $\epsilon > 0$
+  Lemma 3.22 states that for an arbitrary $\epsilon > 0$
   there exists a closed set $F \subset E$ with
   $\mea{E} - \mea{F} = \mea{E-F} < \epsilon$.
   It follows easily that $\inmea{E} = \mea{E} = \outmea{E}$.
@@ -143,7 +149,7 @@
   Let $E_1$ be a nonmeasurable subset of $[-2, -1]$.
   Let $E_2 = [0, +\infty)$ and $E = E_1 \cup E_2$.
   Clearly $E$ is nonmeasurable.
-  Moreover we have
+  Moreover, we have
   \[
     \begin{aligned}
       \outmea{E} \ge \outmea{E_2} = \infty \quad &\Rightarrow \quad \outmea{E} = \infty, \\
@@ -223,7 +229,7 @@
   Recall that the Cantor-Lebesgue function $f$ is continuous
   and maps $[0, 1]$ onto $[0, 1]$.
 %  By definition we see that
-  Oberseve that
+  Observe that
   \[
     f(G) = \left\{ \frac{k}{2^n} : n \in \bbZ^+, 1 \le k \le 2^n-1 \right\}
   \]
@@ -265,7 +271,7 @@ we extend Lemma 3.37 to multidimensions.
   Let $E \subset \bbR^n$ be a measurable set with $\mea{E} > 0$.
   Then the set of differences
   $\{d : d = x-y, x \in E, y \in E\}$
-  contains a an interval centered at the origin.
+  contains an interval centered at the origin.
 \end{lemma}
 \begin{proof}
   Given $\epsilon > 0$, there exists an open set $G$
@@ -291,7 +297,7 @@ we extend Lemma 3.37 to multidimensions.
     = \left[ 2 - \left( 1 - \frac{d}{\sqrt{n} l} \right)^n \right] l^n,
   \]
   where the maximum is attained when
-  $\bfh = (d / \sqrt{n}, \cdots, d / \sqrt{n})$.
+  $\bfh = \left(d / \sqrt{n}, \cdots, d / \sqrt{n}\right)$.
   Combining the estimate for $\mea{\calE}$, we obtain
   \[
     \frac{2}{1 + \epsilon} \le  2 - \left( 1 - \gamma \right)^n,
@@ -308,7 +314,7 @@ we extend Lemma 3.37 to multidimensions.
 \begin{exercise}{3.19}
   In $\bbR^n$ we define an equivalence relation by saying
   $x \sim y$ if $x - y \in \bbQ^n$;
-  that is, $x \sim y$ if every compoenent of $x-y$ is rational.
+  that is, $x \sim y$ if every component of $x-y$ is rational.
   Using Axiom of Choice,
   we construct a set $E$ that consists of exactly one element
   from each equivalence class.
