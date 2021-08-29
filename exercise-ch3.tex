@@ -99,7 +99,7 @@
 
   We have proved that the assertion $\mea{E_1 \times E_2} = \mea{E_1} \mea{E_2}$
   holds for $E_1$ being a finite open interval and $E_2$ an arbitrary measurable set.
-  By reversing the roles of $E_1$ and $E_2$
+  By interchanging the roles of $E_1$ and $E_2$
   and going through the above steps again,
   we can show that the assertion holds for arbitrary measurable $E_1$ and $E_2$.
 \end{exercise}
@@ -152,5 +152,69 @@
     \end{aligned}
   \]
   Hence part (ii) of Exercise 13 is false if $\outmea{E} = \infty$.
+\end{exercise}
+
+\begin{exercise}{3.16}
+  Recall that a parallelepiped is
+  \[
+    P = \left\{ \sum_1^n t_k \bfe_k : 0 \le t_k \le 1 \right\}.
+  \]
+  It is easy to show that $P$ is a compact, and hence measurable set.
+
+  First we show $v(P) \le \mea{P}$.
+  Suppose $\{I_k\}$ is a collection of intervals that covers $P$.
+  We can enlarge each $I_k$ to some open interval $J_k$ such that
+  $I_k$ is contained in $J_k^\circ$ and $v(J_k) < (1+\epsilon) v(I_k)$.
+  By the Heine-Borel property,
+  there exists a finite cover $\{J_k\}_1^N$ of $P$.
+  It follows that
+  \[
+    v(P) \le \sum_1^N v(J_k) \le (1+\epsilon) \sum_1^N v(I_k)
+    \le (1 + \epsilon) \sum_1^\infty v(I_k).
+  \]
+  Since this holds for all covers $\{I_k\}$ of $P$,
+  taking infimum of the right-hand-side we obtain
+  $v(P) \le (1 + \epsilon) \mea{P}$.
+  But $\epsilon$ is arbitrary,
+  so $v(P) \le \mea{P}$.
+
+  To show $\mea{P} \le v(P)$,
+  we first claim that for each $\epsilon > 0$
+  there exists an open set $G \supset P$
+  such that $\mea{G} \le v(P) + \epsilon$.
+  If $\{\bfe_k\}$ is linearly independent,
+  then $v(P) > 0$ and we can take
+  \[
+    G = \left\{ \sum_1^n t_k \bfe_k : -\delta < t_k < 1 + \delta \right\}.
+  \]
+  Then by p.\ 8 in Section 1.3 we know
+  %the volume formula for a parallelepiped states that
+  $v(G) = (1 + 2\delta)^n v(P) < v(P) + \epsilon$
+  for sufficiently small $\delta$.
+  Since $G$ is open,
+  by Theorem 1.11 $G$ can be written as a countable union
+  of the nonoverlapping intervals $\{I_j\}$.
+  Then we have $\sum_1^N v(I_j) \le v(G)$ for every $N$;
+  taking limit we obtain
+  \[
+    \mea{G} = \sum v(I_j) \le v(G) \le v(P) + \epsilon.
+  \]
+
+  If $\{\bfe_k\}$ is not linearly independent,
+  let $U$ be the proper subspace of $\bbR^n$ spanned by $\{\bfe_k\}$
+  and let $V$ be the orthogonal complement of $U$.
+  %with orthonormal basis. $\{\bff_k\}_1^m$.
+  Since $P$ is a compact subset of $U$,
+  we can find in the subspace $U$
+  a bounded open rotated interval $B_1$ that contains $P$.
+  If $B_2$ is an open rotated interval centered at the origin
+  in the subspace of $V$,
+  then $P$ is contained in the open rotated interval $G = B_1 \times B_2$
+  and $\mea{G} < v(P) + \epsilon = \epsilon$ for sufficiently small $B_2$.
+  This proves the claim.
+
+  Finally, it follows from the claim that for each $\epsilon > 0$
+  we have $\mea{P} \le \mea{G} \le v(P) + \epsilon$ for suitably chosen $G \supset P$.
+  Thus $\mea{P} \le v(P)$ and the proof of $\mea{P} = v(P)$ is completed.
 \end{exercise}
 
