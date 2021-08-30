@@ -271,44 +271,40 @@ we extend Lemma 3.37 to multidimensions.
   Let $E \subset \bbR^n$ be a measurable set with $\mea{E} > 0$.
   Then the set of differences
   $\{d : d = x-y, x \in E, y \in E\}$
-  contains an interval centered at the origin.
+  contains an open ball centered at the origin.
 \end{lemma}
 \begin{proof}
-  Given $\epsilon > 0$, there exists an open set $G$
-  such that $G \supset E$ and $\mea{G} \le (1+\epsilon) \mea{E}$.
-  By Theorem 1.11, we can write $G = \bigcup I_k$
-  where $\{I_k\}$ are nonoverlapping intervals
-  and each $I_k$ has equal sides.
-  Set $E_k = E \cap I_k$.
-  Then $\mea{G} = \sum \mea{I_k}$ and $\mea{E} = \sum \mea{E_k}$,
-  and there must exist at least one $\calI \in \{I_k\}$ and one $\calE \in \{E_k\}$
-  such that $\mea{\calI} \le (1+\epsilon) \mea{\calE}$.
-  Suppose $\calI$ has side length $l > 0$.
-  We claim that $\calE \bigcap \calE_{\bfh} \neq \emptyset$
-  for all sufficiently small $|\bfh|$.
+  Assume first that $E$ is compact with $\mea{E} > 0$.
+  Then there exists a open set $G$ such that
+  $G \supset E$ and $\mea{G} < 2 \mea{E}$.
+  Since $G^C$ is closed, $E$ is compact and $G^C \cap E = \emptyset$,
+  we must have $\dist(G^C, E) = \delta > 0$.
+  It follows that if $d \in \bbR^n$ and $|x| < \delta/2$,
+  then the translate $E_{d}$ of $E$ by $\delta$ is disjoint from $G^C$;
+  equivalently, $E_{d} \subset G$ for all $|d| < \delta/2$.
+  For such $d$, we claim that $E_{d} \cap E \neq \emptyset$.
+  Otherwise, $G$ would contain $E_{d} \cup E$ and
+  \[
+    2 \mea{E} = \mea{E_d} + \mea{E} = \mea{E_d \cup E} \le \mea{G},
+  \]
+  a contradiction.
+  We have shown that the set of differences
+  contains an open ball of radius $\delta/2$
+  in the case of compact $E$.
 
-  If $\calE \bigcap \calE_{\bfh} = \emptyset$ for some $\bfh$
-  with $d = |\bfh| > 0$ and $d \le \sqrt{n} l$,
-  then we must have $\mea{\calI \cup \calI_{\bfh}} \ge 2 \mea{\calE}$
-  since the left-hand-side contains both $\calE$ and $\calE_{\bfh}$.
-  Observe that %the volume of the union of the intervals
+  Suppose $E$ has positive (possibly infinite) measure.
+  Since
   \[
-    \mea{\calI \cup \calI_{\bfh}} \le l^n + l^n - \left( l - \frac{d}{\sqrt{n}} \right)^n
-    = \left[ 2 - \left( 1 - \frac{d}{\sqrt{n} l} \right)^n \right] l^n,
+    E = \bigcup_{n \in \bbZ^+} \left( E \cap B(0, n) \right), \quad
+    \mea{E \cap B(0,n)} \rightarrow \mea{E},
   \]
-  where the maximum is attained when
-  $\bfh = \left(d / \sqrt{n}, \cdots, d / \sqrt{n}\right)$.
-  Combining the estimate for $\mea{\calE}$, we obtain
-  \[
-    \frac{2}{1 + \epsilon} \le  2 - \left( 1 - \gamma \right)^n,
-  \]
-  where $\gamma = d / \sqrt{n} l \in (0, 1]$.
-  However, this inequality must be violated
-  by sufficiently small $\epsilon$ and $\gamma$.
-  Therefore, there exists a sufficiently small $d > 0$
-  such that $\calE \cap \calE_{\bfh} \neq \emptyset$
-  for all $|\bfh| < d$.
-  This completes the proof of the Lemma.
+  there exists a bounded subset $E'$ of $E$ with $\mea{E'} > 0$.
+  There exists, by Lemma 3.22,
+  a closed (and hence compact) subset $F$ of $E'$ with $\mea{F} > 0$.
+  By the preceding case, the set of differences of $F$
+  contains an open ball centered at the origin.
+  The proof is completed by noting that
+  the set of differences of $F$ is contained in that of $E$.
 \end{proof}
 
 \begin{exercise}{3.19}
@@ -318,8 +314,8 @@ we extend Lemma 3.37 to multidimensions.
   Using Axiom of Choice,
   we construct a set $E$ that consists of exactly one element
   from each equivalence class.
-  If the set of differences of $E$ contains an interval centered at the origin,
-  it must contain a nonzero number in $\bbQ^n$,
+  If the set of differences of $E$ contains an open ball centered at the origin,
+  it must contain a nonzero number of $\bbQ^n$,
   which is impossible by the construction of $E$.
   By the preceding Lemma,
   either $E$ is nonmeasurable or $E$ has measure zero.
