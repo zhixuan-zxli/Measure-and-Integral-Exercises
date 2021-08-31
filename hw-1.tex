@@ -1,0 +1,44 @@
+
+\begin{exercise}{1.15}
+  By Exercise 1.1 (r),
+  we show that $\inf_{\Gamma} U_\Gamma = \sup_{\Gamma} L_\Gamma = A$
+  if and only if for each $\epsilon > 0$,
+  there exists a partition $\Gamma$ such that $0 \le U_\Gamma - L_\Gamma < \epsilon$.
+
+  ($\Longleftarrow$) We have
+  \[
+    0 \le \inf U_\Gamma - \sup L_\Gamma \le U_\Gamma - L_\Gamma < \epsilon
+  \]
+  for each $\epsilon > 0$.
+  It follows immediately that $\inf U_\Gamma = \sup L_\Gamma$.
+
+  ($\Longrightarrow$) For each $\epsilon > 0$,
+  select a partition $\Gamma_1$ such that $U_{\Gamma_1} < A + \frac{\epsilon}{2}$
+  and also a partition $\Gamma_2$ such that $L_{\Gamma_2} > A - \frac{\epsilon}{2}$.
+  Let $\Gamma = \Gamma_1 \cup \Gamma_2$ be the common refinement of $\Gamma_1$ and $\Gamma_2$.
+  It follows that
+  \[
+    0 \le U_{\Gamma} - L_{\Gamma} \le U_{\Gamma_1} - L_{\Gamma_2}
+    < \left( A + \frac{\epsilon}{2} \right) - \left( A - \frac{\epsilon}{2} \right) = \epsilon.
+    \qedhere
+  \]
+\end{exercise}
+
+\begin{exercise}{1.20}
+  For the first part, if $E_q = \left\{ q \right\}^C$, then
+  \[
+    \bbR - \bbQ = \bigcap_{q \in \bbQ} E_q
+  \]
+  is a $G_\delta$ set since each $E_q$ is open (and also dense).
+  For the second part,
+  suppose $\bbQ = \bigcap_n G_n$ is a $G_\delta$ set.
+  Each $G_n$ is dense in $\bbR$ since $\bbQ \in G_n$ and $\bbQ$ is.
+  It follows that
+  \[
+    \emptyset = \left( \bbR - \bbQ \right) \cap \bbQ
+    = \left( \bigcap_{q \in \bbQ} E_q \right) \bigcap \left( \bigcap_n G_n \right)
+  \]
+  is a countable intersection of open dense subsets of $\bbR$,
+  which is dense again by Exercise 19.
+  But an empty set cannot be dense in $\bbR$.
+\end{exercise}
