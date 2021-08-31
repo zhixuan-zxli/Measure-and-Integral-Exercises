@@ -390,12 +390,12 @@ that is, $\int_a^bf\mathrm{d}(\phi_1+\phi_2)$ exists and
 \end{exercise}
 
 \begin{exercise}{2.15}
-  Let $\Gamma = \{x_j\}_1^N$ be a partition of $[a,b]$. Then
+  Let $\Gamma = \{x_j\}_0^k$ be a partition of $[a,b]$. Then
   \[
     S_\Gamma = \sum \left\vert \psi(x_j) - \psi(x_{j-1}) \right\vert
     = \sum \left\vert \int_{x_{j-1}}^{x_j} f \rmd \phi \right\vert
-    \le \left(\sup |f|\right) \sum V(\phi; [x_{j-1}, x_j])
-    \le \left(\sup |f|\right) V(\phi; [a,b]),
+    \le \left(\sup |f|\right) \sum V[\phi; x_{j-1}, x_j]
+    \le \left(\sup |f|\right) V[\phi; a,b],
   \]
   where the first inequality follows from Theorem 2.24.
   This holds for all $\Gamma$ and thus $\psi$ is of bounded variation.
@@ -409,7 +409,7 @@ that is, $\int_a^bf\mathrm{d}(\phi_1+\phi_2)$ exists and
     = & \sum g(\xi_j) f(\xi_j) \left( \phi(x_j) - \phi(x_{j-1}) \right)
     + \sum g(\xi_j) \left( f(\eta_j) - f(\xi_j) \right)
     \left( \phi(x_j) - \phi(x_{j-1}) \right) \\
-    \coloneqq & I_1 + I_2,
+    = & I_1 + I_2,
   \end{align*}
   where the first equality follows from Theorem 2.27 (Mean-Value Theorem)
   with each $\eta_j \in [x_{j-1}, x_j]$.
@@ -419,13 +419,12 @@ that is, $\int_a^bf\mathrm{d}(\phi_1+\phi_2)$ exists and
   we can select $|\Gamma|$ so small that
   \[
     \left\vert f(\eta_j) - f(\xi_j) \right\vert <
-    \frac{\epsilon} {\left( \sup g \right) V(\phi)}
+    \frac{\epsilon} {\left( \sup g \right) V[\phi; a,b]}
   \]
-  for every $1 \le j \le N$.
+  for every $0 \le j < k$.
   It follows that $|I_2| < \epsilon$
   and consequently $\lim_{|\Gamma| \rightarrow 0} I_2 = 0$.
   The proof of $\int_a^b g \rmd \psi = \int_a^b fg \rmd \phi$ is thus completed.
-
 \end{exercise}
 
 \begin{exercise}{2.16}

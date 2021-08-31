@@ -42,3 +42,91 @@
   which is dense again by Exercise 19.
   But an empty set cannot be dense in $\bbR$.
 \end{exercise}
+
+\begin{exercise}{2.5}
+  First observe that if $L_1 = \max \left\{ |f(b) + M|, |f(b) - M| \right\}$,
+  then $f(x) \le L_1$ for every $x \in (a, b]$.
+  It follows that $L = \max \left\{ L, f(a) \right\} < + \infty$
+  is an upper bound of $f$.
+
+  Suppose $\Gamma = \left\{ x_j \right\}_0^k$ is a partition of $[a, b]$.
+  Then we have
+  \[
+    S_{\Gamma} = \left| f(x_1) - f(a) \right| +
+    \sum_{j = 1}^{k-1} \left| f(x_{j+1}) - f(x_j) \right|
+    \le 2L + M.
+  \]
+  Taking supremum we see that $V[f;a,b] \le 2L + M < +\infty$
+  and $f$ is of bounded variation.
+
+%  However, it does not necessarily follow that $V[f; a,b] \le M$.
+  Assume further that $f$ is right-hand continuous at $a$.
+  For each $\epsilon > 0$, there exists a $\xi$ such that
+  $a < \xi < x_1$ and $|f(\xi) - f(a)| < \epsilon$.
+  If $\Gamma'$ is the partition formed by inserting $\xi$ into $\Gamma$,
+  we have
+  \[
+    S_\Gamma \le S_{\Gamma'} \le \left| f(\xi) - f(a) \right| + V[f; \xi, b]
+    < \epsilon + M.
+  \]
+  Since $\epsilon$ is arbitrary, we have $S_{\Gamma} \le M$ for every $\Gamma$.
+  Taking supremum, we obtain $V[f;a,b] \le M$.
+\end{exercise}
+
+\begin{exercise}{2.15}
+  Let $\Gamma = \{x_j\}_0^k$ be a partition of $[a,b]$. Then
+  \[
+    S_\Gamma = \sum \left\vert \psi(x_j) - \psi(x_{j-1}) \right\vert
+    = \sum \left\vert \int_{x_{j-1}}^{x_j} f \rmd \phi \right\vert
+    \le \left(\sup |f|\right) \sum V[\phi; x_{j-1}, x_j]
+    \le \left(\sup |f|\right) V[\phi; a,b],
+  \]
+  where the first inequality follows from Theorem 2.24.
+  This holds for all $\Gamma$ and thus $\psi$ is of bounded variation.
+  If $g$ is continuous on $[a,b]$,
+  both $\int_a^b g \rmd \psi$ and $\int_a^b fg \rmd \phi$ exist
+  by Theorem 2.24.
+  Consider the Riemann-Stieltjes sum for $g \rmd \psi$, we have
+  \begin{align*}
+    & \sum g(\xi_j) \left( \psi(x_j) - \psi(x_{j-1}) \right) \\
+    = & \sum g(\xi_j) f(\eta_j) \left( \phi(x_j) - \phi(x_{j-1}) \right) \\
+    = & \sum g(\xi_j) f(\xi_j) \left( \phi(x_j) - \phi(x_{j-1}) \right)
+    + \sum g(\xi_j) \left( f(\eta_j) - f(\xi_j) \right)
+    \left( \phi(x_j) - \phi(x_{j-1}) \right) \\
+    = & I_1 + I_2,
+  \end{align*}
+  where the first equality follows from Theorem 2.27 (Mean-Value Theorem)
+  with each $\eta_j \in [x_{j-1}, x_j]$.
+  The term $I_1$ is the Riemann-Stieltjes sum for $gf \rmd \phi$
+  and tends to $\int_a^b fg \rmd \phi$ as $|\Gamma| \rightarrow 0$.
+  Using the uniform continuity of $f$ on $[a,b]$,
+  we can select $|\Gamma|$ so small that
+  \[
+    \left\vert f(\eta_j) - f(\xi_j) \right\vert <
+    \frac{\epsilon} {\left( \sup g \right) V[\phi; a,b]}
+  \]
+  for every $0 \le j < k$.
+  It follows that $|I_2| < \epsilon$
+  and consequently $\lim_{|\Gamma| \rightarrow 0} I_2 = 0$.
+  The proof of $\int_a^b g \rmd \psi = \int_a^b fg \rmd \phi$ is thus completed.
+\end{exercise}
+
+\begin{exercise}{2.20}
+  Clearly $S \coloneqq \lim_{|\Gamma| \rightarrow 0} S_\Gamma[f;a,b] \le V[f;a,b]$
+  if the limit exists.
+  To show the reverse inequality,
+  first select a partition $\Gamma'$ such that
+  $S_{\Gamma'} > V[f;a,b] - \epsilon/2$.
+  Then select a $\delta > 0$ such that
+  $|S_\Gamma - S| < \epsilon/2$ whenever $|\Gamma| < \delta$.
+  Let $\Gamma^\ast$ be the refinement of $\Gamma'$
+  subject to $|\Gamma^\ast| < \delta$.
+  Then we have $S_{\Gamma'} \le S_{\Gamma^\ast}$, and
+  \[
+    V[f;a,b] - S < V - S_{\Gamma^\ast} + \epsilon/2
+    \le V - S_{\Gamma'} + \epsilon/2
+    < \epsilon/2 + \epsilon/2 = \epsilon.
+  \]
+  Since $\epsilon > 0$ is arbitrary,
+  we have $V[f;a,b] \le S$.
+\end{exercise}
