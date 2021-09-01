@@ -72,7 +72,8 @@
 \end{exercise}
 
 \begin{exercise}{2.15}
-  Let $\Gamma = \{x_j\}_0^k$ be a partition of $[a,b]$. Then
+  Let $\Gamma = \{x_j\}_0^k$ be a partition of $[a,b]$.
+  Then
   \[
     S_\Gamma = \sum \left\vert \psi(x_j) - \psi(x_{j-1}) \right\vert
     = \sum \left\vert \int_{x_{j-1}}^{x_j} f \rmd \phi \right\vert
@@ -140,7 +141,7 @@
   \[
     c_k = \lfloor b^k x - \sum_{j=1}^{k-1} c_j b^{k-j} \rfloor.
   \]
-  Since by induction $0 \le b^{k-1} x - \sum_1^{k-1} c_j b^{k-1-j} < 1$,
+  Since by the induction hypothesis $0 \le b^{k-1} x - \sum_1^{k-1} c_j b^{k-1-j} < 1$,
   we have $0 \le c_k < b$ and also
   \begin{equation}
     0 \le b^k x - \sum_1^{k} c_j b^{k-j} < 1.
@@ -148,7 +149,7 @@
   \end{equation}
   This completes the induction step and
   hence the determination of the sequence $c_k$.
-  Dividing by $b^{-k}$ in \eqref{eq:base_b_sandwich}
+  Dividing by $b^{-k}$ in~\eqref{eq:base_b_sandwich}
   and letting $k \rightarrow \infty$,
   we obtain $x = \sum_1^{\infty} c_j b^{-j}$.
   In the exceptional case of $x = 1$,
@@ -176,4 +177,18 @@
     x = \sum_{j=1}^k c_j b^{-j} = c b^{-k},
   \]
   where $1 \le c = \sum_1^k c_j b^{k-j} \le b^k-1$.
+\end{exercise}
+
+\begin{exercise}{3.9}
+  For each $\epsilon > 0$,
+  select $n \in \bbZ^+$ so large that $\sum_n^{\infty} \outmea{E_k} < \epsilon$.
+  Then $\limsup E_k \subset \cup_{k=n}^{\infty} E_k$,
+  and by countable subadditivity we have
+  \[
+    \outmea{\limsup E_k} \le \outmea{ \cup_{k=n}^{\infty} E_k}
+    \le \sum_{k=n}^{\infty} \outmea{E_k} < \epsilon.
+  \]
+  Since $\epsilon$ is arbitrary,
+  we see that $\limsup E_k$ has measure zero,
+  and so does $\liminf E_k$ since it is a subset of the former.
 \end{exercise}
