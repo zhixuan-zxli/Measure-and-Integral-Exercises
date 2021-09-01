@@ -13,8 +13,8 @@
   It follows immediately that $\inf U_\Gamma = \sup L_\Gamma$.
 
   ($\Longrightarrow$) For each $\epsilon > 0$,
-  select a partition $\Gamma_1$ such that $U_{\Gamma_1} < A + \frac{\epsilon}{2}$
-  and also a partition $\Gamma_2$ such that $L_{\Gamma_2} > A - \frac{\epsilon}{2}$.
+  select a partition $\Gamma_1$ such that $U_{\Gamma_1} < A + \epsilon/2$
+  and also a partition $\Gamma_2$ such that $L_{\Gamma_2} > A - \epsilon/2$.
   Let $\Gamma = \Gamma_1 \cup \Gamma_2$ be the common refinement of $\Gamma_1$ and $\Gamma_2$.
   It follows that
   \[
@@ -39,21 +39,19 @@
     = \left( \bigcap_{q \in \bbQ} E_q \right) \bigcap \left( \bigcap_n G_n \right)
   \]
   is a countable intersection of open dense subsets of $\bbR$,
-  which is dense again by Exercise 19.
+  which is dense again by Exercise 1.19.
   But an empty set cannot be dense in $\bbR$.
 \end{exercise}
 
 \begin{exercise}{2.5}
-  First observe that if $L_1 = \max \left\{ |f(b) + M|, |f(b) - M| \right\}$,
-  then $f(x) \le L_1$ for every $x \in (a, b]$.
-  It follows that $L = \max \left\{ L, f(a) \right\} < + \infty$
-  is an upper bound of $f$.
-
+  First observe that $f(x) \le |f(b)| + M$ for every $x \in (a, b]$.
+  It follows that $L = \max \left\{ |f(b)| + M, f(a) \right\}$ is a bound of $f$.
   Suppose $\Gamma = \left\{ x_j \right\}_0^k$ is a partition of $[a, b]$.
   Then we have
   \[
     S_{\Gamma} = \left| f(x_1) - f(a) \right| +
     \sum_{j = 1}^{k-1} \left| f(x_{j+1}) - f(x_j) \right|
+    \le 2L + V[f; x_1,b]
     \le 2L + M.
   \]
   Taking supremum we see that $V[f;a,b] \le 2L + M < +\infty$
@@ -82,7 +80,7 @@
     \le \left(\sup |f|\right) V[\phi; a,b],
   \]
   where the first inequality follows from Theorem 2.24.
-  This holds for all $\Gamma$ and thus $\psi$ is of bounded variation.
+  This holds for all $\Gamma$ and therefore $\psi$ is of bounded variation.
   If $g$ is continuous on $[a,b]$,
   both $\int_a^b g \rmd \psi$ and $\int_a^b fg \rmd \phi$ exist
   by Theorem 2.24.
@@ -129,4 +127,53 @@
   \]
   Since $\epsilon > 0$ is arbitrary,
   we have $V[f;a,b] \le S$.
+\end{exercise}
+
+\begin{exercise}{3.1}
+  Suppose $b > 1$ is an integer and $0 \le x < 1$.
+  We determine the integral sequence $c_k$ as follows.
+  Let $c_1 = \lfloor bx \rfloor$, i.e.\
+  the greatest integer less than or equal to $bx$.
+  Then $0 \le c_1 < b$ and $0 \le bx - c_1 < 1$.
+  Having determined $c_1, \cdots, c_{k-1}$,
+  we determine $c_k$ by choosing
+  \[
+    c_k = \lfloor b^k x - \sum_{j=1}^{k-1} c_j b^{k-j} \rfloor.
+  \]
+  Since by induction $0 \le b^{k-1} x - \sum_1^{k-1} c_j b^{k-1-j} < 1$,
+  we have $0 \le c_k < b$ and also
+  \begin{equation}
+    0 \le b^k x - \sum_1^{k} c_j b^{k-j} < 1.
+    \label{eq:base_b_sandwich}
+  \end{equation}
+  This completes the induction step and
+  hence the determination of the sequence $c_k$.
+  Dividing by $b^{-k}$ in \eqref{eq:base_b_sandwich}
+  and letting $k \rightarrow \infty$,
+  we obtain $x = \sum_1^{\infty} c_j b^{-j}$.
+  In the exceptional case of $x = 1$,
+  we shall choose $c_j = b-1$ for all $j \ge 1$.
+
+  Suppose $\{c_j\}$ and $\{d_j\}$ are integral sequence
+  such that $0 \le c_j, d_j < b$ and
+  $\sum_{1}^{\infty} (c_j - d_j) b^{-j} = 0$.
+  Let $k$ be the smallest index such that $c_k \neq d_k$.
+  If no such $k$ exists, then $\{c_j\}$ are $\{d_j\}$ are identical sequences.
+  Otherwise, we have
+  \[
+    b^{-k} \le \left| \left( c_k - d_k \right) b^{-k} \right|
+    = \left| \sum_{j=k+1}^{\infty} \left( d_j - c_j \right) b^{-j} \right|
+    \le \sum_{j=k+1}^{\infty} (b-1) b^{-j}
+    = b^{-k}
+  \]
+  since $c_k \neq d_k$ and $|d_j - c_j| \le b-1$ for all $j \ge k+1$.
+  It follows that the inequalities are in fact equalities,
+  and this is the case if and only if
+  $c_k - d_k = 1$ and $d_j - c_j = b-1 \Leftrightarrow d_j = b-1, c_j = 0$
+  for all $j \ge k+1$ (or vice versa).
+  It also follows that
+  \[
+    x = \sum_{j=1}^k c_j b^{-j} = c b^{-k},
+  \]
+  where $1 \le c = \sum_1^k c_j b^{k-j} \le b^k-1$.
 \end{exercise}
