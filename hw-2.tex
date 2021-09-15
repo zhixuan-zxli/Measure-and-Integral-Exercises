@@ -27,7 +27,7 @@
   \end{equation}
   Assume $f_k \xrightarrow{m} f$.
   Given $\epsilon > 0$,
-  there exists, according to \eqref{eq:defOfCvgInMeasure}, a $K$ such that
+  there exists, according to~\eqref{eq:defOfCvgInMeasure}, a $K$ such that
   $\mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} < \epsilon$
   for all $k > K$.
 
@@ -55,4 +55,99 @@
     \mea{\left\{ \lvert f_j - f_k \rvert > \epsilon \right\}} < \epsilon
   \]
   for all $j, k > K$.
+\end{exercise}
+
+\begin{lemma}
+  If $g$ is finite a.e.,
+  then for each $\epsilon > 0$
+  there exists a subset $F$ of $E$ and a sufficiently large $M$ such that
+  $\mea{E - F} < \epsilon$ and $\lvert g \rvert \le M$ on $F$.
+\end{lemma}
+\begin{proof}
+  This is a special case of Exercise 4.15.
+\end{proof}
+
+\begin{exercise}{4.17}
+  Suppose $f_k \xrightarrow{m} f$ and $g_k \xrightarrow{m} g$ on $E$.
+  First we show $f_k + g_k \xrightarrow{m} f+g$.
+  Given $\epsilon > 0$,
+  we can select $K$ so large that
+  \[
+      \mea{\left\{ \lvert f - f_k \rvert > \frac{\epsilon}{2} \right\}} < \frac{\epsilon}{2},
+      \quad
+      \mea{\left\{ \lvert g - g_k \rvert > \frac{\epsilon}{2} \right\}} < \frac{\epsilon}{2},
+  \]
+  for all $k \ge K$.
+  Since $\lvert (f_k + g_k) - (f+g) \rvert \le
+  \lvert f_k - f \rvert + \lvert g_k - g \rvert$,
+  we have
+  \[
+    \mea{\left\{ \lvert (f_k + g_k) - (f+g) \rvert > \epsilon \right\}} \le
+    \mea{\left\{ \lvert f_k - f \rvert > \frac{\epsilon}{2} \right\}}
+    + \mea{\left\{ \lvert g_k - g \rvert > \frac{\epsilon}{2} \right\}}
+    < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+  \]
+  for all $k \ge K$, which shows that $f_k + g_k \xrightarrow{m} f + g$.
+
+  Suppose further that $\mea{E} < +\infty$.
+  For each $\epsilon > 0$,
+  we first invoke the preceding Lemma to select $M$ such that
+  \[
+    \mea{\left\{ \lvert f \rvert > M \right\}} < \epsilon/6, \quad
+    \mea{\left\{ \lvert g \rvert > M \right\}} < \epsilon/6.
+  \]
+  Let $\delta = \min\left\{ \epsilon/3, \epsilon/3M, 1 \right\}$.
+  By convergence in measure we can select $K$ so large that
+  \[
+    \mea{\left\{ \lvert f_k - f \rvert > \delta \right\}} < \epsilon/6, \quad
+    \mea{\left\{ \lvert g_k - g \rvert > \delta \right\}} < \epsilon/6,
+  \]
+  for all $k \ge K$.
+  Then we have
+  \[
+    \mea{\left\{ \lvert f_k - f)(g_k - g) \rvert > \epsilon/3 \right\} }
+    \le \mea{\left\{ \lvert f_k - f \rvert > \epsilon/3 \right\}}
+    + \mea{\left\{ \lvert g_k - g \rvert > 1 \right\}}
+    < \epsilon/6 + \epsilon/6 = \epsilon/3.
+  \]
+  Moreover, we have
+  \[
+    \mea{\left\{ \lvert f (g_k - g) \rvert > \epsilon/3 \right\}}
+    \le \mea{\left\{ \lvert f \rvert > M \right\}}
+    + \mea{\left\{ \lvert g_k - g \rvert > \frac{\epsilon}{3M} \right\}}
+    < \epsilon/6 + \epsilon/6 = \epsilon/3,
+  \]
+  and the same argument suggests
+  \[
+    \mea{\left\{ \lvert g (f_k - f) \rvert > \epsilon/3 \right\}} < \epsilon/3.
+  \]
+  Writing $f_k g_k - fg = (f_k - f)(g_k - g) + f(g_k - g) + g(f_k - f)$,
+  we obtain
+  \[
+    \begin{aligned}
+      \mea{\left\{ \lvert f_k g_k - fg \rvert \right\} > \epsilon}
+      \le &\mea{\left\{ \lvert f_k - f)(g_k - g) \rvert > \epsilon/3 \right\} } \\
+      + &\mea{\left\{ \lvert f (g_k - g) \rvert > \epsilon/3 \right\}} \\
+      + &\mea{\left\{ \lvert g (f_k - f) \rvert > \epsilon/3 \right\}} \\
+      < &\epsilon
+    \end{aligned}
+  \]
+  for all $k \ge K$, which shows that $f_k g_k \xrightarrow{m} fg$.
+
+  Finally suppose $g_k \rightarrow g$ on $E$ and $g \neq 0$ a.e.
+  Since $\mea{E} < +\infty$ and $1/g$ is finite a.e.,
+  Lemma 4.18 suggests that $g_k \xrightarrow{m} g$.
+  It follows immediately from the last case that $f_k/g_k \xrightarrow{m} f/g$.
+\end{exercise}
+
+\begin{exercise}{4.18}
+  H.
+\end{exercise}
+
+\begin{exercise}{5.10}
+  H.
+\end{exercise}
+
+\begin{exercise}{5.18}
+  H.
 \end{exercise}
