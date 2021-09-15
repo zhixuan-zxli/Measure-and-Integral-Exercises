@@ -1,0 +1,58 @@
+
+\begin{exercise}{4.15}
+  Define
+  \[
+    E_n = \left\{ x \in E : \lvert f_k(x) \rvert \le n
+    \text{ for all $k$ and all $x \in E$} \right\}.
+  \]
+  Then for each $x \in E$,
+  we have $x \in E_n$ for all $n \ge M_x$,
+  so $E = \bigcup E_n$.
+  Since $E_n$ is increasing,
+  we have $\lim \mea{E_n} = \mea{E} < +\infty$.
+  Therefore, we can select $M \in \bbZ^+$ so large that
+  $\mea{E - E_M} = \mea{E} - \mea{E_M} < \epsilon/2$,
+  and in turn select a closed set $F \subset E_M$ such that
+  $\mea{E_M - F} < \epsilon/2$.
+  It follows that $\mea{E - F} \le \mea{E - E_M} + \mea{E_M - F} < \epsilon$,
+  and for each $x \in F$ we have
+  $\lvert f_k(x) \rvert \le M$ for all $k$.
+\end{exercise}
+
+\begin{exercise}{4.16}
+  Recall that $f_k \xrightarrow{m} f$ if for every $\epsilon > 0$,
+  \begin{equation}
+    \lim_{k \rightarrow \infty} \mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} = 0.
+    \label{eq:defOfCvgInMeasure}
+  \end{equation}
+  Assume $f_k \xrightarrow{m} f$.
+  Given $\epsilon > 0$,
+  there exists, according to \eqref{eq:defOfCvgInMeasure}, a $K$ such that
+  $\mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} < \epsilon$
+  for all $k > K$.
+
+  Conversely, assume for each $\epsilon > 0$ there exists a $K$ such that
+  $\mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} < \epsilon$
+  for all $k > K$.
+  Then for each $\epsilon > 0$ and each $\epsilon_1 > 0$,
+  we can take $\delta = \min \left\{ \epsilon, \epsilon_1 \right\} > 0$,
+  and by assumption there exists a $K$ such that
+  $\mea{\left\{ \lvert f - f_k \rvert > \delta \right\}} < \delta$
+  for all $k > K$.
+  Then
+  \[
+    \mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}}
+    \le \mea{\left\{ \lvert f - f_k \rvert > \delta \right\}}
+    < \delta \le \epsilon_1
+  \]
+  for all $k > K$, which show exactly $f_k \xrightarrow{m} f$.
+
+  An analogous Cauchy criterion is that
+  $\{f_k\}$ is Cauchy in measure if and only if
+  for each $\epsilon > 0$,
+  there exists a $K$ such that
+  \[
+    \mea{\left\{ \lvert f_j - f_k \rvert > \epsilon \right\}} < \epsilon
+  \]
+  for all $j, k > K$.
+\end{exercise}
