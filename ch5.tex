@@ -1,0 +1,197 @@
+\section{The Lebesgue Integral}
+
+\begin{exercise}{5.4}
+  For each $k=1,2,\cdots$, the continuous function $x^k$ is measurable,
+  so is $x^kf(x)$ (Theorem 4.10).
+  Since $[x^kf(x)]^\pm=x^kf^\pm(x)\leq f^\pm(x)$ on $(0,1)$,
+  the existence of the integral $\int_0^1x^kf(x)\rmd x$ follows from Theorem 5.5 (i).
+  Note that
+  \[\left|\int_0^1 x^kf(x)\rmd x\right|\leq\int_0^1\left|x^kf(x)\right|\rmd x\leq\int_0^1|f(x)|\rmd x<\infty\]
+  as $f\in L(0,1)$.
+  Hence $x^kf(x)\in L(0,1)$ for $k=1,2,\cdots$.
+
+  Since $f\in L(0,1)$, it follows that $f$ is finite a.e.\ in $(0,1)$ (Theorem 5.22)
+  and then $x^kf(x)\to 0$ a.e.\ in $(0,1)$.
+  Moreover, $|x^kf(x)|\leq |f(x)|$ in $(0,1)$ for all $k$.
+  By Lebesgue's dominated convergence theorem (Theorem 5.36),
+  we have $\int_0^1x^kf(x)\rmd x\to0$.
+\end{exercise}
+
+\begin{exercise}{5.5}
+  Let $\{f_k\}$ be a sequence of measurable functions on $E$ such that
+  $f_k\to f$ a.e.\ in $E$ (so $f$ is measurable by Theorem 4.12).
+  Suppose $|E|<+\infty$ and there is a finite constant $M$
+  such that $|f_k|\leq M$ a.e.\ in $E$ (so $f_k\in L(E)$).
+  We want to prove $\int_Ef_k\to \int_E f$ by using Egorov's theorem.
+
+  We first prove that $f$ is bounded a.e.\ on $E$ and hence it is also finite a.e.
+  For almost every point $x$ of $E$ and every $\delta>0$,
+  we have $|f(x)-f_k(x)|\leq\delta$ if $k$ is sufficiently large.
+  Then triangle inequality implies that $|f(x)|\leq|f(x)-f_K(x)|+|f_K(x)|\leq \delta+M$.
+  Since $\delta>0$ is arbitrary,
+  we have $|f(x)|\leq M$ for almost every point $x\in E$.
+  Since $|E|<+\infty$, it follows that $f\in L(E)$.
+
+  Given $\epsilon>0$, by Egorov's theorem,
+  there is a closed subset $F$ of $E$ such that
+  $|E-F|<\epsilon/(4M)$ and $\{f_k\}$ converges uniformly to $f$ on $F$.
+  If $|E|=0$, then the result follows from Theorem 5.25.
+  If $|E|\neq 0$, then by the uniform convergence of $\{f_k\}$ in $F$,
+  we have $|f_k(x)-f(x)|\leq \epsilon/(2|E|)$ for all $x\in F$ if $k$ is sufficiently large.
+  From Theorem 5.28 and (5.20), we obtain
+  \begin{equation*}
+    \begin{aligned}
+      \left|\int_E f_k-\int_Ef\right|&=	\left|\int_E (f_k-f)\right|\leq \int_E|f_k-f|\\&=\int_{E-F}|f_k-f|+\int_F|f_k-f|\\&\leq\int_{E-F}(|f_k|+|f|)+\int_F\frac{\epsilon}{2|E|}\\
+      &\leq 2M|E-F|+\frac{\epsilon}{2|E|}|F|\\&\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+    \end{aligned}
+  \end{equation*}
+  provided $k$ is sufficiently large.
+  Since $\epsilon>0$ is arbitrary, we have $\int_Ef_k\to \int_E f$.
+\end{exercise}
+
+\begin{exercise}{5.6}
+  Given $x\in [0,1]$, let $\{x_n\}$ be any sequence in $[0,1]$ converging to $x$ and $x_n\neq x$.
+  We define
+  \[h_n(y)=\frac{f(x_n,y)-f(x,y)}{x_n-x},\quad n=1,2,\cdots.\]
+  Since for each $x$, $f(x,y)$ is a measurable function of $y$,
+  so are $h_n(y)$ by Theorem 4.9 and Theorem 4.10.
+  Note that
+  \[\frac{\partial}{\partial x}f(x,y)=\lim_{n\to\infty}h_n(y)\] exists
+  and then the measurability of $(\partial f(x,y)/\partial x)$ w.r.t $y$ follows from Theorem 4.12.
+
+  Since $(\partial f(x,y)/\partial x)$ is a bounded function of $(x,y)$,
+  the mean value theorem implies that
+  \[|h_n(y)|\leq \sup_{x\in[0,1]}\left|\frac{\partial}{\partial x}f(x,y)\right|\leq M, \quad\forall y\in[0,1],\]
+  for some constant $M$.
+  So the bounded convergence theorem (Corollary 5.37) can be invoked to give
+  \[\frac{\rmd}{\rmd x}\int_0^1f(x,y)\rmd y=\lim_{n\to\infty}\int_0^1h_n(y)\rmd y=\int_0^1\lim_{n\to\infty}h_n(y)\rmd y=\int_0^1\frac{\partial}{\partial x}f(x,y)\rmd y.
+  \qedhere\]
+\end{exercise}
+
+\begin{exercise}{5.9}
+  Given $\epsilon>0$, we have
+  \[|\left\{\bfx\in E:|f(\bfx)-f_k(\bfx)|>\epsilon\right\}|\leq\frac{1}{\epsilon^p}\int_{\{\bfx\in E:|f(\bfx)-f_k(\bfx)|>\epsilon\}}|f-f_k|^p\leq\frac{1}{\epsilon^p}\int_E|f-f_k|^p \to 0 \]
+  as $k\to\infty$.
+  This proves that $f_k\overset{m}{\longrightarrow} f$ on $E$ and thus
+  that there is a subsequence $f_{k_j}\to f$ a.e.\ in $E$ by Theorem 4.22.
+\end{exercise}
+
+\begin{exercise}{5.10}
+  Suppose $p > 0$ and $\int_E \lvert f_k - f \rvert^p \rightarrow 0$.
+  By Exercise 5.9, we know that $f_k \xrightarrow{m} f$ on $E$.
+%  First we claim that $f_k \xrightarrow{m} f$ on $E$ (Exercise 5.9).
+%  Given $\epsilon > 0$, Chebyshev's inequality states that
+%  \[
+%    \mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}}
+%    \le \frac{1}{\epsilon^p} \int_E \lvert f_k - f \rvert^p.
+%  \]
+%  Letting $k \rightarrow \infty$
+%  we see that $\mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} \rightarrow 0$
+%  as $k \rightarrow \infty$,
+%  which is exactly $f_k \xrightarrow{m} f$.
+  By Theorem 4.22, there exists a subsequence $\{f_{k_j}\} \rightarrow f$ a.e.\ in $E$.
+  If $\int_E \lvert f_k \rvert^p \le M$ for all $k$,
+  we conclude by Fatou's Lemma that
+  \[
+    \int_E \lvert f \rvert^p = \int_E \lim \lvert f_{k_j} \rvert^p
+    \le \liminf \int_E \lvert f_{k_j} \rvert^p \le M.
+    \qedhere
+  \]
+\end{exercise}
+
+\begin{exercise}{5.18}
+  The result of Exercise 5.16 suggests that if $0 < p < \infty$ and $f \ge 0$, then
+  \[
+    \int_E f^p = p \int_0^{\infty} \alpha^{p-1} \omega(\alpha) \rmd \alpha,
+  \]
+  regardless of the finiteness of either $\mea{E}$ or $\lVert f \rVert_p$.
+  By definition of improper Riemann integral, we have
+  \[
+    \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha =
+    \sum_{k = -\infty}^{+\infty}
+    \int_{2^k}^{2^{k+1}} \alpha^{p-1} \omega(\alpha) \rmd \alpha
+    \coloneqq \sum_{k = -\infty}^{+\infty} I_k.
+  \]
+  Since $\omega$ is decreasing, we have
+  \[
+    2^k \cdot 2^{k(p-1)} \omega(2^{k+1}) \le I_k \le 2^k \cdot 2^{(k+1)(p-1)} \omega(2^k).
+  \]
+  Simplifying, we obtain
+  \[
+    2^{-p} 2^{(k+1)p} \omega(2^{k+1}) \le I_k \le 2^{p-1} 2^{kp} \omega(2^k).
+  \]
+  Summing up, we find
+  \[
+    2^{-p} \sum 2^{(k+1)p} \omega(2^{k+1})
+    = 2^{-p} \sum 2^{kp} \omega(2^k)
+    \le \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha
+    \le 2^{p-1} \sum 2^{kp} \omega(2^k).
+  \]
+  Consequently, all the terms in the above inequalities
+  are simultaneously finite or infinite.
+  We conclude that $f \in L^p$ if and only if $\sum 2^{kp} \omega(2^k) < + \infty$.
+\end{exercise}
+
+
+\begin{exercise}{5.21}
+  If $f$ is not zero almost everywhere.
+  Then at least one of the sets $\{f>0\}$ and $\{f<0\}$ has strictly positive measure.
+  Suppose we have $|\{f>0\}|>0$.
+  Since \[\{f>\frac{1}{n}\}\nearrow\{f>0\},\]
+  we have $\lim_{n\rightarrow\infty}|\{f>1/n\}|=|\{f>0\}|$.
+  Therefore for some $n_0$ sufficiently large,
+  $A=\{f>1/n_0\}$ has strictly positive measure.
+  In this case we can deduce tha\[\int_A f\geq\frac{|A|}{n_0}>0, \] contradiction.
+\end{exercise}
+
+\begin{exercise}{5.22}
+  We have a sequence of measurable functions $\{|f_k-f|\}$ on $E$
+  such that $|f_k-f|\rightarrow 0$ a.e.\ in $E$.
+  Now suppose on $E\setminus Z_k$, we have $|f_k|\leq \phi$ where $|Z_k|=0$.
+  Let \[Z=\bigcup_k Z_k\bigcup\{x\in E:f_k(x)\not\rightarrow f(x)\},\]
+  then $|Z|=0$ and on $E\setminus Z$,
+  we have $|f|\leq \phi$.
+  Therefore we deduce that $|f_k-f|\leq 2\phi$ a.e.\ in $E$.
+  Since $2\phi\in L(E)$, from Lebesgue's Dominated Convergence Theorem,
+  we have $\int_E|f_k-f|\rightarrow 0.$
+\end{exercise}
+
+\begin{exercise}{5.23}
+  Let $g_k=|f_k-f|$, then $g_k\rightarrow 0$ a.e.\ in $E$
+  and $|g_k|\leq \phi_k+\phi$ a.e.\ in $E$
+  and $\int_E(\phi_k+\phi)\rightarrow 2\int_E\phi.$
+  Therefore $\phi_k+\phi-g_k$ is nonnegative a.e.\ in $E$.
+  By Fatou's Lemma, we have
+  \[2\int_E\phi=\int_E\varliminf(\phi_k+\phi-g_k)\leq\varliminf\int_E\phi_k+\phi-g_k=2\int_E\phi-\varlimsup\int_Eg_k.\]
+  Therefore \[0\leq\varliminf\int_E g_k\leq\varlimsup\int_Eg_k\leq 0.\]
+  Thus $\lim\int_Eg_k=0.$
+\end{exercise}
+
+\begin{exercise}{5.24}
+(a) Since $f\in L^p(E)$,
+we have \[\alpha\omega_{|f|}(\alpha)\leq\int_{\{|f|>\alpha\}}|f|^p\leq\int_E|f|^p<\infty.\]
+Thus \[\omega_{|f|}(\alpha)\leq\frac{\int_E|f|^p}{\alpha^p},\]
+which implies $f$ belongs to weak $L^p(E)$.
+Now let $E=(0,+\infty)$ and $f(x)=1/x$ defined on $E$,
+then $\int_E f=\infty$.
+But for any $\alpha>0$, we have $\omega_{|f|}(\alpha)=1/\alpha$.
+Thus $f$ belongs to weak $L^1(E)$ but not $L^1(E)$.
+
+(b) By definition we have nonnegative constants $A$ and $A'$
+such that $\omega_{|f|}(\alpha)\leq A/\alpha$ and $\omega_{|f|}(\alpha)\leq A'/\alpha^r$.
+Thus
+\begin{align*}
+  \int_E|f|^p&=p\int_0^\infty\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\\
+  &=p\int_0^1\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha+p\int_1^\infty\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\\
+  &\leq p\int_0^1\frac{A}{\alpha^{2-p}}d\alpha+p\int_1^\infty \frac{A'}{\alpha^{1+r-p}}d\alpha
+\end{align*}
+Now since $2-p<1$ and $1+r-p>1$,
+the right hand side integrals are finite,
+which implies $f$ belongs to $L^p(E)$.
+
+(c) Suppose $|f|<M$ for some $M\leq 0$.
+Thus $\omega_{|f|}(\alpha)=0$ when $\alpha\geq M$.
+We have
+\[\int_E|f|^p=p\int_0^M\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\leq\int_0^M\frac{A}{\alpha^{2-p}}d\alpha<\infty\]
+since $2-p<1.$
+\end{exercise}
