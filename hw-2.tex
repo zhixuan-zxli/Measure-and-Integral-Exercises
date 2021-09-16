@@ -135,17 +135,65 @@
   for all $k \ge K$, which shows that $f_k g_k \xrightarrow{m} fg$.
 
   Finally suppose $g_k \rightarrow g$ on $E$ and $g \neq 0$ a.e.
-  Since $\mea{E} < +\infty$ and $1/g$ is finite a.e.,
-  Lemma 4.18 suggests that $g_k \xrightarrow{m} g$.
+  Since $\mea{E} < +\infty$, $1/g_k \rightarrow 1/g$ and $1/g$ is finite a.e.,
+  Theorem 4.21 suggests that $1/g_k \xrightarrow{m} 1/g$.
   It follows immediately from the last case that $f_k/g_k \xrightarrow{m} f/g$.
 \end{exercise}
 
 \begin{exercise}{4.18}
-  H.
+  For the first part, fix $a \in (-\infty, +\infty)$.
+  For each $x \in E$,
+  it follows from $f_k \nearrow f$ that
+  $f(x) > a$ if and only if $f_k(x) > a$ for all some $k$.
+  That is, $\left\{ f > a \right\} = \bigcup_{k=1}^{\infty} \left\{ f_k > a \right\}$.
+  Since $\left\{ f_k > a \right\}$ is increasing,
+  we see that $\omega_{f_k}(a) = \mea{\left\{ f_k > a \right\}} \nearrow
+  \mea{\left\{ f > a \right\}} = \omega_f(a)$ as $k \rightarrow \infty$.
+
+  Now suppose $f_k \xrightarrow{m} f$.
+  For each $\epsilon > 0$, we have
+  \[
+    \omega_f(a + \epsilon) = \mea{\left\{ f > a + \epsilon \right\}} \le
+    \mea{\left\{ f_k > a \right\}} + \mea{\left\{ \lvert f_k - f \rvert > \epsilon \right\}}
+    = \omega_{f_k}(a) + \mea{\left\{ \lvert f_k - f \rvert > \epsilon \right\}}.
+  \]
+  But $f_k \xrightarrow{m} f$ implies that
+  $\mea{\left\{ \lvert f_k - f \rvert > \epsilon \right\}} \rightarrow 0$
+  as $k \rightarrow \infty$;
+  taking limit inferior of the last inequality we obtain
+  \[
+    \omega_f(a + \epsilon) \le \liminf_{k \rightarrow \infty} \omega_{f_k}(a).
+  \]
+  Since $\epsilon > 0$ is arbitrary,
+  by letting $\epsilon \rightarrow 0^+$ we see that
+  $\omega_f(a) \le \liminf \omega_{f_k}(a)$
+  provided $\omega_f$ is continuous at $a$.
+  A similar arguments shows that $\limsup \omega_{f_k}(a) \le \omega_f(a)$.
+  We conclude that $\lim_{k \rightarrow \infty} \omega_{f_k}(a) = \omega_f(a)$
+  provided $\omega_f$ is continuous at $a$.
 \end{exercise}
 
 \begin{exercise}{5.10}
-  H.
+  Suppose $p > 0$ and $\int_E \lvert f_k - f \rvert^p \rightarrow 0$.
+  First we claim that $f_k \xrightarrow{m} f$ on $E$ (Exercise 5.9).
+  Given $\epsilon > 0$, Chebyshev's inequality states that
+  \[
+    \mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}}
+    \le \frac{1}{\epsilon^p} \int_E \lvert f_k - f \rvert^p.
+  \]
+  Letting $k \rightarrow \infty$
+  we see that $\mea{\left\{ \lvert f - f_k \rvert > \epsilon \right\}} \rightarrow 0$
+  as $k \rightarrow \infty$,
+  which is exactly $f_k \xrightarrow{m} f$.
+
+  By Theorem 4.22, there exists a subsequence $\{f_{k_j}\} \rightarrow f$ a.e.\ in $E$.
+  If $\int_E \lvert f_k \rvert^p \le M$ for all $k$,
+  we can conclude by Fatou's Lemma that
+  \[
+    \int_E \lvert f \rvert^p = \int_E \lim \lvert f_{k_j} \rvert^p
+    \le \liminf \int_E \lvert f_{k_j} \rvert^p \le M.
+    \qedhere
+  \]
 \end{exercise}
 
 \begin{exercise}{5.18}
