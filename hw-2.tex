@@ -188,7 +188,7 @@
 
   By Theorem 4.22, there exists a subsequence $\{f_{k_j}\} \rightarrow f$ a.e.\ in $E$.
   If $\int_E \lvert f_k \rvert^p \le M$ for all $k$,
-  we can conclude by Fatou's Lemma that
+  we conclude by Fatou's Lemma that
   \[
     \int_E \lvert f \rvert^p = \int_E \lim \lvert f_{k_j} \rvert^p
     \le \liminf \int_E \lvert f_{k_j} \rvert^p \le M.
@@ -197,5 +197,34 @@
 \end{exercise}
 
 \begin{exercise}{5.18}
-  H.
+  The result of Exercise 5.16 suggests that if $0 < p < \infty$ and $f \ge 0$, then
+  \[
+    \int_E f^p = p \int_0^{\infty} \alpha^{p-1} \omega(\alpha) \rmd \alpha,
+  \]
+  regardless of the finiteness of either $\mea{E}$ or $\lVert f \rVert_p$.
+  By definition of improper Riemann integral, we have
+  \[
+    \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha =
+    \sum_{k = -\infty}^{+\infty}
+    \int_{2^k}^{2^{k+1}} \alpha^{p-1} \omega(\alpha) \rmd \alpha
+    \coloneqq \sum_{k = -\infty}^{+\infty} I_k.
+  \]
+  Since $\omega$ is decreasing, we have
+  \[
+    2^k \cdot 2^{k(p-1)} \omega(2^{k+1}) \le I_k \le 2^k \cdot 2^{(k+1)(p-1)} \omega(2^k).
+  \]
+  Simplifying, we obtain
+  \[
+    2^{-p} 2^{(k+1)p} \omega(2^{k+1}) \le I_k \le 2^{p-1} 2^{kp} \omega(2^k).
+  \]
+  Summing up, we find
+  \[
+    2^{-p} \sum 2^{(k+1)p} \omega(2^{k+1})
+    = 2^{-p} \sum 2^{kp} \omega(2^k)
+    \le \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha
+    \le 2^{p-1} \sum 2^{kp} \omega(2^k).
+  \]
+  Consequently, all the terms in the above inequalities
+  are simultaneously finite or infinite.
+  We conclude that $f \in L^p$ if and only if $\sum 2^{kp} \omega(2^k) < + \infty$.
 \end{exercise}
