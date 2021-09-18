@@ -24,14 +24,8 @@
   such that $|f_k|\leq M$ a.e.\ in $E$ (so $f_k\in L(E)$).
   We want to prove $\int_Ef_k\to \int_E f$ by using Egorov's theorem.
 
-  We first prove that $f$ is bounded a.e.\ on $E$ and hence it is also finite a.e.
-  For almost every point $x$ of $E$ and every $\delta>0$,
-  we have $|f(x)-f_k(x)|\leq\delta$ if $k$ is sufficiently large.
-  Then triangle inequality implies that $|f(x)|\leq|f(x)-f_K(x)|+|f_K(x)|\leq \delta+M$.
-  Since $\delta>0$ is arbitrary,
-  we have $|f(x)|\leq M$ for almost every point $x\in E$.
+  We note that $|f|\leq M$ a.e.\ on $E$ and hence it is also finite a.e.
   Since $|E|<+\infty$, it follows that $f\in L(E)$.
-
   Given $\epsilon>0$, by Egorov's theorem,
   there is a closed subset $F$ of $E$ such that
   $|E-F|<\epsilon/(4M)$ and $\{f_k\}$ converges uniformly to $f$ on $F$.
@@ -99,8 +93,7 @@
   \]
 \end{exercise}
 
-\begin{exercise}{5.18}
-  The result of Exercise 5.16 suggests that if $0 < p < \infty$ and $f \ge 0$, then
+\begin{exercise}{5.18}  The result of Exercise 5.16 suggests that if $0 < p < \infty$ and $f \ge 0$, then
   \[
     \int_E f^p = p \int_0^{\infty} \alpha^{p-1} \omega(\alpha) \rmd \alpha,
   \]
@@ -109,26 +102,34 @@
   \[
     \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha =
     \sum_{k = -\infty}^{+\infty}
-    \int_{2^k}^{2^{k+1}} \alpha^{p-1} \omega(\alpha) \rmd \alpha
-    \coloneqq \sum_{k = -\infty}^{+\infty} I_k.
+    \int_{2^k}^{2^{k+1}} \alpha^{p-1} \omega(\alpha) \rmd \alpha.
+%    \eqqcolon \sum_{k = -\infty}^{+\infty} I_k.
   \]
-  Since $\omega$ is decreasing, we have
+  Since $\omega$ is decreasing and $\alpha^{p-1} > 0$,
+  we have
   \[
-    2^k \cdot 2^{k(p-1)} \omega(2^{k+1}) \le I_k \le 2^k \cdot 2^{(k+1)(p-1)} \omega(2^k).
+    I_k \coloneqq \int_{2^k}^{2^{k+1}} \alpha^{p-1} \omega(\alpha) \rmd \alpha
+    \le \omega(2^k) \int_{2^k}^{2^{k+1}} \alpha^{p-1} \rmd \alpha
+    = \frac{2^p-1}{p} 2^{kp} \omega(2^k).
   \]
-  Simplifying, we obtain
+  On the other hand,
   \[
-    2^{-p} 2^{(k+1)p} \omega(2^{k+1}) \le I_k \le 2^{p-1} 2^{kp} \omega(2^k).
+    I_k \ge \omega(2^{k+1}) \int_{2^k}^{2^{k+1}} \alpha^{p-1} \rmd \alpha
+    = \frac{2^p-1}{p 2^p} 2^{(k+1)p} \omega(2^{k+1}).
   \]
-  Summing up, we find
+  Combining the above inequalities, we find
   \[
-    2^{-p} \sum 2^{(k+1)p} \omega(2^{k+1})
-    = 2^{-p} \sum 2^{kp} \omega(2^k)
-    \le \int_0^\infty \alpha^{p-1} \omega(\alpha) \rmd \alpha
-    \le 2^{p-1} \sum 2^{kp} \omega(2^k).
+    \frac{2^p-1}{p 2^p}
+    \sum 2^{(k+1)p} \omega(2^{k+1})
+    \le \sum I_k
+    \le \frac{2^p-1}{p} \sum 2^{kp} \omega(2^k).
   \]
-  Consequently, all the terms in the above inequalities
-  are simultaneously finite or infinite.
+  Note that the summation terms on the left-hand-side
+  can be changed to $2^{kp} \omega(2^k)$.
+  Summarizing, there exist constants $c_1, c_2 > 0$ such that
+  $c_1 \sum 2^{kp} \omega(2^k) \le \int f^p \le c_2 \sum 2^{kp} \omega(2^k)$.
+%  and consequently all the terms in the last inequalities
+%  are simultaneously finite or infinite.
   We conclude that $f \in L^p$ if and only if $\sum 2^{kp} \omega(2^k) < + \infty$.
 \end{exercise}
 
@@ -141,14 +142,14 @@
   we have $\lim_{n\rightarrow\infty}|\{f>1/n\}|=|\{f>0\}|$.
   Therefore for some $n_0$ sufficiently large,
   $A=\{f>1/n_0\}$ has strictly positive measure.
-  In this case we can deduce tha\[\int_A f\geq\frac{|A|}{n_0}>0, \] contradiction.
+  In this case we can deduce that\[\int_A f\geq\frac{|A|}{n_0}>0, \] contradiction.
 \end{exercise}
 
 \begin{exercise}{5.22}
   We have a sequence of measurable functions $\{|f_k-f|\}$ on $E$
   such that $|f_k-f|\rightarrow 0$ a.e.\ in $E$.
   Now suppose on $E\setminus Z_k$, we have $|f_k|\leq \phi$ where $|Z_k|=0$.
-  Let \[Z=\bigcup_k Z_k\bigcup\{x\in E:f_k(x)\not\rightarrow f(x)\},\]
+  Let \[Z=\bigcup_k Z_k\cup\{x\in E:f_k(x)\not\rightarrow f(x)\},\]
   then $|Z|=0$ and on $E\setminus Z$,
   we have $|f|\leq \phi$.
   Therefore we deduce that $|f_k-f|\leq 2\phi$ a.e.\ in $E$.
@@ -169,7 +170,7 @@
 
 \begin{exercise}{5.24}
 (a) Since $f\in L^p(E)$,
-we have \[\alpha\omega_{|f|}(\alpha)\leq\int_{\{|f|>\alpha\}}|f|^p\leq\int_E|f|^p<\infty.\]
+we have \[\alpha^p\omega_{|f|}(\alpha)\leq\int_{\{|f|>\alpha\}}|f|^p\leq\int_E|f|^p<\infty.\]
 Thus \[\omega_{|f|}(\alpha)\leq\frac{\int_E|f|^p}{\alpha^p},\]
 which implies $f$ belongs to weak $L^p(E)$.
 Now let $E=(0,+\infty)$ and $f(x)=1/x$ defined on $E$,
@@ -177,21 +178,20 @@ then $\int_E f=\infty$.
 But for any $\alpha>0$, we have $\omega_{|f|}(\alpha)=1/\alpha$.
 Thus $f$ belongs to weak $L^1(E)$ but not $L^1(E)$.
 
-(b) By definition we have nonnegative constants $A$ and $A'$
-such that $\omega_{|f|}(\alpha)\leq A/\alpha$ and $\omega_{|f|}(\alpha)\leq A'/\alpha^r$.
-Thus
+(b) By definition we have nonnegative constants $A$ and $A'$ such that
+$\omega_{|f|}(\alpha)\leq A/\alpha$ and $\omega_{|f|}(\alpha)\leq A'/\alpha^r$.
+Thus $\omega_{|f|}$ is finite on $(0,\infty)$ and by results in Exercise 5.16 we have
 \begin{align*}
   \int_E|f|^p&=p\int_0^\infty\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\\
   &=p\int_0^1\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha+p\int_1^\infty\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\\
-  &\leq p\int_0^1\frac{A}{\alpha^{2-p}}d\alpha+p\int_1^\infty \frac{A'}{\alpha^{1+r-p}}d\alpha
+  &\leq p\int_0^1\frac{A}{\alpha^{2-p}}d\alpha+p\int_1^\infty \frac{A'}{\alpha^{1+r-p}}d\alpha.
 \end{align*}
-Now since $2-p<1$ and $1+r-p>1$,
-the right hand side integrals are finite,
+Now since $2-p<1$ and $1+r-p>1$, the right hand side integrals are finite,
 which implies $f$ belongs to $L^p(E)$.
 
-(c) Suppose $|f|<M$ for some $M\leq 0$.
+(c) Suppose $|f| \le M$ for some $M>0$.
 Thus $\omega_{|f|}(\alpha)=0$ when $\alpha\geq M$.
-We have
-\[\int_E|f|^p=p\int_0^M\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\leq\int_0^M\frac{A}{\alpha^{2-p}}d\alpha<\infty\]
+We still have $\omega_{|f|}$ is finite on $(0,\infty)$ and therefore
+\[\int_E|f|^p=p\int_0^M\alpha^{p-1}\omega_{|f|}(\alpha)d\alpha\leq p\int_0^M\frac{A}{\alpha^{2-p}}d\alpha<\infty\]
 since $2-p<1.$
 \end{exercise}

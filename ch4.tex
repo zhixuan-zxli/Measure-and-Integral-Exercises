@@ -21,16 +21,21 @@
 \end{exercise}
 
 \begin{exercise}{4.5}
-  We consider the equivalence relation on $[0,1]$ defined by $x\sim y\Leftrightarrow x-y\in\mathbb{Q}$.
-  Let $E$ be a set consisting exactly one element from each equivalence class and in particular we let $0\in E$.
+  We consider the equivalence relation on $[0,1]$
+  defined by $x\sim y\Leftrightarrow x-y\in\mathbb{Q}$.
+  Let $E$ be a set consisting exactly one element from each equivalence class
+  and in particular let $0\in E$.
   Thus no nonzero rational numbers belong to $E$ and we also know that $E$ is nonmeasurable.
-  Let $Z=F^{-1}(E)$.
+  Let $F$ be the Cantor-Lebesgue function and $Z=F^{-1}(E)$.
   By definition of $F$, elements outside the Cantor set are mapped to nonzero rational values by $F$,
   so we must have $Z\subset C$, the Cantor set.
-  Thus $|Z|\leq |C|=0.$ Define $\phi=\chi_Z$, the characteristic function of $Z$.
-  Since $Z$ is a measurable set, $\phi$ is a measurable function.
-  Now we define \[f(y)=\inf\{x\in[0:1]:x\in F^{-1}(y)\}.\]
-  Then since $F$ is continuous and monotone, we have $F(f(y))=y$ and $\{f>a\}$ is an interval.
+  Thus $|Z|\leq |C|=0.$
+  Define $\phi=\chi_Z$, the characteristic function of $Z$.
+  Since $Z$ is a measurable set,
+  $\phi$ is a measurable function.
+  Now we define \[f(y)=\inf\{x\in[0:1]:x\in F^{-1}(y)\}. \]
+  Then since $F$ is continuous and monotone,
+  we have $F(f(y))=y$ and $\{f>a\}$ is an interval.
   We deduce that $f$ is also measurable.
   Now for any $y\in E$, we have \[y\in E\Rightarrow f(y)\in F^{-1}(y)\subset F^{-1}(E)=Z.\]
   On the other hand if $f(y)\in Z$, we have $y=F(f(y))\in F(Z)=F(F^{-1}(E))=E$.
@@ -41,10 +46,11 @@
 
   Now if $g(x)=x+F(x)$, we notice that $[0,1]\setminus C$ is a disjoint union of open intervals $\{I_i\}$
   and $F$ is constant on each of the intervals.
-  It follows that $g(I_i)$ are still disjoint intervals with the same measures.
+  Since $g$ is strictly monotone, it follows that $g(I_i)$ are still disjoint intervals with the same measures as $I_i$.
   Thus \[|g([0,1]\setminus C)|=\sum_i|g(I_i)|=\sum_i|I_i|=|[0,1]\setminus C|=1.\]
-  Therefore since $g$ is strictly monotone, we have \[|g(C)|=|[0,2]-g([0,1]\setminus C)|=2-1=1.\]
-  By Corollary 3.39 there exists a nonmeasruable set $E$ in $g(C)$.
+  Therefore since $g$ is strictly monotone,
+  we have \[|g(C)|=|[0,2]-g([0,1]\setminus C)|=2-1=1.\]
+  By Corollary 3.39 there exists a nonmeasurable set $E$ in $g(C)$.
   Let $Z=g^{-1}(E)$.
   Then $Z$ is a subset of $C$ and is a measurable set of measure zero.
   Define $\phi=\chi_Z$ and $f=g^{-1}$, then $\phi$ is measurable and $f$ is continuous.
@@ -99,9 +105,14 @@ Now we generalize this to functions defined in $\mathbf{R^n}$ by using a non-con
   Define
   \[
     E_n = \left\{ x \in E : \lvert f_k(x) \rvert \le n
-    \text{ for all $k$ and all $x \in E$} \right\}.
+    \text{ for all $k$} \right\}
+    = \bigcap_{k=1}^{\infty}
+    \left\{ x \in E : \lvert f_k(x) \rvert \le n \right\}.
   \]
-  Then for each $x \in E$,
+  Note that $E_n$ is measurable
+  since $f_k$ is measurable
+  and so is $\left\{ x \in E : \lvert f_k(x) \rvert \le n \right\}$.
+  For each $x \in E$,
   we have $x \in E_n$ for all $n \ge M_x$,
   so $E = \bigcup E_n$.
   Since $E_n$ is increasing,
@@ -110,7 +121,7 @@ Now we generalize this to functions defined in $\mathbf{R^n}$ by using a non-con
   $\mea{E - E_M} = \mea{E} - \mea{E_M} < \epsilon/2$,
   and in turn select a closed set $F \subset E_M$ such that
   $\mea{E_M - F} < \epsilon/2$.
-  It follows that $\mea{E - F} \le \mea{E - E_M} + \mea{E_M - F} < \epsilon$,
+  It follows that $\mea{E - F} = \mea{E - E_M} + \mea{E_M - F} < \epsilon$,
   and for each $x \in F$ we have
   $\lvert f_k(x) \rvert \le M$ for all $k$.
 \end{exercise}
@@ -154,7 +165,7 @@ Now we generalize this to functions defined in $\mathbf{R^n}$ by using a non-con
 \end{exercise}
 
 \begin{lemma}
-  If $g$ is finite a.e.,
+  If $g$ is finite a.e.\ on $E$ and $|E|<+\infty$,
   then for each $\epsilon > 0$
   there exist a subset $F$ of $E$ and a sufficiently large $M$ such that
   $\mea{E - F} < \epsilon$ and $\lvert g \rvert \le M$ on $F$.
@@ -240,7 +251,7 @@ Now we generalize this to functions defined in $\mathbf{R^n}$ by using a non-con
   For the first part, fix $a \in (-\infty, +\infty)$.
   For each $x \in E$,
   it follows from $f_k \nearrow f$ that
-  $f(x) > a$ if and only if $f_k(x) > a$ for all some $k$.
+  $f(x) > a$ if and only if $f_k(x) > a$ for some $k$.
   That is, $\left\{ f > a \right\} = \bigcup_{k=1}^{\infty} \left\{ f_k > a \right\}$.
   Since $\left\{ f_k > a \right\}$ is increasing,
   we see that $\omega_{f_k}(a) = \mea{\left\{ f_k > a \right\}} \nearrow
