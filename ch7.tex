@@ -1,0 +1,81 @@
+
+\begin{exercise}{7.4}
+  H.
+\end{exercise}
+
+\begin{exercise}{7.5}
+  Since $g$ is absoutely continuous,
+  it is of bounded variation.
+  It follows that all $f, g, h$ are of bounded variation,
+  and the Riemann-Stieltjes integrals
+  $\int \phi \rmd f, \int \phi \rmd g$ and $\int \phi \rmd h$ exist.
+  By linearity of Riemann-Stieltjes integral, we have
+  \[
+    \int_a^b \phi \rmd f = \int_a^b \phi \rmd g + \int_a^b \phi \rmd h.
+  \]
+  Next, we find
+  \[
+    \int_a^b \phi \rmd g = \int_a^b \phi g' \rmd x
+    = \int_a^b \phi f' \rmd x,
+  \]
+  where the first equality follows from integration by parts
+  and the second from the fact that $f' = g' + h' = g'$ a.e.
+  We conclude that
+  \[
+    \int_a^b \phi \rmd f = \int_a^b \phi f' \rmd x + \int_a^b \phi \rmd h.
+    \qedhere
+  \]
+\end{exercise}
+
+\begin{exercise}{7.6}
+  Let $\phi(x) = x^{\alpha}$ with $\alpha > 0$.
+  Suppose $\epsilon > 0$ and $0 < M < +\infty$ are given.
+  Since $\phi$ is increasing and right-hand continuous at $0$,
+  there exists a $\delta_0 > 0$ such that
+  $\phi(\delta_0) - \phi(0) < \epsilon/2$.
+  Since $\phi$ is $C^1$ on $[\delta_0, M]$,
+  we have
+  \[
+    L = \sup_{x \in [\delta_0, M]} \lvert \phi'(x) \rvert < \infty.
+  \]
+  Now choose $\delta = \min \left\{ \delta_0, {\epsilon}/{2 L} \right\}$,
+  and let $\left\{ [a_k, b_k] \right\}_1^K$ be a collection of
+  nonoverlapping intervals contained in $[0, M]$ subject to
+  \[
+    \sum_{k=1}^K \left(b_k - a_k\right) < \delta.
+  \]
+%  We may further assume that each $[a_k, b_k]$ does not contain
+%  $\delta_0$ in its interior,
+%  for otherwise we can split the interval into two
+%  and the sum of lengths of intervals remains less than $\delta$.
+  First asume that no $[a_k, b_k]$ contains $\delta_0$ in its interior.
+  On one hand we have
+  \[
+    \sum_{b_k \le \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
+    \le \phi(\delta_0) - \phi(0) < \epsilon/2
+  \]
+  since $\phi$ is increasing.
+  On the other hand we use Mean-Value Theorem to deduce
+  \[
+    \sum_{a_k \ge \delta_0} \vert \phi(b_k) - \phi(a_k) \vert
+    \le L \sum_{a_k \ge \delta_0} \left( b_k - a_k \right)
+    < L \delta \le \epsilon/2.
+  \]
+  Thus we have
+  \[
+    \sum_{k=1}^K \lvert \phi(b_k) - \phi(a_k) \rvert
+    = \sum_{b_k \le \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
+    + \sum_{a_k \ge \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
+    < \epsilon.
+  \]
+  If $\delta_0$ is contained in some $(a_{k_0}, b_{k_0})$,
+  we apply the above argument to the collection of intervals
+  with $[a_{k_0}, b_{k_0}]$ replaced by
+  $[a_{k_0}, \delta_0]$ and $[\delta_0, b_{k_0}]$.
+  The inequality
+  $\sum_{k=1}^K \lvert \phi(b_k) - \phi(a_k) \rvert < \epsilon$
+  remains valid due to the triangular inequality
+  $|\phi(b_{k_0}) - \phi(a_{k_0})| \le
+  |\phi(b_{k_0}) - \phi(\delta_0)| + |\phi(\delta_0) - \phi(a_{k_0})|$.
+  We have proved that $\phi$ is absoutely continuous on $[0, M]$.
+\end{exercise}
