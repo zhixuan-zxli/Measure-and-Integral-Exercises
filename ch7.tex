@@ -1,13 +1,57 @@
 
 \begin{exercise}{7.4}
-  H.
+  Given $\epsilon > 0$, since $\mea{E_1} > 0$,
+  there exists an open set $G_1$ such that
+  $E_1 \subset G_1$ and $\mea{G_1} \le (1 + \epsilon) \mea{E_1}$.
+  Write $G_1 = \bigcup I^{(1)}_k$ as a countable union of
+  disjoint partly open dyadic intervals,
+  and set $E^{(1)}_k = G_1 \cap I^{(1)}_k$.
+  Clearly we have
+  $\mea{G_1} = \sum \mea{I^{(1)}_k}$ and
+  also $\mea{E_1} = \sum \mea{E^{(1)}_k}$,
+  so there exists a $k_1$ such that
+  \begin{equation}
+    \mea{I^{(1)}_{k_1}} \le (1 + \epsilon) \mea{E^{(1)}_{k_1}}.
+    \label{eq:measureEstimateForE1}
+  \end{equation}
+  Let $I^{(1)} \coloneqq I^{(1)}_{k_1}$ and $E^{(1)} \coloneqq E^{(1)}_{k_1}$.
+  Repeating this construction for $E_2$, we have
+  \[
+    \mea{I^{(2)}} \le (1 + \epsilon) \mea{E^{(2)}}
+  \]
+  for some dyadic partly open interval $I^{(2)}$
+  and some $E^{(2)} = G_2 \cap I^{(2)}$.
+
+  If the length of $I^{(1)}$ is greater than that of $I^{(2)}$,
+  we can subdivide $I^{(1)}$ to obtain
+  subintervals which have the same length as $I^{(2)}$.
+  Moreover,
+  there must exist a subinterval, still denoted by $I^{(1)}$,
+  such that \eqref{eq:measureEstimateForE1} holds.
+  The opposite case is handled similarly.
+
+  Suppose $I^{(1)} + q = I^{(2)}$ for some $q \in \bbR$.
+  Note that for small $d > 0$,
+  $E^{(1)} + (q+d)$ and $E^{(2)}$ are contained in
+  an interval of length $|I^{(2)}| + |d|$.
+  In case that they are disjoint, we have
+  \[
+    \frac{2}{1 + \epsilon} \mea{I^{(2)}} \le
+    \mea{E^{(1)}} + \mea{E^{(2)}} \le \mea{I^{(2)}} + |d|.
+  \]
+  But this must be false for $\epsilon = \frac{1}{4}$
+  and all $|d| < \frac{1}{2} |I^{(2)}|$.
+  In other words, $E^{(1)} + (q+d)$ has nonempty intersection with $E^{(2)}$
+  for all $|d| < \frac{1}{2}|I^{(2)}|$.
+  We conclude that $E_2 - E_1$ must contain an open interval
+  of length $|I^{(2)}|$ centered at $q$.
 \end{exercise}
 
 \begin{exercise}{7.5}
   Since $g$ is absoutely continuous,
   it is of bounded variation.
   It follows that all $f, g, h$ are of bounded variation,
-  and the Riemann-Stieltjes integrals
+  and that the Riemann-Stieltjes integrals
   $\int \phi \rmd f, \int \phi \rmd g$ and $\int \phi \rmd h$ exist.
   By linearity of Riemann-Stieltjes integral, we have
   \[
@@ -80,7 +124,7 @@
 \end{exercise}
 
 \begin{exercise}{7.7}
-  Necessity clearly holds due to the inequality
+  Necessity follows easily from the inequality
   \[
     \left| \sum \left[ f(b_i) - f(a_i) \right] \right|
     \le \sum \left| f(b_i) - f(a_i) \right|.
