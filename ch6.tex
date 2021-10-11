@@ -1,0 +1,40 @@
+
+\begin{exercise}{6.10}
+  Denote by $B^n_r$ the ball centered at the origin
+  with radius $r$ in $\bbR^{n}$.
+  First we claim that $\vol(B^n_r) = r^n v_n$.
+  Indeed, the linear transformation $T : \bfx \mapsto r\bfx$
+  maps the unit ball to $B^n_r$ bijectively.
+  Since $|\det{T}| = r^n$, we have
+  \[
+    \vol(B^n_r) = \int_{B^n_r} \rmd \bfx
+    = \int_{B^n_1} |\det{T}| \ \rmd \bfx
+    = r^n v_n.
+  \]
+
+  Now we prove the formula.
+  First we have $B^1_1 = [-1, 1]$ and $v_1 = 2$.
+  For $n \ge 2$, we have
+  \[
+    \begin{aligned}
+      v_n &= \int_{B^n_1} \rmd \bfx \\
+      &= \int_{-1}^1 \left(\idotsint_{x_2^2 + \cdots + x_n^2 \le 1 - x_1^2}
+      \rmd x_2 \cdots \rmd x_n\right) \rmd x_1 \quad
+      &&(\text{Tonelli's Theorem}) \\
+      &= \int_{-1}^1
+      \left( \idotsint_{B^{n-1}_{(1-x_1^2)^{1/2}}} \rmd x_2 \cdots \rmd x_n \right)
+      \rmd x_1 \\
+      &= \int_{-1}^1 \left( 1 - x_1^2 \right)^{(n-1)/2} v_{n-1} \rmd x_1 \\
+      &= 2 v_{n-1} \int_0^1 (1-t^2)^{(n-1)/2} \rmd t.
+      \quad &&(t \mapsto \left( 1-t^2 \right)^{(n-1)/2} \text{ is even})
+    \end{aligned}
+  \]
+  By setting $w = t^2$, we find $\rmd t = \frac{1}{2} w^{-1/2} \rmd w$ and
+  \[
+    \int_0^1 \left( 1-t^2 \right)^{(n-1)/2} \rmd t
+    = \int_0^1 \frac{1}{2} \left( 1-w \right)^{(n-1)/2} w^{-1/2} \rmd w
+    = \frac{1}{2} B(\frac{n+1}{2}, \frac{1}{2})
+    = \frac {\Gamma(\frac{n+1}{2}) \Gamma(\frac{1}{2})} {\Gamma(\frac{n}{2}+1)}.
+    \qedhere
+  \]
+\end{exercise}
