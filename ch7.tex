@@ -36,7 +36,7 @@
   Since $\phi$ is $C^1$ on $[\delta_0, M]$,
   we have
   \[
-    L = \sup_{x \in [\delta_0, M]} \lvert \phi'(x) \rvert < \infty.
+    L = \sup_{x \in [\delta_0, M]} \left| \phi'(x) \right| < \infty.
   \]
   Now choose $\delta = \min \left\{ \delta_0, {\epsilon}/{2 L} \right\}$,
   and let $\left\{ [a_k, b_k] \right\}_1^K$ be a collection of
@@ -51,7 +51,7 @@
   First asume that no $[a_k, b_k]$ contains $\delta_0$ in its interior.
   On one hand we have
   \[
-    \sum_{b_k \le \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
+    \sum_{b_k \le \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
     \le \phi(\delta_0) - \phi(0) < \epsilon/2
   \]
   since $\phi$ is increasing.
@@ -63,19 +63,58 @@
   \]
   Thus we have
   \[
-    \sum_{k=1}^K \lvert \phi(b_k) - \phi(a_k) \rvert
-    = \sum_{b_k \le \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
-    + \sum_{a_k \ge \delta_0} \lvert \phi(b_k) - \phi(a_k) \rvert
+    \sum_{k=1}^K \left| \phi(b_k) - \phi(a_k) \right|
+    = \sum_{b_k \le \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
+    + \sum_{a_k \ge \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
     < \epsilon.
   \]
   If $\delta_0$ is contained in some $(a_{k_0}, b_{k_0})$,
   we apply the above argument to the collection of intervals
   with $[a_{k_0}, b_{k_0}]$ replaced by
   $[a_{k_0}, \delta_0]$ and $[\delta_0, b_{k_0}]$.
-  The inequality
-  $\sum_{k=1}^K \lvert \phi(b_k) - \phi(a_k) \rvert < \epsilon$
+  Then $\sum_{k=1}^K \left| \phi(b_k) - \phi(a_k) \right| < \epsilon$
   remains valid due to the triangular inequality
   $|\phi(b_{k_0}) - \phi(a_{k_0})| \le
   |\phi(b_{k_0}) - \phi(\delta_0)| + |\phi(\delta_0) - \phi(a_{k_0})|$.
   We have proved that $\phi$ is absoutely continuous on $[0, M]$.
+\end{exercise}
+
+\begin{exercise}{7.7}
+  Necessity clearly holds due to the inequality
+  \[
+    \left| \sum \left[ f(b_i) - f(a_i) \right] \right|
+    \le \sum \left| f(b_i) - f(a_i) \right|.
+  \]
+  We prove the sufficiency.
+  Given $\epsilon > 0$,
+  let $\delta$ be the value corresponding to $\epsilon/2$
+  as dictated by the condition.
+  Suppose $\left\{ [a_i, b_i] \right\}_{i=1}^m$ is a finite collection of
+  nonoverlapping subintervals of $[a, b]$
+  with $\sum \left( b_i - a_i \right) < \delta$.
+  Define
+  \[
+    \begin{aligned}
+      I^+ \coloneqq &\left\{ 1 \le i \le m : f(b_i) - f(a_i) \ge 0 \right\}, \\
+      I^- \coloneqq &\left\{ 1 \le i \le m : f(b_i) - f(a_i) < 0 \right\}.
+    \end{aligned}
+  \]
+  Since $\sum_{i \in I^{\pm}} \left( b_i - a_i \right) < \delta$,
+  we have
+  \[
+    \left| \sum_{i \in I^\pm} \left( f(b_i) - f(a_i) \right) \right|
+    < \epsilon/2.
+  \]
+  It follows that
+  \[
+    \begin{aligned}
+      \sum_{i=1}^m \left| f(b_i) - f(a_i) \right|
+      &=\sum_{i \in I^+} \left( f(b_i) - f(a_i) \right)
+      - \sum_{i \in I^-} \left( f(b_i) - f(a_i) \right) \\
+      &\le \left| \sum_{i \in I^+} \left( f(b_i) - f(a_i) \right) \right|
+      + \left| \sum_{i \in I^-} \left( f(b_i) - f(a_i) \right) \right| \\
+      &< \epsilon.
+    \end{aligned}
+  \]
+  So $f$ is absolutely continuous.
 \end{exercise}
