@@ -1,3 +1,49 @@
+\section{Repeated Integration}
+\begin{exercise}{6.3}
+Let $F(x,y)=f(x)-f(y)$ be integrable over the square $[0,1]\times [0,1]$. By Fubini's theorem, it follows that for almost every $y\in [0,1]$, $F(x,y)$ is integrable on $[0,1]$ as a function of $x$. Since $f$ is finite a.e. on $[0,1]$, there exists $y_0\in[0,1]$ such that both $F(x,y_0)$ and $f(y_0)$ (which is a finite constant) are integrable with respect to $x$ on $[0,1]$. Thus the sum $f(x)=F(x,y_0)+f(y_0)$ is integrable on $[0,1]$ as a function of $x$.
+\end{exercise}
+\begin{exercise}{6.4}
+Let $F(x,t)=|f(x+t)-f(-x+t)|$, then $\int_0^1F(x,t)\rmd t$ is measurable as a function of $x$ by Tonelli's Theorem; and $\int_0^1\int^1_0F(x,t)\rmd t\rmd x\leq c$. Making the change of variables $\xi=x+t, \eta=-x+t$, we have
+\begin{equation*}
+	\begin{aligned}
+	\int_0^1\int^1_0F(x,t)\rmd t\rmd x&=\frac{1}{2}\int_0^1\int_{-\xi}^\xi|f(\xi)-f(\eta)|\rmd \eta\rmd \xi+\frac{1}{2}\int_1^2\int_{\xi-2}^{-\xi+2}|f(\xi)-f(\eta)|\rmd \eta \rmd \xi\\
+	&\geq\frac{1}{2}\int_0^1\int_{0}^\xi|f(\xi)-f(\eta)|\rmd \eta \rmd \xi + \frac{1}{2}\int_1^2\int_{\xi-2}^{0}|f(\xi)-f(\eta)|\rmd \eta \rmd \xi\\
+&	=\frac{1}{2}\int_0^1\int_{0}^\xi|f(\xi)-f(\eta)|\rmd \eta \rmd \xi + \frac{1}{2}\int_0^1\int_{\xi}^{1}|f(\xi+1)-f(\eta-1)|\rmd \eta \rmd \xi\\
+	&=\frac{1}{2}\int_0^1\int_0^1|f(\xi)-f(\eta)|\rmd\eta\rmd\xi,
+	\end{aligned}
+\end{equation*}
+where the last equality is provided by the periodicity of $f$. Thus $f(\xi)-f(\eta)$ is integrable over the square $[0,1]\times [0,1]$ and then $f\in L[0,1]$ by Exercise 6.3.
+\end{exercise}
+\begin{exercise}{6.5}
+  (a) By Tonelli's theorem and the definition of Lebesgue integral, we have
+  \[
+    \int_Ef=\mea{R(f,E)}=\iint_{R(f,E)}\rmd\bfx \rmd y=\int_0^\infty\bigg[\int_{\mathbb{R}^n}\chi_{R(f,E)}\rmd\bfx\bigg]\rmd y.
+  \]
+  Now
+  \[
+    \int_{\mathbb{R}^n}\chi_{R(f,E)}\rmd\bfx=\mea{\{\bfx\in E:f(\bfx)\geq y\}}
+  \] 
+  and when $\omega$ is continuous at $y$, we have $\omega(y)=\mea{\{\bfx\in E:f(\bfx)\geq y\}}$. Since $\omega$ is monotone, it has countable number of points of discontinuity. We deduce that $\omega(y)=\mea{\{\bfx\in E:f(\bfx)\geq y\}}$ almost everywhere on $(0,\infty)$. Thus
+  \[
+    \int_Ef=\int_0^\infty\omega(y)\rmd y.
+  \]
+  (b) By (a) we have \[\int_Ef^p=\int_0^\infty\omega_{f^p}(y)\rmd y.\]Now $\omega_{f^p}(y)=\mea{\{\bfx\in E:f^p(\bfx)>y\}}=\mea{\{\bfx\in E:f(\bfx)>\sqrt[p]{y}\}}=\omega_f(\sqrt[p]{y})$ for $y\geq 0$. Since $\omega$ is improper Riemann integrable, we can use change of variables in improper Riemann integral to get
+  \[
+    \int_Ef^p=\int_0^\infty\omega_{f^p}(y)\rmd y=\int_0^\infty\omega_f(\sqrt[p]{y})\rmd y=p\int_0^\infty\omega(t)t^{p-1}\rmd t
+    \qedhere
+  \]
+\end{exercise}
+\begin{exercise}{6.6}
+	Suppose $f$ and $g$ belong to $L(\bfr)$, then $f\ast g\in L(\bfr)$. Thus the Fourier transform $\widehat{f\ast g}$ is well defined and the application of Fubini’s theorem is justified; and then
+	\begin{equation*}
+		\begin{aligned}
+		\widehat{(f\ast g)}(x)&=\frac{1}{2\pi}\int_\bfr (\widehat{f\ast g})(t)e^{-ixt}\rmd t\\
+		&=\frac{1}{2\pi}\int_\bfr \left[\int_{\bfr}f(t-y)g(y)\rmd y\right]e^{-ixt}\rmd t\\
+		&=\frac{1}{2\pi}\int_\bfr g(y)e^{-ixy}\left[\int_{\bfr}f(t-y)e^{-ix(t-y)}\rmd t\right]\rmd y\\
+		&=2\pi \widehat{f}(x)\widehat{g}(x).
+		\end{aligned}
+	\end{equation*}
+\end{exercise}
 
 \begin{exercise}{6.10}
   Denote by $B^n_r$ the ball centered at the origin
@@ -34,7 +80,30 @@
     \int_0^1 \left( 1-t^2 \right)^{(n-1)/2} \rmd t
     = \int_0^1 \frac{1}{2} \left( 1-w \right)^{(n-1)/2} w^{-1/2} \rmd w
     = \frac{1}{2} B(\frac{n+1}{2}, \frac{1}{2})
-    = \frac {\Gamma(\frac{n+1}{2}) \Gamma(\frac{1}{2})} {\Gamma(\frac{n}{2}+1)}.
+    = \frac{1}{2} \frac {\Gamma(\frac{n+1}{2}) \Gamma(\frac{1}{2})} {\Gamma(\frac{n}{2}+1)}.
     \qedhere
   \]
+\end{exercise}
+
+
+\begin{exercise}{6.11}
+  When $n=1$, we have
+  \[
+    \bigg(\int_{\mathbb{R}}e^{-x^2}\rmd x\bigg)^2=\iint_{\mathbb{R}^2}e^{-(x^2+y^2)}\rmd x\rmd y=\int_0^{2\pi}\int_0^\infty e^{-r^2}r\rmd r\rmd\theta=\pi.
+  \]
+  Thus $\int_{\mathbb{R}}e^{-x^2}\rmd x=\pi^{1/2}$. Now for $n>1$, since $e^{-|\bfx|^2}$ is nonnegative and measurable on $\bbR^n$, we can use Tonelli's theorem for $n-1$ times and get
+  \[
+    \int_{\bbR^n}e^{-|\bfx|^2}\rmd\bfx=\int_{\bbR^n}e^{-x_1^2}e^{-x_2^2}\cdots e^{-x_n^2}\rmd x_1\rmd x_2\cdots \rmd x_n=\bigg(\int_{\mathbb{R}}e^{-x^2}\rmd x\bigg)^n=\pi^{n/2}.
+    \qedhere
+  \]
+\end{exercise}
+\begin{exercise}{6.13}
+Let $F(x,y)=\frac{1}{2h}f(y)\chi_{[x-h,x+h]}(y)$ for fixed $h>0$, and note that $\chi_{[x-h,x+h]}(y)=\chi_{[y-h,y+h]}(x)$ for all $x,y\in\bfr$, then $\int_\bfr|F(x,y)|\rmd x=|f(y)|\in L(\rmd y)$. Thus $F(x,y)\in L(\rmd x\rmd y)$ and Fubini's Theorem gives 
+\begin{equation*}
+	\begin{aligned}
+	\int_{-\infty}^{\infty}\left(\frac{1}{2h}\int_{x-h}^{x+h}f(y)\rmd y\right)\rmd x&=	\int_{-\infty}^{\infty}\left(	\int_{-\infty}^{\infty} F(x,y)\rmd y\right)\rmd x\\&=\int_{-\infty}^{\infty}\left(	\int_{-\infty}^{\infty} F(x,y)\rmd x\right)\rmd y\\
+	&=	\int_{-\infty}^{\infty}\frac{1}{2h}f(y)\left(	\int_{-\infty}^{\infty} \chi_{[y-h,y+h]}(x)\rmd x\right)\rmd y\\
+	&=\int_{-\infty}^{\infty}f(x)\rmd x.
+	\end{aligned}
+\end{equation*}
 \end{exercise}

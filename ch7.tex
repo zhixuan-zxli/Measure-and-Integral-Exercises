@@ -1,11 +1,48 @@
+\section{Differentiation}
+\begin{exercise}{7.1}
+  By assumption, $\mea{\{f\neq 0\}}>0$ and since $\{|f|>1/k\}\nearrow\{|f|\neq 0\}$, there exists some $k_0$ such that $E=\{|f|>1/k_0\}$ has positive measure. Moreover, we may assume $E$ is bounded since otherwise we may consider $E\cap B(0,N)$ for some $N$ big enough. Now for any $\bfx$ with $|\bfx|\geq 1$, we consider the smallest cube centered at $\bfx$ which contains $E$ and denote it by $Q_\bfx$. We have
+  \begin{align*}
+      f^*(\bfx)&=\sup\frac{1}{|Q|}\int_Q|f(\bfy)|\rmd\bfy\geq \frac{1}{|Q_\bfx|}\int_{Q_\bfx\cap E}|f(\bfy)|\rmd\bfy\\
+      &\geq \frac{\mea{Q_\bfx\cap E}}{k_0\mea{Q_\bfx}}=\frac{|E|}{k_0|Q_\bfx|}.
+  \end{align*}
+  Now we try to estimate the measure of $Q_\bfx$. Suppose $E\subset B(0,M)$ for some $M>0$. Let 
+  \[
+    r=\sup_{\bfy\in E}|\bfy-\bfx|.
+  \]
+  Then $r\leq |\bfx|+M$ and 
+  \[
+    |Q_\bfx|\leq (3r)^n\leq 3^n(|\bfx|+M)^n=|\bfx|^n3^n(1+\frac{M}{|\bfx|})^n\leq 3^n(1+M)^n|\bfx|^n.
+  \]
+  Therefore we have 
+  \[
+    f^*(\bfx)\geq \frac{|E|}{k_0(3+3M)^n}|\bfx|^{-n}
+  \]
+  for all $|\bfx|\geq 1.$
+\end{exercise}
 
+\begin{exercise}{7.2}
+  By definition we have
+  \[
+    (f*\phi_\epsilon)(\bfx)-f(\bfx)=\int[f(\bfx-\bfy)-f(\bfx)]\phi_\epsilon(\bfy)\rmd\bfy
+  \]
+  Since $\phi_\epsilon(\bfx)=0$ when $|\bfx|\geq\epsilon$ and suppose $\phi(\bfx)$ is bounded by $M$, we can further have
+  \begin{align*}
+      |(f*\phi_\epsilon)(\bfx)-f(\bfx)|&=\bigg|\int_{|\bfy|<\epsilon}[f(\bfx-\bfy)-f(\bfx)]\phi_\epsilon(\bfy)\rmd\bfy\bigg|\\
+      &=\bigg|\int_{|\bfy-\bfx|<\epsilon}[f(\bfy)-f(\bfx)]\phi_\epsilon(\bfx-\bfy)\rmd\bfy\bigg|\\
+      &\leq \frac{M}{\epsilon^n}\int_{|\bfy-\bfx|<\epsilon}|f(\bfy)-f(\bfx)|\rmd\bfy\\
+      &=\frac{M'}{\mea{B(\bfx,\epsilon)}}\int_{B(\bfx,\epsilon)}|f(\bfy)-f(\bfx)|\rmd\bfy
+  \end{align*}
+  which tends to zero when $\epsilon\rightarrow 0$ since $\bfx$ is a Lebesgue point.
+ \end{exercise}
+ 
+ 
 \begin{exercise}{7.4}
   Given $\epsilon > 0$, since $\mea{E_1} > 0$,
   there exists an open set $G_1$ such that
   $E_1 \subset G_1$ and $\mea{G_1} \le (1 + \epsilon) \mea{E_1}$.
   Write $G_1 = \bigcup I^{(1)}_k$ as a countable union of
   disjoint partly open dyadic intervals,
-  and set $E^{(1)}_k = G_1 \cap I^{(1)}_k$.
+  and set $E^{(1)}_k = E_1 \cap I^{(1)}_k$.
   Clearly we have
   $\mea{G_1} = \sum \mea{I^{(1)}_k}$ and
   also $\mea{E_1} = \sum \mea{E^{(1)}_k}$,
@@ -20,7 +57,7 @@
     \mea{I^{(2)}} \le (1 + \epsilon) \mea{E^{(2)}}
   \]
   for some dyadic partly open interval $I^{(2)}$
-  and some $E^{(2)} = G_2 \cap I^{(2)}$.
+  and some $E^{(2)} = E_2 \cap I^{(2)}$.
 
   If the length of $I^{(1)}$ is greater than that of $I^{(2)}$,
   we can subdivide $I^{(1)}$ to obtain
@@ -41,17 +78,17 @@
   \]
   But this must be false for $\epsilon = \frac{1}{4}$
   and all $|d| < \frac{1}{2} |I^{(2)}|$.
-  In other words, $E^{(1)} + (q+d)$ has nonempty intersection with $E^{(2)}$
+  Consequently, $E^{(1)} + (q+d)$ has nonempty intersection with $E^{(2)}$
   for all $|d| < \frac{1}{2}|I^{(2)}|$.
   We conclude that $E_2 - E_1$ must contain an open interval
   of length $|I^{(2)}|$ centered at $q$.
 \end{exercise}
 
 \begin{exercise}{7.5}
-  Since $g$ is absoutely continuous,
+  Since $g$ is absolutely continuous,
   it is of bounded variation.
   It follows that all $f, g, h$ are of bounded variation,
-  and that the Riemann-Stieltjes integrals
+  and the Riemann-Stieltjes integrals
   $\int \phi \rmd f, \int \phi \rmd g$ and $\int \phi \rmd h$ exist.
   By linearity of Riemann-Stieltjes integral, we have
   \[
@@ -72,9 +109,27 @@
 \end{exercise}
 
 \begin{exercise}{7.6}
+(Quick proof)
+Note that $\phi'(x) = \alpha x^{\alpha-1} > 0$ on $(0, \infty)$. 
+Moreover, for any $0 < y < \infty$, 
+we have
+\[
+  \int_0^y \phi' \rmd x
+  = \lim_{\delta \rightarrow 0} \int_{\delta}^y \phi' \rmd x
+  = \lim_{\delta \rightarrow 0} \left( \phi(y) - \phi(\delta) \right)
+  = \phi(y) - \phi(0), 
+\]
+where we interpret the second integral 
+in either Lebesgue or Riemann sense. 
+Since $\phi(y) - \phi(0)$ is an indefinite integral of
+the integrable function $\phi'$,
+$\phi$ is absolutely continuous on $[0, y]$
+and also on every bounded subinterval of $[0, \infty)$. 
+
+(Long proof)
   Let $\phi(x) = x^{\alpha}$ with $\alpha > 0$.
   Suppose $\epsilon > 0$ and $0 < M < +\infty$ are given.
-  Since $\phi$ is increasing and right-hand continuous at $0$,
+  Since $\phi$ is increasing and right-continuous at $0$,
   there exists a $\delta_0 > 0$ such that
   $\phi(\delta_0) - \phi(0) < \epsilon/2$.
   Since $\phi$ is $C^1$ on $[\delta_0, M]$,
@@ -83,16 +138,16 @@
     L = \sup_{x \in [\delta_0, M]} \left| \phi'(x) \right| < \infty.
   \]
   Now choose $\delta = \min \left\{ \delta_0, {\epsilon}/{2 L} \right\}$,
-  and let $\left\{ [a_k, b_k] \right\}_1^K$ be a collection of
+  and let $\left\{ [a_k, b_k] \right\}$ be a collection of
   nonoverlapping intervals contained in $[0, M]$ subject to
   \[
-    \sum_{k=1}^K \left(b_k - a_k\right) < \delta.
+    \sum \left(b_k - a_k\right) < \delta.
   \]
 %  We may further assume that each $[a_k, b_k]$ does not contain
 %  $\delta_0$ in its interior,
 %  for otherwise we can split the interval into two
 %  and the sum of lengths of intervals remains less than $\delta$.
-  First asume that no $[a_k, b_k]$ contains $\delta_0$ in its interior.
+  First assume that no $[a_k, b_k]$ contains $\delta_0$ in its interior.
   On one hand we have
   \[
     \sum_{b_k \le \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
@@ -107,7 +162,7 @@
   \]
   Thus we have
   \[
-    \sum_{k=1}^K \left| \phi(b_k) - \phi(a_k) \right|
+    \sum \left| \phi(b_k) - \phi(a_k) \right|
     = \sum_{b_k \le \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
     + \sum_{a_k \ge \delta_0} \left| \phi(b_k) - \phi(a_k) \right|
     < \epsilon.
@@ -116,49 +171,193 @@
   we apply the above argument to the collection of intervals
   with $[a_{k_0}, b_{k_0}]$ replaced by
   $[a_{k_0}, \delta_0]$ and $[\delta_0, b_{k_0}]$.
-  Then $\sum_{k=1}^K \left| \phi(b_k) - \phi(a_k) \right| < \epsilon$
+  Then $\sum \left| \phi(b_k) - \phi(a_k) \right| < \epsilon$
   remains valid due to the triangular inequality
   $|\phi(b_{k_0}) - \phi(a_{k_0})| \le
   |\phi(b_{k_0}) - \phi(\delta_0)| + |\phi(\delta_0) - \phi(a_{k_0})|$.
-  We have proved that $\phi$ is absoutely continuous on $[0, M]$.
+  We have shown that $\phi$ is absolutely continuous on $[0, M]$
+  for every $0 < M < +\infty$, 
+  and hence on every bounded subinterval of $[0, \infty)$. 
 \end{exercise}
 
 \begin{exercise}{7.7}
   Necessity follows easily from the inequality
   \[
-    \left| \sum \left[ f(b_i) - f(a_i) \right] \right|
-    \le \sum \left| f(b_i) - f(a_i) \right|.
+    \left| \sum_{i=1}^m \left[ f(b_i) - f(a_i) \right] \right|
+    \le \sum_{i=1}^m \left| f(b_i) - f(a_i) \right|.
   \]
+  for every finite collection $\{[a_i, b_i]\}_1^m$. 
   We prove the sufficiency.
   Given $\epsilon > 0$,
   let $\delta$ be the value corresponding to $\epsilon/2$
   as dictated by the condition.
-  Suppose $\left\{ [a_i, b_i] \right\}_{i=1}^m$ is a finite collection of
+  Suppose $\left\{ [a_i, b_i] \right\}$ is a collection of
   nonoverlapping subintervals of $[a, b]$
   with $\sum \left( b_i - a_i \right) < \delta$.
   Define
   \[
     \begin{aligned}
-      I^+ \coloneqq &\left\{ 1 \le i \le m : f(b_i) - f(a_i) \ge 0 \right\}, \\
-      I^- \coloneqq &\left\{ 1 \le i \le m : f(b_i) - f(a_i) < 0 \right\}.
+      I^+_n \coloneqq &\left\{ 1 \le i \le n : f(b_i) - f(a_i) \ge 0 \right\}, \\
+      I^-_n \coloneqq &\left\{ 1 \le i \le n : f(b_i) - f(a_i) < 0 \right\}.
     \end{aligned}
   \]
-  Since $\sum_{i \in I^{\pm}} \left( b_i - a_i \right) < \delta$,
+  Since $\sum_{i \in I^{\pm}_n} \left( b_i - a_i \right) < \delta$,
   we have
   \[
-    \left| \sum_{i \in I^\pm} \left( f(b_i) - f(a_i) \right) \right|
+    \left| \sum_{i \in I^\pm_n} \left( f(b_i) - f(a_i) \right) \right|
     < \epsilon/2.
   \]
   It follows that
   \[
     \begin{aligned}
-      \sum_{i=1}^m \left| f(b_i) - f(a_i) \right|
-      &=\sum_{i \in I^+} \left( f(b_i) - f(a_i) \right)
-      - \sum_{i \in I^-} \left( f(b_i) - f(a_i) \right) \\
-      &\le \left| \sum_{i \in I^+} \left( f(b_i) - f(a_i) \right) \right|
-      + \left| \sum_{i \in I^-} \left( f(b_i) - f(a_i) \right) \right| \\
+      \sum_{i=1}^n \left| f(b_i) - f(a_i) \right|
+      &=\sum_{i \in I^+_n} \left( f(b_i) - f(a_i) \right)
+      - \sum_{i \in I^-_n} \left( f(b_i) - f(a_i) \right) \\
+      &\le \left| \sum_{i \in I^+_n} \left[ f(b_i) - f(a_i) \right] \right|
+      + \left| \sum_{i \in I^-_n} \left[ f(b_i) - f(a_i) \right] \right| \\
       &< \epsilon.
     \end{aligned}
   \]
-  So $f$ is absolutely continuous.
+  But this holds for any $n \ge 1$. 
+  Letting $n \rightarrow \infty$, 
+  we find $\sum \left| f(b_i) - f(a_i) \right| \le \epsilon$, 
+  so $f$ is absolutely continuous.
+\end{exercise}
+
+ 
+ \begin{exercise}{7.10}
+   (a) First we notice that since $f$ is continuous, for any interval $[a_i,b_i]$, $f([a_i,b_i])$ is still an interval. More precisely, we have
+   \[
+     f([a_i,b_i])=[\min_{[a_i,b_i]}f,\max_{[a_i,b_i]}f]=[f(x_i),f(y_i)]
+   \]
+   for some $x_i,y_i\in[a_i,b_i]$. Therefore
+   \begin{align*}
+       \mea{f([a_i,b_i])}=\mea{f(y_i)-f(x_i)}\leq V[f;a_i,b_i]=V(b_i)-V(a_i).
+   \end{align*}
+   Now since $f$ is absolutely continuous, $V$ is also absolutely continuous. For any given $\epsilon$, there exists $\delta>0$ such that for any collection $\{[a_i,b_i]\}$ of nonoverlapping subintervals of $[a,b]$ with $\sum(b_i-a_i)<\delta$, we have $\sum V(b_i)-V(a_i)<\epsilon.$ Now since $\mea{Z}=0$, we can cover $Z$ by nonoverlapping subintervals $\{[a_i,b_i]\}$ such that $\sum(b_i-a_i)<\delta$. Then $f(Z)\subset\bigcup_i f([a_i,b_i])$ and 
+   \[
+     \mea{f(Z)}\leq\sum\mea{f([a_i,b_i])}\leq\sum V(b_i)-V(a_i)<\epsilon.
+   \]
+   Since $\epsilon$ is arbitrary, we have $\mea{f(Z)}=0.$ 
+   
+   
+   Now let $E$ be any measurable subset of $[a,b]$, there exist some closed sets  $\{F_n\}_{n=1}^\infty$ and a set of measure zero $Z$ such that 
+   \[
+     E=\bigcup_nF_n\cup Z.
+   \]
+   Therefore $F_n$ is compact for each $n$ and $f(F_n)$ is also compact since $f$ is continuous. We can now write $f(E)$ as union of countable compact sets with a set of measure zero as follows:
+   \[
+     f(E)=\bigcup_nf(F_n)\cup f(Z)
+   \]
+   which implies $f(E)$ is measurable.
+   
+   
+   (b) Let $g(x)=x+F(x)$ where $F(x)$ is the Cantor-Lebesgue function and let $f(x)=g^{-1}(x):[0,2]\rightarrow [0,1]$. Since $g$ is a strictly increasing continuous function on $[0,1]$, $f$ is well-defined and also strictly increasing continuous. Moreover, for any distinct $x,x'$ with $x>x'$, we have $|g(x)-g(x')|=x-x'+F(x)-F(x')\geq |x-x'|$ since $F(x)$ is monotone increasing. Therefore for any $y, y'\in[0,2]$, we have $|f(y)-f(y')|\leq |g(f(y))-g(f(y'))|=|y-y'|$. Thus $f$ is Lipschitz. Let $C$ be the Cantor set on $[0,1]$. Then $\mea{C}=0$ and we claim that $f^{-1}(C)=g(C)$ has measure 1. We notice that $[0,1]\setminus C$ is a disjoint union of open intervals $\{I_i\}$ and $F$ is constant on each of the intervals. Since $g$ is strictly monotone, it follows that $g(I_i)$ are still disjoint intervals with the same measures as $I_i$. Thus 
+   \[
+     |g([0,1]\setminus C)|=\sum|g(I_i)|=\sum|I_i|=|[0,1]\setminus C|=1.
+   \]
+   Therefore since $g$ is strictly increasing, we have 
+   \[
+     |g(C)|=|[0,2]-g([0,1]\setminus C)|=2-1=1.
+     \qedhere
+   \]
+ \end{exercise}
+ 
+ \begin{exercise}{7.11}
+   First we consider the case when $f=\chi_G$ where $G$ is an open subset of $[a,b]$. Then we may write $G=\bigcup_{i=1}^n (a_i,b_i)$ where $(a_i,b_i)$ are disjoint open intervals. We can also assume $g^{-1}(a_i,b_i)=(\alpha_i,\beta_i)$, then $(\alpha_i,\beta_i)$ are also disjoint. Now $f\circ g=\chi_{g^{-1}(G)}=\sum_i\chi_{(\alpha_i,\beta_i)}$, which is clearly measurable. We have
+   \[
+     \int_\alpha^\beta f(g(t))g'(t)\rmd t=\sum_i\int_{\alpha_i}^{\beta_i}g'(t)\rmd t=\sum_i (b_i-a_i)=\mea{G}=\int_{a}^{b}f(x)\rmd x.
+   \]
+   In particular if $G$ is an open subset, we have
+   \[
+     \mea{G}=\int_{g^{-1}(G)}g'(t)\rmd t.
+   \]
+   
+   Next we consider the general case when $f=\chi_E$ for a measurable set $E$. Then $f(g(t))g'(t)=\chi_{g^{-1}(E)}(t)g'(t)=\chi_{g^{-1}(E)\cap\{g'>0\}}(t)g'(t)$. To prove this is a measurable function, it suffices to prove $g^{-1}(E)\cap\{g'>0\}$ is a measurable set. Now suppose 
+   \[
+     E=\bigcap_iG_i-Z
+   \]
+   where $G_i$ are open and $Z$ is of measure zero. Then we deduce that
+   \begin{align*}
+       g^{-1}(E)\cap\{g'>0\}&=\big(\bigcap_ig^{-1}(G_i)-g^{-1}(Z)\big)\cap\{g'>0\}\\
+       &=\bigcap_i\big(g^{-1}(G_i)\cap\{g'>0\}\big)-\big(g^{-1}(Z)\cup\{g'=0\}\big).
+   \end{align*}
+   Since $g^{-1}(Z)\cup\{g'=0\}=\big(g^{-1}(Z)\cap\{g'>0\}\big)\cup\{g'=0\}$, it suffices to prove $g^{-1}(Z)\cap\{g'>0\}$ is measurable. In fact we prove it to be of measure zero. Since $Z$ has measure zero, for any $k$ we can find an open set $W_k$ such that $Z\subset W_k$ and $\mea{W_k}<1/k$. Let $G'=\bigcap_k g^{-1}(W_k)\cap\{g'>0\}$, which is measurable and contains $g^{-1}(Z)\cap\{g'>0\}$. It suffices to prove $G'$ has zero measure. Since $g'$ is nonnegative and measurable, for any $n$, we have
+   \[
+     0\leq\int_{G'}g'(t)\rmd t\leq \int_{g^{-1}(W_n)}g'(t)\rmd t=\mea{W_n}<\frac{1}{n}.
+   \]
+   Thus we must have $\int_{G'}g'(t)dt=0$. Now if $G'$ has positive measure, since $g'$ is strictly positive on it, we can find a subset of positive measure such that $g'>\epsilon$ on it for some $\epsilon>0$. Then the integral will be greater than zero, contradiction. Now we calculate the original integral. In our setting $E=\bigcap_iG_i-Z$, we may assume that $G_i$ is monotone decreasing, otherwise we can set $G_i'=\bigcap_{k=1}^iG_k$. Then $g^{-1}(G_i)$ is also decreasing and $\mea{E}=\lim_i\mea{G_i}$. Now we have
+   \begin{align*}
+       \int_\alpha^\beta f(g(t))g'(t)\rmd t&=\int_{g^{-1}(E)}g'(t)\rmd t=\int_{\bigcap_ig^{-1}(G_i)}g'(t)\rmd t-\int_{g^{-1}(Z)}g'(t)\rmd t\\
+       &=\lim_i\int_{g^{-1}(G_i)}g'(t)\rmd t-\int_{g^{-1}(Z)\cap\{g'>0\}}g'(t)\rmd t\\
+       &=\lim_i\mea{G_i}=\mea{E}=\int_a^bf(x)\rmd x
+   \end{align*}
+   where we use the fact that $g'$ is nonnegative and integrable.
+   
+   
+   By linearity, the conclusion holds for any simple functions. Now if $f$ is nonnegative, we can find a sequence of nonnegative increasing simple functions $\{f_k\}$ which converges to $f$ pointwise. Then $f(g(t))g'(t)$ is measurable as the limit of $f_k(g(t))g'(t)$. By dominated convergence theorem, we have
+   \[
+     \int_a^bf(x)\rmd x=\lim_k\int_a^bf_k(x)\rmd x=\lim_k\int_\alpha^\beta f_k(g(t))g'(t)\rmd t=\int_\alpha^\beta f(g(t))g'(t)\rmd t
+   \]
+   Finally we can use $f=f^+-f^-$ to get the conclusion for all integrable functions $f$.
+ \end{exercise}
+ 
+ 
+\begin{exercise}{7.14}
+	Suppose $\phi$ is convex on $(a,b)$. Then the continuity of $\phi$ is proved in Theorem 7.40 and 
+	\begin{equation}\label{714}
+			\phi\left(\frac{x_1+x_2}{2}\right)\leq \frac{\phi(x_1)+\phi(x_2)}{2},\quad\forall x_1,x_2\in(a,b)
+	\end{equation}
+	follows from the definition of convexity.
+	
+	Conversely, suppose $\phi$ is continuous and (\ref{714}) holds. We first show, by induction on $n$, that the inequality 
+	\begin{equation}\label{7142}
+		\phi\left(\frac{x_1+x_2+\cdots+x_{2^n}}{2^n}\right)\leq \frac{1}{2^n}\left(\phi(x_1)+\phi(x_2)+\cdots+\phi(x_{2^n})\right)
+	\end{equation}
+	holds for all positive integer $n$ and any $x_1, x_2,\cdots, x_{2^n}$ in $(a,b)$. The inequality being shown for $n$, we pass to $n+1$: 
+	\begin{equation*}
+		\begin{aligned}
+		\phi\left(\frac{x_1+x_2+\cdots+x_{2^{n+1}}}{2^{n+1}}\right)=&	\phi\left(\frac{1}{2}\left(\frac{x_1+x_2+\cdots+x_{2^{n}}}{2^{n}}+\frac{x_{2^{n}+1}+x_{2^{n}+2}+\cdots+x_{2^{n+1}}}{2^{n}}\right)\right)\\
+	\leq&\frac{1}{2}\left(\phi\left(\frac{x_1+x_2+\cdots+x_{2^n}}{2^n}\right)+	\phi\left(\frac{x_{2^{n}+1}+x_{2^{n}+2}+\cdots+x_{2^{n+1}}}{2^n}\right)\right)\\
+	\leq&\frac{1}{2}\left(\frac{1}{2^n}\sum_{i=1}^{2^n}\phi(x_i)+\frac{1}{2^n}\sum_{i={2^n+1}}^{2^{n+1}}\phi(x_i)\right)\\
+	=&\frac{1}{2^{n+1}}\left(\phi(x_1)+\phi(x_2)+\cdots+\phi(x_{2^{n+1}})\right).
+		\end{aligned}
+	\end{equation*}
+	This proves (\ref{7142}). For $m\in\{0,1,\cdots,2^n\}$, let $x_i=x$ $( i\leq m)$ and $x_i=y$ $( i\geq m+1)$, where $x,y\in(a,b)$. By (\ref{7142}), we have
+	\begin{equation}\label{7143}
+	\phi\left(\frac{m}{2^n}x+(1-\frac{m}{2^n})y\right)\leq\frac{m}{2^n}\phi\left(x\right)+\left(1-\frac{m}{2^n}\right)\phi(y).
+	\end{equation} 
+	Finally, we note that for any $\theta\in[0,1]$,
+	$2^n\theta-1<{\left\lfloor 2^{n} \theta\right\rfloor}\leq2^n\theta$ and $\left\lfloor 2^{n} \theta\right\rfloor\in\{0,1,\cdots,2^n\}$. (Here $\left\lfloor x\right\rfloor$ denotes the floor function, i.e. the greatest integer less than or equal to $x$.) Thus $\left\lfloor 2^{n} \theta\right\rfloor/2^n\to\theta$ as $n\to\infty$.
+It follows from (\ref{7143}) that
+$$\phi\left(\frac{\left\lfloor 2^{n} \theta\right\rfloor}{2^n}x+(1-\frac{\left\lfloor 2^{n} \theta\right\rfloor}{2^n})y\right)\leq\frac{\left\lfloor 2^{n} \theta\right\rfloor}{2^n}\phi\left(x\right)+\left(1-\frac{\left\lfloor 2^{n} \theta\right\rfloor}{2^n}\right)\phi(y).$$
+Since $\phi$ is continuous, by taking limit $n\to\infty$ in the inequality above, we have  
+	\begin{equation*}
+	\phi(\theta x+(1-\theta)y)\leq \theta \phi(x)+(1-\theta)\phi(y),
+	\end{equation*}
+which proves $\phi$ is convex.
+\end{exercise}
+\begin{exercise}{7.17}
+	Since $f_k$ and $f$ are integrable on $(0,1)$, the indefinite intergals $\phi_k(E)=\int_Ef_k$ and $\phi(E)=\int_E|f|$ are absolutely continuous.
+	
+	Suppose $\int_0^1|f-f_k|\to0$, then for given $\epsilon>0$, there exists an integer $K>0$ such $\int_0^1|f-f_k|<\epsilon/2$ whenever $k>K$. Since
+ $\phi_k$ $(k=1,\cdots,K)$ and $\phi$ are absolutely continuous, there exists $\delta>0$, such that if $E$ satisfies $|E|<\delta$, then $|\phi_k(E)|<\epsilon$ for all $k=1,\cdots,K$ and
+ $\phi(E)<\epsilon/2$. (Note that such $\delta$ exists as $\{\phi_1,\cdots,\phi_K,\phi\}$ is a finite collection of absolutely continuous set functions.) For $k>K$, we have
+ $$|\phi_k(E)|\leq\int_E|f_k|\leq\int_0^1|f-f_k|+\phi(E)<\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon$$
+ provided $|E|<\delta$. Therefore, $|\phi_k(E)|<\epsilon$ for all $k$ whenever $|E|<\delta$, i.e. $\{\phi_k\}$ is uniformly absolutely continuous.
+ 
+ Conversely, suppose $\{\phi_k\}$ is uniformly absolutely continuous. Note that 
+ \begin{equation*}
+ 	\begin{aligned}
+ \int_E|f-f_k|&=\int_{E\cap\{f-f_k>0\}}(f-f_k)+\int_{{E}\cap\{f-f_k\leq0\}}(f_k-f)\\&\leq\phi(E)+|\phi_k(E\cap\{f-f_k>0\})|+|\phi_k(E\cap\{f-f_k\leq0\})|,
+ 	\end{aligned}
+ \end{equation*}
+ thus $\{\int_E|f-f_k|\}$ is also uniformly absolutely continuous. 
+  Then given $\epsilon>0$, there exits $\delta>0$ such that $\int_E|f-f_k|<\epsilon/2$ for all $k$ provided $|E|<\delta$. Note that $f_k\to f$ a.e. on $(0,1)$, then $f_k\overset{m}{\longrightarrow} f$ on $(0,1)$. In particular, there exists $K>0$ such that $|\{x\in(0,1):|f(x)-f_k(x)|>\epsilon/2\}|<\delta$ whenever $k>K$. Thus 
+ \begin{equation*}
+ 	\int_0^1|f-f_k|=\int_{\{|f-f_k|\leq\epsilon/2\}}|f-f_k|+\int_{\{|f-f_k|>\epsilon/2\}}|f-f_k|
+ 	\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}=\epsilon
+ \end{equation*}
+ provided $k>K$.
+ This proves $\int_0^1|f-f_k|\to 0$ since $\epsilon>0$ is arbitrary.
 \end{exercise}
