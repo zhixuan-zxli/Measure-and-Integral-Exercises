@@ -37,6 +37,51 @@
  
  
 \begin{exercise}{7.4}
+(Proof based on convolution)
+  By taking appropriate subsets of $E_1, E_2$,
+  we may assume $\mea{E_1}, \mea{E_2} < \infty$.
+  Let $-E_2 = \{-x : x \in E_2\}$.
+  Consider the function
+  \[
+    F(x) \coloneqq \chi_{E_1} * \chi_{-E_2} (x)
+    = \int_{\bbR} \chi_{E_1}(x-y) \chi_{-E_2}(y) \rmd y.
+  \]
+  Observe that $F(x) > 0$ implies that
+  $\{y : x-y \in E_1 \text{ and } y \in -E_2\}$ has postive measure.
+  In particular, $x \in E_1 - E_2$.
+  Therefore, it suffices to show that $\{F>0\}$ contains an interval
+  since it is a subset of $E_1 - E_2$.
+
+  To this end, we first show that $F$ is continuous.
+%  Note that both $\chi_{E_1}$ and $\chi_{E_2}$ are in $L^2(\bbR)$,
+%  and by Schwarz inequality $F$ is finite everywhere.
+  If $x_1, x_2 \in \bbR$, then
+  \[
+    \begin{aligned}
+      \left| F(x_1) - F(x_2) \right|
+      &= \left| \int_{\bbR} \left(\chi_{E_1}(x_1-y) - \chi_{E_2}(x_2-y)\right)
+      \chi_{-E_2}(y) \rmd y
+      \right| \\
+      &\le \left\| \chi_{E_1}(x_1 - \cdot) - \chi_{E_1}(x_2 - \cdot) \right\|_1
+      \left\| \chi_{-E_2} \right\|_{\infty},
+    \end{aligned}
+  \]
+  which tends to $0$ as $x_1 \rightarrow x_2$ due to
+  continuity in $L^1$ norm.
+  Thus $F$ is continuous and $\{F>0\}$ is open.
+  Next, by Tonelli's Theorem we have
+  \[
+    \int_{\{F>0\}} F \rmd x = \int_{\bbR} F \rmd x
+    = \left(\int_{\bbR} \chi_{E_1}(x) \rmd x\right)
+    \left(\int_{\bbR} \chi_{-E_2}(y) \rmd y\right)
+    = \left|E_1\right| \left|E_2\right| > 0,
+  \]
+  so $\{F>0\}$ has positive measure.
+  In particular, it is nonempty and open,
+  so it contains an interval,
+  and the proof is completed.
+
+(Proof based on Lemma 3.37)
   Given $\epsilon > 0$, since $\mea{E_1} > 0$,
   there exists an open set $G_1$ such that
   $E_1 \subset G_1$ and $\mea{G_1} \le (1 + \epsilon) \mea{E_1}$.
