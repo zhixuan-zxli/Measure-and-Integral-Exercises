@@ -1,0 +1,107 @@
+\begin{lemma}[Generalization of H\"{o}lder's Inequality]
+  A.
+\end{lemma}
+
+\begin{exercise}{9.2}
+  (a) The case $r = \infty$ reduces to H\"{o}lder's inequality.
+  Indeed, we have $\frac{1}{p} + \frac{1}{q} = 1$ and
+  \[
+    \left| (f * g)(\bfx) \right| \le \int \left| f(\bfx-\bft) g(\bft) \right| \rmd t
+    \le \left\| f(\bfx-\cdot) \right\|_p \left\| g \right\|_q
+    = \left\| f \right\|_p \left\| g \right\|_q
+  \]
+  for each $\bfx \in \bbR^n$, so $\| f*g \|_{\infty} \le \|f\|_p \|g\|_q$.
+
+  If $r < \infty$,
+  then $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r} > 1$
+  and also $p, q < \infty$.
+  We may assume $f, g \ge 0$ since
+  $\left| (f*g)(\bfx) \right| \le \left( |f|*|g| \right) (\bfx)$
+  and we can apply the special case to $|f|$ and $|g|$.
+  We write
+  \[
+    (f*g)(\bfx) = \int f(t) g(\bfx-\bft) \rmd \bft
+    = \int f(\bft)^{\frac{p}{r}} g(\bfx-\bft)^{\frac{q}{r}}
+    \cdot f(\bft)^{p(\frac1p - \frac1r)}
+    \cdot g(\bfx - \bft)^{q(\frac1q - \frac1r)} \rmd \bft.
+  \]
+  Applying the H\"{o}lder's inequality for three functions
+  with exponents
+  $\frac{1}{r} + (\frac{1}{p} - \frac{1}{r})
+  + (\frac{1}{q} - \frac{1}{r}) = 1$,
+  then raising to the $r$th power,
+  we find
+  \[
+    \begin{aligned}
+    (f*g)(\bfx)^r
+    &\le
+    \left( \int f(\bft)^p g(\bfx-\bft)^q \rmd \bft \right)
+    \left( \int f(\bft)^p \rmd \bft \right)^{\frac rp - 1}
+    \left( \int g(\bfx-\bft)^q \rmd \bft \right)^{\frac rq - 1} \\
+    &= \left\| f \right\|_p^{r-p} \left\| g \right\|_{q}^{r-q}
+      \left( \int f(\bft)^p g(\bfx-\bft)^q \rmd \bft \right).
+    \end{aligned}
+  \]
+  Integrating the term in parentheses with respect to $x$
+  and applying Tonelli's Theorem, we find
+  \[
+    \int \int f(\bft)^p g(\bfx-\bft)^q \rmd \bft \rmd \bfx
+    = \int f(\bft)^p \left( \int g(\bfx-\bft)^q \rmd \bfx \right) \rmd \bft
+    = \left\| f \right\|_p^p \left\| g \right\|_q^q.
+  \]
+  It follows that
+  \[
+    \left\| f*g \right\|_r^r \le
+    \left\| f \right\|_p^{r-p} \left\| g \right\|_{q}^{r-q}
+    \left\| f \right\|_p^p \left\| g \right\|_q^q
+    = \left\| f \right\|_p^r \left\| g \right\|_q^r.
+  \]
+  Taking the $r$th root we obtain the desired inequality
+  $\left\| f*g \right\|_r \le \left\| f \right\|_p \left\| g \right\|_q$.
+
+  (b) Define $f_{\lambda}(\bfx) = f(\lambda \bfx), \lambda > 0$.
+  Then
+  \[
+    \left\| f_\lambda \right\|_p
+    = \left( \int \left|f(\lambda \bfx)\right|^p \rmd \bfx \right)^{\frac 1p}
+    = \left( \lambda^{-n} \int \left|f(\bfx)\right|^p \rmd \bfx \right)^{\frac 1p}
+    = \lambda^{-\frac{n}{p}} \left\| f \right\|_p.
+  \]
+  Moreover, we have
+  \[
+    \begin{aligned}
+      \left\| f_{\lambda}*g_{\lambda} \right\|_r
+      &= \left( \int \left|
+      \int f(\lambda\bft) g(\lambda\bfx-\lambda\bft) \rmd \bft
+      \right|^r \rmd \bfx \right)^{\frac 1r} \\
+      &= \left( \int \left|
+      \lambda^{-n} \int f(\bft) g(\lambda\bfx-\bft) \rmd \bft
+      \right|^r \rmd \bfx \right)^{\frac 1r} \\
+      &= \lambda^{-n} \left( \lambda^{-n} \int \left|
+      \int f(\bft) g(\bfx-\bft) \rmd \bft
+      \right|^r \rmd \bfx \right)^{\frac 1r} \\
+      &= \lambda^{-n - \frac nr} \left\| f*g \right\|_r.
+    \end{aligned}
+  \]
+  Applying Young's Convolution Theorem to $f_{\lambda} * g_{\lambda}$,
+  we obtain
+  \[
+    \lambda^{-n - \frac nr} \left\| f*g \right\|_r
+    \le \lambda^{-\frac n p} \left\| f \right\|_p
+    \lambda^{-\frac n q} \left\| g \right\|_q
+    \Longleftrightarrow
+    \left\| f*g \right\|_r \le
+    \lambda^{-n\left( 1 + \frac1r - \frac 1p - \frac 1q \right)}
+    \left\| f \right\|_p \left\| g \right\|_q.
+  \]
+  If $-n\left( 1 + \frac1r - \frac 1p - \frac 1q \right) > 0$
+  (or $<0$, resp.),
+  we can let $\lambda \rightarrow 0$
+  (or $\rightarrow +\infty$, resp.)
+  so that $\left\| f*g \right\|_r = 0$ for all $f \in L^p$ and $g \in L^q$.
+  But this must be false, so we have
+  \[
+    \frac{1}{r} = \frac{1}{p} + \frac{1}{q} - 1.
+    \qedhere
+  \]
+\end{exercise}
