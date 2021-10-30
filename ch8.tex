@@ -1,0 +1,118 @@
+\begin{exercise}{8.15}
+  Let $i^2 = -1$, and we first show that the systems
+  $\phi_k(x) = \frac{1}{\sqrt{2\pi}} e^{i k x}, k = 1, 2, \cdots$,
+  are orthonormal in $L^2(0, 2\pi)$.
+  We compute
+  \[
+    \left< \phi_k, \phi_l \right>
+%    = \frac{1}{\pi} \int_0^{2\pi}
+%    e^{2\pi i k x} \overline{e^{2\pi i l x}} \rmd x
+    = \frac{1}{2\pi} \int_0^{2\pi} e^{i (k-l) x} \rmd x
+    = \left\{
+    \begin{aligned}
+      & \frac{1}{2\pi} \int_0^{2\pi} \rmd x = 1, \quad &&\text{if }k=l, \\
+      & \frac{1}{2 \pi i (k-l)} e^{i (k-l) x}\vert_{0}^{2\pi} = 0,
+      \quad &&\text{if }k\neq l.
+    \end{aligned}
+    \right.
+  \]
+  Next, for real-valued $f \in L^2(0, 2\pi)$
+  we compute the Fourier coefficients
+  \[
+    c_k = \left< f, \phi_k \right>
+    = \frac{1}{\sqrt{2\pi}} \int_0^{2\pi} f \cdot e^{-i k x} \rmd x
+    = \frac{1}{\sqrt{2\pi}} \left(
+    \int_0^{2\pi} f(x) \cos(kx) \rmd x
+    - i \int_0^{2\pi} f(x) \sin(kx) \rmd x
+    \right).
+  \]
+  From Bessel's inequality $\sum |c_k|^2 \le \Vert f \Vert_2^2$
+  we know that $c_k \rightarrow 0$, and so
+  \begin{equation}
+    \lim_{k \rightarrow \infty} \int_0^{2\pi} f(x) \cos(kx) \rmd x
+    = \lim_{k \rightarrow \infty} \int_0^{2\pi} f(x) \sin(kx) \rmd x
+    = 0.
+    \label{eq:RiemannLebesgueLemma}
+  \end{equation}
+
+  Now assume $f \in L^1(0, 2\pi)$.
+  For $n > 0$, define
+  \[
+    f_n(x) = \left\{
+    \begin{aligned}
+      & f(x), \quad &&\text{if }\left\vert f(x) \right\vert \le n, \\
+      & 0, \quad &&\text{otherwise}.
+    \end{aligned}
+    \right.
+  \]
+  Then $|f_n| \nearrow |f|$,
+  so by Dominated Convergence Theorem we have $\lim \int |f_n| = \int |f|$.
+  For each $\epsilon > 0$,
+  there exists a sufficiently large $N$ such that
+  \[
+    \int_0^{2\pi} \left| f - f_N \right|
+    = \int_0^{2\pi} \left| f \right| - \left| f_N \right|
+    < \epsilon/2.
+  \]
+  Note that $f_N \in L^2(0, 2\pi)$ since
+  $\int \left| f_N \right|^2 \le \int \left| f_N \right| N
+  \le N \left\Vert f \right\Vert_1 < +\infty$.
+  By what has been proved,
+  $| \int_0^{2\pi} f_N \cos(kx) \rmd x | < \epsilon/2$
+  for all sufficiently large $k$.
+  Combining the above inequalities, we obtain
+  \[
+    \left| \int_0^{2\pi} f \cos(kx) \rmd x \right|
+    \le \left| \int_0^{2\pi} f_N \cos(kx) \rmd x \right|
+    + \int_0^{2\pi} \left|f - f_N\right| \rmd x
+    < \epsilon/2 + \epsilon/2 = \epsilon
+  \]
+  for all sufficiently large $k$.
+  This establishes the first limit in \eqref{eq:RiemannLebesgueLemma}
+  for $f \in L^1(0, 2\pi)$,
+  and the second follows from exactly the same argument.
+\end{exercise}
+
+\begin{exercise}{8.16}
+  Suppose $f_k \rightarrow f$ in $L^p$,
+  i.e.\ $\Vert f_k - f \Vert_p \rightarrow 0$.
+  For each $g \in L^{p'}$, we use H\"{o}lder's inequality to find
+  \[
+    \left| \int f_k g - \int f g \right|
+    \le \int \left| (f_k - f) g \right|
+    \le \left\| f_k - f \right\|_p \left\| g \right\|_{p'}
+    \rightarrow 0,
+  \]
+  so $f_k \rightarrow f$ weakly in $L^p$.
+  The converse is not true.
+  Exercise 15 shows that $\cos(kx)$
+  converges weakly to the zero function in $L^2(0, 2\pi)$.
+  However, we have
+  \[
+    \int_0^{2\pi} \cos^2(kx) \rmd x
+    = \int_0^{2\pi} \frac{1}{2} \left[ \cos(2kx) + 1 \right] \rmd x
+    = \pi + \frac{1}{2} \int_0^{2\pi} \cos(2kx) \rmd x
+    = \pi,
+  \]
+  so $\cos(kx)$ does not converge strongly to the zero function.
+\end{exercise}
+
+\begin{exercise}{8.17}
+  Denote the real inner product by $\langle f, g \rangle = \int fg$.
+  Since $f_k \rightarrow f$ weakly in $L^2$,
+  in particular we have
+  $\langle f_k, f \rangle \rightarrow \langle f, f \rangle = \| f \|_2^2$.
+  We then compute
+  \[
+    \begin{aligned}
+      \left\| f_k - f \right\|_2^2
+      &= \langle f_k - f, f_k - f \rangle \\
+      &= \left\| f_k \right\|_2^2 + \left\| f \right\|_2^2
+      - 2 \langle f_k, f \rangle \\
+      &\rightarrow \left\| f \right\|_2^2 + \left\| f \right\|_2^2
+      - 2 \left\| f \right\|_2^2 \\
+      &= 0.
+    \end{aligned}
+  \]
+  Thus $f_k \rightarrow f$ in $L^2$ norm.
+\end{exercise}
