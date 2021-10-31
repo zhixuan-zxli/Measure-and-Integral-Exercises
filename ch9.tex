@@ -1,6 +1,47 @@
-\begin{lemma}[Generalization of H\"{o}lder's Inequality]
-  A.
+\begin{lemma}[Generalized H\"{o}lder's Inquality]
+  Let $1 \le p_i, r \le \infty$ and
+  $\sum_{i=1}^k \frac{1}{p_i} = \frac{1}{r}$.
+  Then
+  \[
+    \left\| f_1 \cdots f_k \right\|_r \le
+    \left\| f_1 \right\|_{p_1} \cdots \left\| f_k \right\|_{p_k}.
+  \]
 \end{lemma}
+\begin{proof}
+  We first prove the case $k=2$.
+  If $p_1 = \infty$, then $p_2 = r$,
+  $|f_1 f_2| \le \|f_1\|_{\infty} |f_2|$,
+  and by homogeneity $\|f_1 f_2\|_r \le \|f_1\|_{\infty} \|f_2\|_{p_2}$.
+  The case $p_2 = \infty$ is similar.
+  If $p_1, p_2 < \infty$, then $r < \infty$ and $1 \le p_i/r < \infty$.
+  Applying H\"{o}lder's inequality with exponents $p_i/r$,
+  we obtain
+  \[
+    \left\| f_1 f_2 \right\|_r^r
+    \le \int \left| f_1 f_2 \right|^r
+    \le \left( \int \left| f_1 \right|^{p_1} \right)^{r/p_1}
+    \left( \int \left| f_2 \right|^{p_2} \right)^{r/p_2}
+    = \left\| f_1 \right\|_{p_1}^r \left\| f_2 \right\|_{p_2}^r.
+  \]
+  Taking the $r$th root and we are done with $k=2$.
+  Now assume the conclusion holds for $k-1$ terms.
+  Let $\sum_{i=2}^{k} \frac{1}{p_i} = \frac{1}{r'}$.
+  Then we have
+  \[
+    \begin{aligned}
+      \left\| f_1 \cdots f_k \right\|_r
+      &\le \left\| f_1 \right\|_{p_1} \left\| f_2 \cdots f_k \right\|_{r'}
+      \quad &&(\text{induction hypothesis for }
+      \frac{1}{p_1} + \frac{1}{r'} = \frac{1}{r}) \\
+      &\le \left\| f_1 \right\|_{p_1}
+      \left\| f_2 \right\|_{p_2} \cdots \left\| f_k \right\|_{p_k}
+      \quad &&(\text{induction hypothesis for }
+      \sum_{i=2}^{k} \frac{1}{p_i} = \frac{1}{r'}) \\
+      &= \left\| f_1 \right\|_{p_1} \cdots \left\| f_k \right\|_{p_k},
+    \end{aligned}
+  \]
+  and the proof of the Lemma is completed.
+\end{proof}
 
 \begin{exercise}{9.2}
   (a) The case $r = \infty$ reduces to H\"{o}lder's inequality.
@@ -20,12 +61,13 @@
   and we can apply the special case to $|f|$ and $|g|$.
   We write
   \[
-    (f*g)(\bfx) = \int f(t) g(\bfx-\bft) \rmd \bft
+    (f*g)(\bfx) = \int f(\bft) g(\bfx-\bft) \rmd \bft
     = \int f(\bft)^{\frac{p}{r}} g(\bfx-\bft)^{\frac{q}{r}}
     \cdot f(\bft)^{p(\frac1p - \frac1r)}
     \cdot g(\bfx - \bft)^{q(\frac1q - \frac1r)} \rmd \bft.
   \]
-  Applying the H\"{o}lder's inequality for three functions
+%  Applying the H\"{o}lder's inequality for three functions
+  Applying the Lemma
   with exponents
   $\frac{1}{r} + (\frac{1}{p} - \frac{1}{r})
   + (\frac{1}{q} - \frac{1}{r}) = 1$,
@@ -138,11 +180,12 @@
     = (K*f)(x).
   \]
 
-  (b) Note that
-  \[
-    (\chi_I * \chi_J) (x) = \int \chi_I(\bft) \chi_J(\bfx-\bft) \rmd \bft
-    = \mea{I \cap (x-J)}.
-  \]
+  (b)
+%  Note that
+%  \[
+%    (\chi_I * \chi_J) (x) = \int \chi_I(t) \chi_J(x-t) \rmd t
+%    = \mea{I \cap (x-J)}.
+%  \]
   For $I = [a_1, b_1], J = [a_2, b_2]$,
   we sketch the graph of $\chi_I * \chi_J$ in Figure \ref{fig:graphOfChiIChiJ}.
   \begin{figure}[htbp]
