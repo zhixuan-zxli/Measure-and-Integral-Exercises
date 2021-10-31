@@ -6,8 +6,8 @@
   (a) The case $r = \infty$ reduces to H\"{o}lder's inequality.
   Indeed, we have $\frac{1}{p} + \frac{1}{q} = 1$ and
   \[
-    \left| (f * g)(\bfx) \right| \le \int \left| f(\bfx-\bft) g(\bft) \right| \rmd t
-    \le \left\| f(\bfx-\cdot) \right\|_p \left\| g \right\|_q
+    \left| (f * g)(\bfx) \right| \le \int \left| f(\bft) g(\bfx-\bft) \right| \rmd t
+    \le \left\| f \right\|_p \left\| g(x-\cdot) \right\|_q
     = \left\| f \right\|_p \left\| g \right\|_q
   \]
   for each $\bfx \in \bbR^n$, so $\| f*g \|_{\infty} \le \|f\|_p \|g\|_q$.
@@ -104,4 +104,63 @@
     \frac{1}{r} = \frac{1}{p} + \frac{1}{q} - 1.
     \qedhere
   \]
+\end{exercise}
+
+\begin{exercise}{9.3}
+  (a) By H\"{o}lder's inequality, we have
+  \[
+    \left| (f*K)(\bfx) \right|
+    \le \int \left| f(\bft) K(\bfx - \bft) \right| \rmd \bft
+    \le \left\| f \right\|_p \left\| K \right\|_{p'},
+  \]
+  so $f*K$ is bounded in $\bbR^n$.
+  If $1\le p' < \infty$ and $\bfx_1, \bfx_2 \in \bbR^n$,
+  again by H\"{o}lder's inequality we have
+  \[
+    \begin{aligned}
+      \left| (f*K)(\bfx_2) - (f*K)(\bfx_1) \right|
+      &\le \int \left| f(\bft) \right| \cdot
+      \left| K(\bfx_2 - \bft) - K(\bfx_1 - \bft)\right|
+      \rmd \bft \\
+      &\le \left\| f \right\|_p
+      \left\| K(\bfx_2 - \cdot) - K(\bfx_1 - \cdot) \right\|_{p'}.
+    \end{aligned}
+  \]
+  As $\bfx_2 \rightarrow \bfx_1$,
+  the last norm term tends to zero
+  due to continuity in $L^{p'}$ norm ($1 \le p' < \infty$).
+  Thus  $f*K$ is continuous.
+  If $p' = \infty$, then $p < \infty$,
+  and the continuity follows from
+  \[
+    (f*K)(x) = \int f(\bft) K(\bfx - \bft) \rmd \bft
+    = \int f(\bfx - \bft) K(\bft) \rmd \bft
+    = (K*f)(x).
+  \]
+
+  (b) Note that
+  \[
+    (\chi_I * \chi_J) (x) = \int \chi_I(\bft) \chi_J(\bfx-\bft) \rmd \bft
+    = \mea{I \cap (x-J)}.
+  \]
+  For $I = [a_1, b_1], J = [a_2, b_2]$,
+  we sketch the graph of $\chi_I * \chi_J$ in Figure \ref{fig:graphOfChiIChiJ}.
+  \begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{.4\linewidth}
+      \includegraphics[height=0.4\linewidth]{pst/convGraph_1}
+      \caption{Case $\mea{I} \ge \mea{J}$. }
+    \end{subfigure}
+    \begin{subfigure}[b]{.4\linewidth}
+      \includegraphics[height=0.4\linewidth]{pst/convGraph_2}
+      \caption{Case $\mea{I} < \mea{J}$. }
+    \end{subfigure}%
+
+    \begin{subfigure}[b]{.4\linewidth}
+      \includegraphics[height=0.4\linewidth]{pst/convGraph_3}
+      \caption{Case $I = J$. }
+    \end{subfigure}%
+    \caption{Graph of $\chi_I * \chi_J$. }
+    \label{fig:graphOfChiIChiJ}
+  \end{figure}
 \end{exercise}
