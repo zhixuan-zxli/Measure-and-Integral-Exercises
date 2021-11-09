@@ -11,7 +11,6 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{subcaption}
-
 %\setlength\parindent{0pt}
 
 % Self-defined commands
@@ -27,10 +26,12 @@
 \newcommand{\bfe}{\mathbf{e}}
 \newcommand{\bff}{\mathbf{f}}
 \newcommand{\bfh}{\mathbf{h}}
-\newcommand{\bft}{\mathbf{t}}
 \newcommand{\bfx}{\mathbf{x}}
 \newcommand{\bfy}{\mathbf{y}}
+\newcommand{\bfz}{\mathbf{z}}
+\newcommand{\bft}{\mathbf{t}}
 \newcommand{\bfr}{\mathbf{R^1}}
+\newcommand{\bfrn}{\mathbf{R^n}}
 
 \DeclareMathOperator*\lolim{\underline{lim}}
 \DeclareMathOperator*\uplim{\overline{lim}}
@@ -40,9 +41,11 @@
 \newcommand{\mea}[1]{\left\vert#1\right\vert}
 \newcommand{\outmea}[1]{\left\vert#1\right\vert_\mathrm{e}}
 \newcommand{\inmea}[1]{\left\vert#1\right\vert_\mathrm{i}}
+\newcommand{\inorm}[1]{\left\|#1\right\|_{\infty}}
+\newcommand{\pnorm}[1]{\left\|#1\right\|_p}
 
 \newtheorem*{lemma}{Lemma}
-
+\newtheorem*{remark}{Remark}
 \theoremstyle{definition}
 \newtheorem{innerexercise}{Exercise}
 \newenvironment{exercise}[1]
@@ -52,10 +55,11 @@
 % Document
 \begin{document}
 
-  \title{\textbf{Measure and Integral}\\ Homework 4\footnote{
-    Muhan: 8.11--13, 9.6--9.8.
-    Zhixuan: 8.15--17, 9.2, 9.3.
-    Heqing: 8.2, 8.8, 8.28, 8.32, 9.4, 9.5.}}
+  \title{\textbf{Measure and Integral}\\ Homework}
+%  \footnote{
+%    Muhan: 8.11--13, 9.6--9.8.
+%    Zhixuan: 8.15--17, 9.2, 9.3, 9.13.
+%    Heqing: 8.2, 8.8, 8.28, 8.32, 9.4, 9.5.}}
   \author{Luo Muhan, Li Zhixuan, Huang Heqing}
   \maketitle
 
@@ -73,11 +77,11 @@
   % Homework part
   %=====================================================================
 %  \input{hw-1}
-  \setcounter{section}{7}
-%  \input{ch4}
-%  \input{ch5}
-%  \input{ch6}
-%  \input{ch7}
+  \setcounter{section}{3}
+  \input{ch4}
+  \input{ch5}
+  \input{ch6}
+  \input{ch7}
   \input{ch8}
   \input{ch9}
 \end{document}

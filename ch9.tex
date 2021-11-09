@@ -1,3 +1,4 @@
+\section{Approximations of the Identity and Maximal Functions}
 \begin{lemma}[Generalized H\"{o}lder's Inquality]
   Let $1 \le p_i, r \le \infty$ and
   $\sum_{i=1}^k \frac{1}{p_i} = \frac{1}{r}$.
@@ -10,7 +11,7 @@
 \begin{proof}
   We first prove the case $k=2$.
   If $p_1 = \infty$, then $p_2 = r$,
-  $|f_1 f_2| \le \|f_1\|_{\infty} |f_2|$,
+  $|f_1 f_2| \le \|f_1\|_{\infty} |f_2|$ a.e.,
   and by homogeneity $\|f_1 f_2\|_r \le \|f_1\|_{\infty} \|f_2\|_{p_2}$.
   The case $p_2 = \infty$ is similar.
   If $p_1, p_2 < \infty$, then $r < \infty$ and $1 \le p_i/r < \infty$.
@@ -43,22 +44,22 @@
   and the proof of the Lemma is completed.
 \end{proof}
 
+
 \begin{exercise}{9.2}
-  (a) The case $r = \infty$ reduces to H\"{o}lder's inequality.
-  Indeed, we have $\frac{1}{p} + \frac{1}{q} = 1$ and
+  (a)
+  First assume $f, g \ge 0$.
+  Then $f * g$ is measurable by Tonelli's Theorem.
+  Consider the case $r = \infty$ where we have $\frac{1}{p} + \frac{1}{q} = 1$.
+  Then we find
   \[
     \left| (f * g)(\bfx) \right| \le \int \left| f(\bft) g(\bfx-\bft) \right| \rmd t
-    \le \left\| f \right\|_p \left\| g(x-\cdot) \right\|_q
+    \le \left\| f \right\|_p \left\| g(\bfx-\cdot) \right\|_q
     = \left\| f \right\|_p \left\| g \right\|_q
   \]
   for each $\bfx \in \bbR^n$, so $\| f*g \|_{\infty} \le \|f\|_p \|g\|_q$.
-
-  If $r < \infty$,
-  then $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r} > 1$
-  and also $p, q < \infty$.
-  We may assume $f, g \ge 0$ since
-  $\left| (f*g)(\bfx) \right| \le \left( |f|*|g| \right) (\bfx)$
-  and we can apply the special case to $|f|$ and $|g|$.
+  Next consider the case $r < \infty$,
+  where $\frac{1}{p} + \frac{1}{q} = 1 + \frac{1}{r} > 1$
+  and $p, q < \infty$.
   We write
   \[
     (f*g)(\bfx) = \int f(\bft) g(\bfx-\bft) \rmd \bft
@@ -84,8 +85,8 @@
       \left( \int f(\bft)^p g(\bfx-\bft)^q \rmd \bft \right).
     \end{aligned}
   \]
-  Integrating the term in parentheses with respect to $x$
-  and applying Tonelli's Theorem, we find
+  Integrating the term in parentheses with respect to $\bfx$
+  and applying Tonelli's Theorem, we obtain
   \[
     \int \int f(\bft)^p g(\bfx-\bft)^q \rmd \bft \rmd \bfx
     = \int f(\bft)^p \left( \int g(\bfx-\bft)^q \rmd \bfx \right) \rmd \bft
@@ -100,6 +101,35 @@
   \]
   Taking the $r$th root we obtain the desired inequality
   $\left\| f*g \right\|_r \le \left\| f \right\|_p \left\| g \right\|_q$.
+
+  For general $f \in L^p$ and $g \in L^q$,
+  we show that $f * g$ is measurable.
+  By the previous case we have $|f| * |g| \in L^r$.
+  Therefore $|f| * |g| < \infty$ a.e.,
+  $f(\bft) g(\bfx - \bft) \in L^1(\rmd \bft)$ for a.e.\ $\bfx$,
+  and $f*g$ exists and is finite a.e.
+  Next, define
+  \[
+    f_N = f \chi_{\{|\bfx| < N\}}, \quad
+    g_N = g \chi_{\{|\bfx| < N\}}, \quad
+    N = 1, 2, \cdots.
+  \]
+  Then $f_N, g_N \in L^1$,
+  and $f_N * g_N$ is measurable by Fubini's Theorem.
+  Note that
+  \[
+    \lim_{N \rightarrow \infty} f_N(\bft) g_N(\bfx - \bft)
+    = f(\bft) g(\bfx - \bft)
+    \text{ and }
+    |f_N(\bft) g_N(\bfx - \bft)| \le |f(\bft) g(\bfx-\bft)|.
+  \]
+  By Dominated Convergence Theorem
+  we have $\lim_{N \rightarrow \infty} (f_N * g_N) = f * g$ a.e.,
+  so we know that $f * g$ is measurable.
+  Finally, the inequality for general $f$ and $g$
+  follows by noting that
+  $\left| (f*g)(\bfx) \right| \le \left( |f|*|g| \right) (\bfx)$
+  and applying the previous case to $|f|$ and $|g|$.
 
   (b) Define $f_{\lambda}(\bfx) = f(\lambda \bfx), \lambda > 0$.
   Then
@@ -133,10 +163,10 @@
     \lambda^{-\frac n q} \left\| g \right\|_q
     \Longleftrightarrow
     \left\| f*g \right\|_r \le
-    \lambda^{-n\left( 1 + \frac1r - \frac 1p - \frac 1q \right)}
+    \lambda^{n\left( 1 + \frac1r - \frac 1p - \frac 1q \right)}
     \left\| f \right\|_p \left\| g \right\|_q.
   \]
-  If $-n\left( 1 + \frac1r - \frac 1p - \frac 1q \right) > 0$
+  If $n\left( 1 + \frac1r - \frac 1p - \frac 1q \right) > 0$
   (or $<0$, resp.),
   we can let $\lambda \rightarrow 0$
   (or $\rightarrow +\infty$, resp.)
@@ -206,4 +236,161 @@
     \caption{Graph of $\chi_I * \chi_J$. }
     \label{fig:graphOfChiIChiJ}
   \end{figure}
+\end{exercise}
+\begin{exercise}{9.4}\label{94}
+  (a) \textbf{Claim}: For any positive integer $m$, the derivative of order $m$ of $h$ has the form $$h^{(m)}(x)=\sum_{i=1}^{N(m)}c_i(m)\frac{1}{x^i}e^{-1/x^2}\quad \text{for}\ x>0,$$
+  where $N(m)$ is an integer and $c_i(m)$ are constants depend on $m$.
+  
+  We will prove the claim by induction on $m$. For $m=1$, we have $h^\prime(x)=2\frac{1}{x^3}e^{-1/x^2}$ for $x>0$. Assuming that the formula holds for $m$, we have
+  $$h^{(m+1)}=\frac{\rmd}{\rmd x}\sum_{i=1}^{N(m)}c_i(m)\frac{1}{x^i}e^{-1/x^2}=\sum_{i=1}^{N(m)}c_i(m)\left(\frac{2}{x^{i+3}}-\frac{i}{x^{i+1}}\right)e^{-1/x^2}\quad \text{for}\ x>0.$$
+  This proves the claim.
+  
+ Note that $h^{(m)}(x)=0$ for $x<0$ for any positive integer $m$. It is obvious that $h$ is continuous on $\mathbf{R}$ and is infinitely differentiable on $\mathbf{R}\backslash\{0\}$. Therefore, to prove $h\in C^\infty$, we only need to show that $h$ is infinitely differentiable at $x=0$. We will prove $h\in C^m$ and $h^{(m)}(0)=0$ for any positive integer $m$ by induction. For $m=1$, we have
+  \begin{equation*}
+      \begin{aligned}
+         h_+^{\prime}(0)&=\lim_{x\to 0+}\frac{h(x)-h(0)}{x-0}=\lim_{x\to 0+}\frac{e^{-1/x^2}}{x}=\lim_{t\to+\infty}\frac{t}{e^{t^2}}=0,\\
+             h_-^{\prime}(0)&=\lim_{x\to 0-}\frac{h(x)-h(0)}{x-0}=\lim_{x\to 0-}\frac{0}{x}=0,
+      \end{aligned}
+  \end{equation*}
+  which imply that $h\in C^1$ and $h^\prime(0)=0$. Suppose that this statement is true for $m$. Then for $m+1$, we have 
+  \begin{equation*}
+      \begin{aligned}
+         h_+^{(m+1)}(0)&=\lim_{x\to 0+}\frac{h^{(m)}(x)-h^{(m)}(0)}{x-0}= \lim_{x\to 0+}\frac{\sum_{i=1}^{N(m)}c_i(m)\frac{1}{x^i}e^{-1/x^2}}{x}=\sum_{i=1}^{N(m)}c_i(m)\lim_{t\to+\infty}\frac{t^{i+1}}{e^{t^2}}=0,\\
+          h_-^{(m+1)}(0)&=\lim_{x\to 0-}\frac{h^{(m)}(x)-h^{(m)}(0)}{x-0}=\lim_{x\to 0-}\frac{0}{x}=0,
+      \end{aligned}
+  \end{equation*}
+  which imply that $h\in C^{(m+1)}$ and $h^{(m+1)}(0)=0$. This proves $h\in C^\infty$.
+  
+  (b) For $a<b$, we have $$g(x)=h(x-a)h(b-x)=e^{-\left[\frac{1}{(x-a)^2}+\frac{1}{(b-x)^2}\right]}\chi_{(a,b)}.$$ Thus $\operatorname{supp} g=\overline{\{x:g(x)\neq 0\}}=[a,b]$. Since $h(x)\in C^\infty$, it follows that the compositions $h(x-a),h(b-x)\in C^\infty$ and then the product $g(x)=h(x-a)h(b-x)\in C^\infty$.
+  
+  (c) For $\bfx=(x_1,\cdots,x_n)\in\bfrn$, we denote the Euclidean norm by $|\bfx|=(x_1^2+\cdots+x_n^2)^{1/2}$ and define 
+  $$  \eta(\bfx)= \begin{cases}e^{\frac{1}{|\bfx|^2-1}} & \text { if } |\mathbf{x}|<1,  \\ 0 & \text { if } |\mathbf{x}|\geq 1.\end{cases}$$
+  Then $\eta\in C_0^\infty(\bfrn)$ with support $\{\bfx:|\bfx|\leq1\}$.
+  Given a closed ball $\bar{B}(\bfy,\epsilon)=\{\bfx:|\bfx-\bfy|\leq\epsilon\}$ of radius $\epsilon$ centred at $\bfy$. Let $\eta_{\epsilon,\bfy}(\bfx)=\eta\left(\frac{\bfx-\bfy}{\epsilon}\right)$, then $\eta_{\epsilon,\bfy}(x)\in C_0^\infty(\bfrn)$ with support $\bar{B}(\bfy,\epsilon)$. 
+  
+  Given an interval $I=\{\bfx=(x_1,\cdots,x_n): a_k\leq x_k\leq b_k, k=1,\cdots,n\}$, we define $$\rho(\bfx)=\prod_{k=1}^ng(x_k)=\prod_{k=1}^nh(x_k-a_k)h(b_k-x_k),$$
+  where $h$ and $g$ are as defined in (a) and (b) respectively. Then $\rho\in  C_0^\infty(\bfrn)$ with support $I$.
+\end{exercise}
+\begin{exercise}{9.5} We will show that such function $h$ exists in three steps below.
+
+  Step 1: We can choose an open set $G_2$ such that $\overline{G}_1\subset G_2$, $\overline{G}_2\subset G$.
+  
+  In fact, the boundary $\partial G=\overline{G}\backslash G=\overline{G}\cap G^c$ is compact and nonempty since $G$ is open and bounded. Similarly, $\partial G_1$ is also compact and nonempty.
+   Note that $\overline{G}_1\subset G$, thus $\partial G_1\cap\partial G=\varnothing$ and then $d(\partial G,\partial G_1)=\inf\{|\bfx-\bfy|:\bfx\in\partial G,\bfy\in\partial G_1\}>0$. Let $\delta=d(\partial G,\partial G_1)/3$ and $G_2=\{\bfx:|\bfx-\bfy|<\delta\ \text{for some}\ \bfy\in G_1\}$, then $G_2$ is open and $\overline{G}_1\subset G_2\subset\overline{G}_2\subset G$.
+   
+   Step 2: we can find a $K\in C^\infty$ with $\operatorname{supp} K=\overline{B}_{\delta}=\{\bfx:|\bfx|\leq\delta\}$ and $\int K=1$.
+   
+   Recall from \textbf{Exercise} \ref{94} (c) that 
+   $$K(\bfx)=\frac{C}{\delta^n}\eta\left(\frac{\bfx}{\delta}\right),$$ where $C=\left(\int \eta\right)^{-1}$,
+   satisfies our requirements.
+   
+   Step 3: Let $h=\chi_{G_2}\ast K$, where $G_2$ and $K$ are as defined in Step 1 and Step 2 respectively, then $h\in C_0^\infty$ such that $h=1$ in $G_1$ and $h=0$ outside $G$.
+   
+   Since $G_2$ is bounded and $K\in C_0^\infty$, the function $h$ is $C_0^\infty$ with 
+   $$\operatorname{supp} h\subset \operatorname{supp}\chi_{G_2}+\operatorname{supp}K=\overline{G}_2+\overline{B}_{\delta}\subset G.$$
+   (Note that the validity of the last inclusion depends on the selection of $\delta$ in Step 1.) This shows that $h=0$ outside $G$. For $\bfx\in G_1$ and $\bft\notin G_2$, by the definition of $G_2$, we have $|\bfx-\bft|\geq \delta$. Since $\operatorname{supp}K=\overline{B}_\delta$, we have $K(\bfx-\bft)=0$. Therefore, for any $\bfx\in G_1$, it follows that $\chi_{G_2}(\bft)K(\bfx-\bft)=K(\bfx-\bft)$ and then 
+   $$h(\bfx)=\int_{\bfrn}\chi_{G_2}(\bft)K(\bfx-\bft)\rmd\bft=\int_{\bfrn} K(\bfx-\bft)\rmd\bft=\int_{\bfrn} K(\bft)\rmd\bft=1.$$
+\end{exercise}
+\begin{exercise}{9.6}
+  Suppose $|K|\leq M$ for some $M>0$. Then for any $\bfx\in\bbR^n$, we have
+  \begin{align*}
+      |f*K(\bfx)|&=\bigg|\int_{\bbR^n}f(\bft)K(\bfx-\bft)\rmd\bft\bigg|\\
+      &\leq\int_{\bbR^n}|f(\bft)K(\bfx-\bft)|\rmd\bft\\
+      &\leq M\int_{\bbR^n}|f(\bft)|\rmd\bft<\infty,
+  \end{align*}
+  which implies $f*K$ is bounded.
+  
+  Now for any given $\epsilon>0$, since $K$ is uniformly continuous, there exists $\delta>0$ such that as long as $|\bfx-\bfx'|<\delta$ we have $|K(\bfx)-K(\bfx')|<\epsilon.$ Then for such $\bfx$ and $\bfx'$ we have
+  \begin{align*}
+      |f*K(\bfx)-f*K(\bfx')|&=\bigg|\int_{\bbR^n}f(\bft)(K(\bfx-\bft)-K(\bfx'-\bft))\rmd\bft\bigg|\\
+      &\leq \int_{\bbR^n}|f(\bft)(K(\bfx-\bft)-K(\bfx'-\bft))|\rmd\bft\\
+      &\leq \epsilon\int_{\bbR^n}|f(\bft)|\rmd\bft.
+  \end{align*}
+  Thus $f*K$ is uniformly continuous.
+\end{exercise}
+
+\begin{exercise}{9.7}
+  Let $g(x,y,t)=f(t)P_y(x-t)$, then 
+  \[
+  \frac{\partial g}{\partial x}(x,y,t)=f(t)\frac{-2y(x-t)}{[y^2+(x-t)^2]^2}.
+  \]
+  When $|x|\leq N$, we then have 
+  \[
+    \bigg|\frac{\partial g}{\partial x}(x,y,t)\bigg|\leq |f(t)|\frac{2y(t+N)}{y^4+(|t|-N)^4}.
+  \]
+  Denote the right hand side function by $h(y,t)$. By Holder's Inequality
+  \[
+    \int_\bbR h(y,t)\rmd t\leq \pnorm{f}\bigg(\int_\bbR\bigg[\frac{2y(t+N)}{y^4+(|t|-N)^4}\bigg]^{p'}\rmd t\bigg)^{1/{p'}}<\infty.
+  \]
+  Thus $h(y,t)\in L^1(\bbR)$. Now for fixed $x$ and $y$, choose an arbitrary sequence $\{h_n\}$ converging to zero and we may assume $|h_i|\leq 1$ for all $i$. We may also assume $|x|\leq N-1$ for some $N$ sufficiently large. Then by mean value theorem
+  \[
+    \frac{g(x+h_n,y,t)-g(x,y,t)}{h_n}=\frac{\partial g}{\partial x}(x+\xi_n,y,t)
+  \]
+  for some $\xi_n$ between 0 and $h_n$. Hence by earlier result we have
+  \[
+    \bigg|\frac{g(x+h_n,y,t)-g(x,y,t)}{h_n}\bigg|\leq h(y,t).
+  \]
+  Now by dominated convergence theorem, we have
+  \begin{align*}
+      \lim_{n\rightarrow\infty}\frac{f(x+h_n,y,t)-f(x,y,t)}{h_n}&=\lim_{n\rightarrow\infty}\int_\bbR\frac{g(x+h_n,y,t)-g(x,y,t)}{h_n}\rmd t\\
+      &=\int_\bbR \frac{\partial g}{\partial x}(x,y,t)\rmd t=\int_\bbR f(t)\frac{\partial P_y}{\partial x}(x-t)\rmd t.
+  \end{align*}
+  Therefore
+  \[
+    \frac{\partial f}{\partial x}(x,y)=\int_\bbR f(t)\frac{\partial P_y}{\partial x}(x-t)\rmd t.
+  \]
+  Using similar methods, we can calculate that 
+  \[
+    (\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2})f(x,y)=\int_\bbR f(t)(\frac{\partial^2}{\partial x^2}+\frac{\partial^2}{\partial y^2})P_y(x-t)\rmd t
+  \]
+  and since $P_y(x)$ is harmonic when $y>0$, we deduce that $f(x,y)$ is harmonic when $y>0.$
+\end{exercise}
+
+\begin{exercise}{9.8}
+  For any $s> 0$, since $K(s,t)=s^{-1}K(1,t/s)$, we have
+  \[
+    (Tf)(s)=\int_0^\infty f(t)s^{-1}K(1,t/s)\rmd t=\int_0^\infty f(st)K(1,t)\rmd t.
+  \]
+  Using results in Exercise 8.8, it follows that
+  \begin{align*}
+     \pnorm{Tf}&=\bigg[\int_0^\infty\bigg[\int_0^\infty f(st)K(1,t)\rmd t\bigg]^p\rmd s\bigg]^{1/p}\\
+     &\leq \int_0^\infty\bigg[\int_0^\infty f(st)^p K(1,t)^p\rmd s\bigg]^{1/p}\rmd t\\
+     &=\int_0^\infty\bigg[\int_0^\infty f(s)^p t^{-1}K(1,t)^p\rmd s\bigg]^{1/p}\rmd t\\
+     &=\bigg[\int_0^\infty f(s)^p\rmd s\bigg]^{1/p}\bigg[\int_0^\infty t^{-1/p}K(1,t)\rmd t\bigg]\\
+     &\leq\gamma\pnorm{f}.
+     \qedhere
+  \end{align*}
+\end{exercise}
+
+\begin{exercise}{9.13}
+  For each $x \in (0, 1)$,
+  if we let $I_k(x)$ be the unique interval
+  among $I_{k,j}$ containing $x$,
+  then $\{I_k(x)\}$ shrinks regularly to $x$.
+  It follows from Lebesgue Differentiation Theorem
+  that $f_k \rightarrow f$ a.e.
+  By Exercise 8.12, to show $f_k \rightarrow f$ in $L^p(0,1)$,
+  it suffices to show $\|f_k\|_p \rightarrow \|f\|_p$.
+  To this end, we compute
+  \[
+    \begin{aligned}
+      \int_0^1 \left|f_k\right|^p
+      &= \sum_{j=1}^{2^k} \int_{I_{k,j}} \left|f_k\right|^p \\
+      &= \sum_{j=1}^{2^k} 2^{-k} \left| 2^k \int_{I_{k,j}} f \right|^p \\
+      &\le 2^{k(p-1)} \sum_{j=1}^{2^k}
+      \left( \int_{I_{k,j}} \left|f\right|^p \right)
+      \left( \int_{I_{k,j}} 1 \right)^{p/p'}
+      \quad &&(\text{H\"{o}lder's inequality}) \\
+      &= 2^{k(p-1)} 2^{-k(p-1)}
+      \sum_{j=1}^{2^k} \int_{I_{k,j}} \left|f\right|^p
+      \quad &&(p/p' = p-1) \\
+      &= \int_0^1 \left| f \right|^p.
+    \end{aligned}
+  \]
+  Taking limit superior, we obtain
+  $\limsup \left\| f_k \right\|_p \le \left\| f \right\|_p$.
+  However by Fatou's Lemma, we have
+  $\left\| f \right\|_p \le \liminf \left\| f_k \right\|_p$.
+  Combining the inequalities, we find $\lim \|f_k\|_p = \|f\|_p$
+  and the proof is completed.
 \end{exercise}

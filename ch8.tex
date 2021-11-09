@@ -1,3 +1,177 @@
+\section{$L^p$ Classes}
+
+\begin{exercise}{8.2}
+(1)	The converse of H\"older's inequality is trivial if $f=0$ a.e.\ in $E$, so we assume $\Vert f\Vert_p>0$. 
+	H\"older's inequality says that $\Vert f\Vert_p\geq \sup \int_Efg$,
+	where the supremum is taken over all real-valued $g$ such that $\Vert g\Vert_{q^\prime}\leq 1$ and $\int_E fg$ exists. Thus we only need to show the opposite inequality. 
+	
+	In the case of $p=1$, we let $g=\mathrm{sign} f$, then $\Vert g\Vert_\infty=1$ and $\int_Efg=\int_E|f|=\Vert f\Vert_1$.
+For $p=\infty$, given $\epsilon>0$, let $A=\{x\in E:|f(x)|>\|f\|_\infty-\epsilon\}$. Then $|A|>0$ and there exists $B\subset A$ with $0<|B|<\infty$. Let $g=|B|^{-1}\chi_B(\mathrm{sign} f)$; then $\|g\|_1=1$, so
+$$\int_Efg=\frac{1}{|B|}\int_B|f|\geq\|f\|_\infty-\epsilon.$$
+Since $\epsilon>0$ is arbitrary, $\underset{{\|g\|_1\leq1}}{\sup}\int_Efg\geq\|f\|_\infty$.
+
+(2) For $1\leq p\leq\infty$, let $f$ be a real-valued measurable function such that
+$fg\in L^1(E)$ for every $g\in L^{p^{\prime}}$, $1/p+1/p^{\prime}=1$. Suppose that $f\not\in L^p(E)$, i.e. $\|f\|_p=+\infty$, then for every $n$, there exists $g_n$ with $\|g_n\|_{p^{\prime}}\leq1$ such that $\int_E|f|g_n>n^3$. Let $g(x)=\sum_{n=1}^{\infty}|g_n(x)|/n^2$ and $S_N(x)=\sum_{n=1}^{N}|g_n(x)|/n^2$. By Minkowski's Inequality, $\|S_N\|_{p^{\prime}}\leq\sum_{n=1}^N\|g_n\|_{p^\prime}/n^2\leq\sum_{n=1}^\infty1/n^2$. Then monotone convergence theorem gives $\|g\|_{p^\prime}=\lim_N\|S_N\|_{p^\prime}\leq\sum_{n=1}^\infty1/n^2<+\infty$, i.e. $g\in L^{p^\prime}(E)$. However, for every $n$,  $$\int_E|f|g\geq\frac{1}{n^2}\int_E|f|g_n> n.$$
+Hence $fg\not\in L^1(E)$ and this contradiction proves that $f\in  L^p(E)$. 
+\end{exercise}
+\begin{exercise}{8.8}\label{88}
+  For $p=1$, Tonelli's theorem can be invoked to give 
+  $$\int\int|f(\bfx,\bfy)|\rmd\bfx\rmd\bfy=\int\int|f(\bfx,\bfy)|\rmd\bfy\rmd\bfx.$$
+  
+  For $1<p<\infty$, let $p^\prime$ denote the exponent conjugate to $p$, i.e. $1/p+1/p^\prime=1$. Note that
+  \begin{equation*}
+      \begin{aligned}
+        \int\left[\int|f(\bfx,\bfy)|\rmd\bfx\right]^p\rmd\bfy&=\int\left[\int|f(\bfz,\bfy)|\rmd\bfz\right]^{p-1}\left[\int|f(\bfx,\bfy)|\rmd\bfx\right]\rmd\bfy\\
+        (\text{by Tonelli's theorem})&=\int\left[\int\left[\int|f(\bfz,\bfy)|\rmd\bfz\right]^{p-1}|f(\bfx,\bfy)|\rmd\bfy\right]\rmd\bfx\\
+        (\text{by H\"older's inequality})&\leq\int\left[\left[\int\left[\int|f(\bfz,\bfy)|\rmd\bfz\right]^p\rmd\bfy\right]^{1/p^\prime}\left[\int|f(\bfx,\bfy)|^p\rmd\bfy\right]^{1/p}\right]\rmd\bfx\\
+       &=\left[\int\left[\int|f(\bfx,\bfy)|\rmd\bfx\right]^{p}\rmd\bfy\right]^{1/p^\prime}\int\left[\int|f(\bfx,\bfy)|^p\rmd\bfy\right]^{1/p}\rmd \bfx.
+      \end{aligned}
+  \end{equation*}
+  The generalized Minkowski's inequality follows by dividing both sides by $\left[\int\left[\int|f(\bfx,\bfy)|\rmd\bfx\right]^{p}\rmd\bfy\right]^{1/p^\prime}$. (Note that if $\int\left[\int|f(\bfx,\bfy)|\rmd\bfx\right]^p\rmd\bfy=0$, the result is obvious.)
+\end{exercise}
+\begin{remark}
+The integral version of Minkowski's inequality can be written as
+$$\left\Vert\|f(\bfx,\bfy)\|_{L^1(\rmd\bfx)}\right\Vert_{L^p(\rmd\bfy)}\leq\left\Vert\|f(\bfx,\bfy)\|_{L^p(\rmd\bfy)}\right\Vert_{L^1(\rmd\bfx)},$$
+where $1\leq p<\infty$. 
+
+Consider the measurable function $f(x,\bfy)$ defined on $[0,2]\times\bfrn$:
+$$
+f(x,\bfy)= \begin{cases}g(\bfy), & 0\leq x<1, \\ h(\bfy), & 1\leq x\leq2.\end{cases}
+$$
+Then the integral version of Minkowski's inequality implies the ordinary Minkowski's inequality $$\|g+h\|_p\leq\|g\|_p+\|h\|_p.$$
+\end{remark}
+\begin{exercise}{8.11}
+  First since $\inorm{g_k}\leq M$, we have $\mea{\{g_k>M\}}=0$. Let $x\in E$ such that $g(x)>M$, then there exists $N$ such that $g_k(x)>M$ when $k>N$. Therefore $\{g>M\}\subset\liminf{\{g_k>M\}}$. This implies
+  \[
+    \mea{\{g>M\}}\leq\mea{\{\liminf{\{g_k>M\}}\}}\leq\liminf{\mea{\{g_k>M\}}}=0.
+  \]
+  Thus $\inorm{g}\leq M.$ Now by Minkowski's Inequality, we have
+  \begin{align*}
+    \pnorm{f_kg_k-fg}&=\pnorm{f(g_k-g)+g_k(f_k-f)}\\
+    &\leq \pnorm{f(g_k-g)}+\pnorm{g_k(f_k-f)}\\
+    &=\bigg(\int_E|f|^p|g_k-g|^p\bigg)^{1/p}+\bigg(\int_E|g_k|^p|f_k-f|^p\bigg)^{1/p}\\
+    &\leq \bigg(\int_E|f|^p|g_k-g|^p\bigg)^{1/p}+M\pnorm{f_k-f}
+  \end{align*}
+  where we used Holder's Inequality in the last step. It suffices to prove the first term tends to zero when $k$ tends to infinity. Let $E_n=E\cap B(0,n)$. Then since $E=\lim E_n$ and $f\in L^p(E)$, we have
+  \[
+    \int_E|f|^p=\lim_{n\rightarrow\infty}\int_{E_n}|f|^p.
+  \]
+  For any $\epsilon>0$, there exists $n$ sufficiently large such that 
+  \[
+    \int_{E\setminus E_n}|f|^p<\frac{\epsilon}{2(2M)^p}.
+  \]
+  Now since $E_n$ has finite measure, we deduce that $g_k$ converges to $g$ in measure. We choose 
+  \[
+    \delta=\frac{\epsilon}{2\pnorm{f}^p}
+  \]
+  Then the measure of $E_n^k=\{x\in E_n:|g_k(x)-g(x)|^p>\delta\}$ tends to zero as $k$ tends to infinity. Therefore
+  \begin{align*}
+      \int_E|f|^p|g_k-g|^p&=\int_{E\setminus E_n}|f|^p|g_k-g|^p+\int_{E_n\setminus E_n^k}|f|^p|g_k-g|^p+\int_{E_n^k}|f|^p|g_k-g|^p\\
+      &\leq (2M)^p\int_{E\setminus E_n}|f|^p+\delta\int_{E_n\setminus E_n^k}|f|^p+(2M)^p\int_{E_n^k}|f|^p\\
+      &\leq\epsilon+(2M)^p\int_{E_n^k}|f|^p.
+  \end{align*}
+  Now since the set function $F(A)=\int_A|f|^p$ is absolutely continuous and $\lim_k\mea{E_n^k}=0$, we have
+  \[
+    \varlimsup_{k\rightarrow \infty}\int_E|f|^p|g_k-g|^p\leq\epsilon
+  \]
+  and since $\epsilon$ is arbitrary, the limit must exist and equal zero.
+\end{exercise}
+
+\begin{exercise}{8.12}
+  When $1\leq p\leq\infty$, by Minkowski's Inequality, we have
+  \[
+    \pnorm{f}-\pnorm{f-f_k}\leq\pnorm{f_k}\leq\pnorm{f_k-f}+\pnorm{f}.
+  \]
+  By letting $k$ tends to infinity, we deduce that $\pnorm{f_k}\rightarrow\pnorm{f}.$
+  
+  When $0<p<1$, for any $a,\ b\geq 0$, we have the inequality
+  \begin{align}
+    (a+b)^p\leq a^p+b^p.
+  \end{align}
+  In fact if $a=b=0$, this is obvious. Otherwise suppose $a\neq 0$, then dividing by $a^p$, if suffices to prove $(1+t)^p\leq 1+t^p$ for $t\geq 0$. This is true since when $t=0$ we have the equality and the derivative of the right side majorizes that of the left for $t>0$. Therefore we also have
+  \[
+    \pnorm{f}^p-\pnorm{f-f_k}^p\leq\pnorm{f_k}^p\leq\pnorm{f_k-f}^p+\pnorm{f}^p.
+  \]
+  We deduce the same conclusion by letting $k$ tends to infinity.
+  
+  Conversely, we first notice that for $0<p<\infty$ and any $a,\ b\geq 0$ we have the following
+  \begin{align}
+    (a+b)^p\leq c(a^p+b^p)
+  \end{align}
+  where $c=\max\{2^{p-1},1\}$. In fact, when $0<p<1$, this is true by (1) above. When $p\geq 1$, we notice that the function $x^p$ is convex for $x\geq 0$ and therefore 
+  \[
+    (\frac{a+b}{2})^p\leq \frac{a^p+b^p}{2},
+  \]
+  which implies (2) is true for all $0<p<\infty.$ Now by using (2) we have
+  \[
+    |f-f_k|^p\leq (|f|+|f_k|)^p\leq c(|f|^p+|f_k|^p)
+  \]
+  Now let 
+  \[
+    g_k=c(|f|^p+|f_k|^p)-|f-f_k|^p\geq 0.
+  \]
+  Then $g_k\rightarrow 2c|f|^p$ a.e. and we can apply Fatou's Lemma on $g_k$:
+  \[
+    2c\int|f|^p\leq c\int|f|^p+c\varliminf_{k\rightarrow\infty}\int|f_k|^p-\varlimsup_{k\rightarrow\infty}\int|f-f_k|^p.
+  \]
+  Since $\pnorm{f_k}\rightarrow\pnorm{f}$, we deduce that
+  \[
+    0\leq\varliminf_{k\rightarrow\infty}\int|f-f_k|^p\leq\varlimsup_{k\rightarrow\infty}\int|f-f_k|^p\leq 0.
+  \]
+  Thus we must have $\pnorm{f-f_k}\rightarrow 0.$
+  
+  When $p=\infty$, let $f(x)\equiv1$ on $\bbR$ and $f_k(x)=1$ when $x\leq k$ and $f_k(x)=0$ when $x>k.$ Then $f_k\rightarrow f$ a.e. but we also have 
+  \[
+    \inorm{f}=\inorm{f_k}=\inorm{f-f_k}=1.
+  \]
+  Thus the conclusion does not hold when $p=\infty.$
+\end{exercise}
+
+\begin{exercise}{8.13}
+  When $1<p<\infty$, we have $1<p'<\infty$. Let $E_n=E\cap B(0,n)$. Then since $E=\lim E_n$ and $g\in L^{p'}(E)$, we have
+  \[
+    \int_E|g|^{p'}=\lim_{n\rightarrow\infty}\int_{E_n}|g|^{p'}.
+  \]
+  For any $\epsilon>0$, there exists $n$ sufficiently large such that 
+  \[
+    \int_{E\setminus E_n}|g|^{p'}<\epsilon^{p'}.
+  \]
+  Therefore
+  \begin{align*}
+      \int_{E\setminus E_n}|(f_k-f)g|&\leq \bigg(\int_{E\setminus E_n}|f_k-f|^p\bigg)^{1/p}\bigg(\int_{E\setminus E_n}|g|^{p'}\bigg)^{1/{p'}}\\
+      &\leq \pnorm{f_k-f}\epsilon\\
+      &\leq (\pnorm{f_k}+\pnorm{f})\epsilon\\
+      &\leq (M+\pnorm{f})\epsilon.
+  \end{align*}
+  Let $k$ tend to infinity and since $\epsilon$ is arbitrary we deduce that the limit of the left hand side is zero. Now we consider the integral on $E_n$. Since $E_n$ has finite measure, it follows that $f_k$ converges to $f$ in measure. Let 
+  \[
+    E_n^k=\{x\in E_n:|f_k(x)-f(x)|>\delta\}
+  \]
+  where 
+  \[
+    \delta=\frac{\epsilon}{\mea{E_n}^{1/p}\left\|g\right\|_{p'}}.
+  \] Then $\lim_k\mea{E_n^k}=0$. By Holder's Inequality and Minkowski's Inequality, we have
+  \begin{align}
+      \int_{E_n}|(f_k-f)g|&=\int_{E_n^k}|(f_k-f)g|+\int_{E_n\setminus E_n^k}|(f_k-f)g|\notag\\
+      &\leq \bigg(\int_{E_n^k}|f_k-f|^p\bigg)^{1/p}\bigg(\int_{E_n^k}|g|^{p'}\bigg)^{1/{p'}}+\bigg(\int_{E_n\setminus E_n^k}|f_k-f|^p\bigg)^{1/p}\bigg(\int_{E_n\setminus E_n^k}|g|^{p'}\bigg)^{1/{p'}}\notag\\
+      &\leq \pnorm{f_k-f}\bigg(\int_{E_n^k}|g|^{p'}\bigg)^{1/{p'}}+\delta\mea{E_n}^{1/p}\left\|g\right\|_{p'}\notag\\
+      &\leq (M+\pnorm{f})\bigg(\int_{E_n^k}|g|^{p'}\bigg)^{1/{p'}}+\epsilon.
+  \end{align}
+  Since the set function $F(A)=\int_A|g|^{p'}$ is absolutely continuous, we have
+  \[
+    \lim_{k\rightarrow\infty}\int_{E_n^k}|g|^{p'}=0.
+  \]
+  Thus we can let $k$ tends to infinity on both sides of (3) we get that 
+  \[
+    \varlimsup_{k\rightarrow\infty}\int_{E_n}|(f_k-f)g|\leq \epsilon.
+  \]
+  Since $\epsilon$ is arbitrary, it follows that $\lim_{k\rightarrow\infty}\int_{E_n}|(f_k-f)g|=0.$
+  
+  When $p=\infty$ and $p'=1$, the conclusion is still true using the same method as above except that we use the corresponding version of Holder's and Minkowski's Inequality for $p=\infty.$
+  
+  When $p=1$ and $p'=\infty$, we let $g\equiv 1$ and $f\equiv 0$ on $\bbR$ and $f_k(x)=k$ when $x\in[0,1/k]$ and $f_k(x)=0$ elsewhere. Then $f_k\rightarrow f$ everywhere and $\left\|f_k\right\|_1=1$ but $\left\|f\right\|_1=0$. Thus the conclusion does not hold for $p=1.$
+\end{exercise}
+
 \begin{exercise}{8.15}
   Let $i^2 = -1$, and we first show that the systems
   $\phi_k(x) = \frac{1}{\sqrt{2\pi}} e^{i k x}, k = 1, 2, \cdots$,
@@ -116,3 +290,69 @@
   \]
   Thus $f_k \rightarrow f$ in $L^2$ norm.
 \end{exercise}
+\begin{exercise}{8.28} We will show that $L_\phi(E)$ is a Banach space with norm $\|\cdot\|_{L_\phi(E)}$ in three steps below.
+
+($B_1$) $L_\phi(E)$ is a linear space over $\mathbf{R}$:
+If $f,g\in L_\phi(E)$ and $\alpha\in\mathbf{R}$, then $f+g$ and $\alpha f$ are measurable and finite a.e.\ in $E$. Since $\phi$ is increasing and $\phi(2t)\leq c\phi(t)$ for some constant $c>0$ independent of $t$, we have
+\begin{equation*}
+    \begin{aligned}
+   &\phi(|f+g|)\leq\phi(|f|+|g|)\leq \phi(2\max\{|f|,|g|\})\leq c\phi(\max\{|f|,|g|\})\leq c\left[\phi(|f|)+\phi(|g|)\right]\in L(E),\\
+   &\phi(|\alpha f|)=\phi(2|2^{-1}\alpha f|)\leq c\phi(|2^{-1}\alpha f|)\leq\cdots\leq c^k\phi(|2^{-k}\alpha f|)\leq c^k\phi(|f|)\in L(E)
+    \end{aligned}
+\end{equation*}
+for some $k$ such that $|2^{-k}\alpha |\leq 1$. Thus $\phi(|f+g|), \phi(|\alpha f|)\in L(E)$ since $\phi$ is positive. This proves $f+g,\alpha f\in L_{\phi}(E)$.
+
+($B_2$) $L_\phi(E)$ is a normed space: let us first prove that for every $f\in L_{\phi}(E)$,  $$0\leq\|f\|_{L_\phi(E)}=\inf\left\{\lambda>0:\int_E\phi\left(\frac{|f|}{\lambda}\right)\rmd\bfx\leq1\right\}<+\infty.$$
+The fact that $\|f\|_{L_\phi(E)}\geq 0$ is obvious. Suppose $\|f\|_{L_\phi(E)}=\infty$ for some $f\in L_{\phi}(E)$ and let $\psi_n=\phi\left(\frac{|f|}{n}\right)$, then $\int_E\psi_n\rmd\bfx>1$ for any integer $n\geq1$. Since $f$ is finite a.e. in $E$, $\phi$ is continuous on $[0,\infty)$ and $\phi(0)=0$, we have $\psi_n\to 0$ a.e.\ in $E$. Moreover, $0\leq \psi_n\leq\phi(|f|)\in L(E)$ for all $n\geq 1$ since $\phi$ is increasing. By Lebesgue's dominated convergence theorem, it follows that $1<\int_E\psi_n\rmd\bfx\to 0$. This contradiction proves that $\|\cdot\|_{L_\phi(E)}<\infty$.
+\begin{itemize}
+    \item[(a)] It is obvious that $\|f\|_{L_\phi(E)}=0$ for $f=0$ a.e.\ on $E$ since $\phi(0)=0$. 
+    Conversely, suppose $\|f\|_{L_\phi(E)}=0$ and $|f|>0$ on a subset $F\subset E$ with $|F|>0$. Then for $\lambda_n=1/n$, $n=1,2,\cdots$, we have $\int_F\phi\left(\frac{|f|}{\lambda_n}\right)\rmd\bfx\leq 1$ and $\lim_{n\to\infty}\phi\left(\frac{|f|}{\lambda_n}\right)=\infty$ on $F$. By Fatou's lemma, 
+    $$\infty=\int_F\lim_{n\to\infty}\phi\left(\frac{|f|}{\lambda_n}\right)\rmd\bfx\leq\liminf_{n\to\infty}\int_F\phi\left(\frac{|f|}{\lambda_n}\right)\rmd\bfx\leq 1.$$
+    This contradiction proves that $f=0$ a.e.\ on $E$ if  $\|f\|_{L_\phi(E)}=0$.
+    \item[(b)] For $\alpha\in\mathbf{R}$ and $f\in L_\phi(E)$. It is obvious that $\|\alpha f\|_{L_\phi(E)}=|\alpha|\|f\|_{L_\phi(E)}$ provided $\alpha=0$. Now we assume that $\alpha\neq 0$. Then for any $\lambda>0$ with $\int_E\phi\left(\frac{|f|}{\lambda}\right)\rmd\bfx\leq1$, we have
+    $$\int_E\phi\left(\frac{|\alpha f|}{|\alpha|\lambda}\right)\rmd\bfx\leq1,$$
+ which implies $|\alpha|\lambda\geq\|\alpha f\|_{L_\phi(E)}$ and hence $|\alpha|\|f\|_{L_\phi(E)}\geq\|\alpha f\|_{L_\phi(E)}$. On the other hand, for any $\lambda>0$ with $\int_E\phi\left(\frac{|\alpha f|}{\lambda}\right)\rmd\bfx\leq1$, we have
+ $$\int_E\phi\left(\frac{|f|}{\lambda/|\alpha|}\right)\rmd\bfx\leq1,$$
+ which implies $\lambda/|\alpha|\geq\|f\|_{L_\phi(E)}$ and then $\|\alpha f\|_{L_\phi(E)}\geq|\alpha|\|f\|_{L_\phi(E)}$. This proves $\|\alpha f\|_{L_\phi(E)}=|\alpha|\|f\|_{L_\phi(E)}$.
+    \item[(c)] Let $f,g \in L_\phi(E)$. Then for any $\lambda,\mu>0$ with $\int_E\phi\left(\frac{|f|}{\lambda}\right)\rmd\bfx\leq1$ and $\int_E\phi\left(\frac{|g|}{\mu}\right)\rmd\bfx\leq1$, the monotonicity and convexity of $\phi$ imply that
+    $$\phi\left(\frac{|f+g|}{\lambda+\mu}\right)\leq \phi\left(\frac{|f|+|g|}{\lambda+\mu}\right)=\phi\left(\frac{\lambda}{\lambda+\mu}\frac{|f|}{\lambda}+\frac{\mu}{\lambda+\mu}\frac{|g|}{\mu}\right)\leq\frac{\lambda}{\lambda+\mu}\phi\left(\frac{|f|}{\lambda}\right)+\frac{\mu}{\lambda+\mu}\phi\left(\frac{|g|}{\mu}\right).$$
+    Then $\int_E\phi\left(\frac{|f+g|}{\lambda+\mu}\right)\rmd\bfx\leq1$ and thus $\|f+g\|_{L_\phi(E)}\leq\lambda+\mu$. Since $\lambda$ and $\mu$ are arbitrary, we get $\|f+g\|_{L_\phi(E)}\leq\|f\|_{L_\phi(E)}+\|g\|_{L_\phi(E)}$.
+\end{itemize}
+
+($B_3$) $L_\phi(E)$ is complete with respect to norm $\|\cdot\|_{L_\phi(E)}$:
+suppose $\{f_n\}$ is a Cauchy sequence in ${L_\phi(E)}$, then there is an increasing sequence of positive integers $n_k$ which forms a subsequence $\{f_{n_k}\}$ such that
+$$\|f_n-f_{n_k}\|_{L_\phi(E)}\leq 2^{-k},\quad \forall n\geq n_k.$$
+
+Consider the partial sums $S_m=\sum_{k=1}^{m}(f_{n_{k+1}}-f_{n_k})=f_{n_{m+1}}-f_{n_1}$ and $\widetilde{S}_m=\sum_{k=1}^{m}|f_{n_{k+1}}-f_{n_k}|$ which belong to $L_\phi(E)$ since $L_\phi(E)$ is a linear space. We denote by $\widetilde{S}=\lim_{m\to\infty}\widetilde{S}_m=\sum_{k=1}^{\infty}|f_{n_{k+1}}-f_{n_k}|$ which exists (but may be infinite) a.e.\ on $E$ since $\widetilde{S}_m$ is increasing. 
+The fact that
+$$\|\widetilde{S}_m\|_{L_\phi(E)}\leq\sum_{k=1}^{m}\|f_{n_{k+1}}-f_{n_k}\|_{L_\phi(E)}\leq\sum_{k=1}^m2^{-k}<1$$
+implies $\int_E\phi(|\widetilde{S}_m|)\rmd\bfx\leq 1$ just by the definition of $\|\cdot\|_{L_\phi(E)}$. By the continuity of $\phi\geq0$ and Fatou's lemma, we have
+$$\int_E\phi(|\widetilde{S}|)\rmd\bfx=\int_E\lim_{m\to\infty}\phi(|\widetilde{S}_m|)\rmd\bfx\leq\liminf_{m\to\infty}\int_E\phi(|\widetilde{S}_m|)\rmd\bfx\leq1,$$
+which proves $\phi(|\widetilde{S}|)\in L(E)$ and hence $\widetilde{S}$ is finite a.e.\ in $E$ since $\lim_{t\to\infty}\phi(t)=\infty$. Thus $S=\lim_{m\to\infty}S_m=\sum_{k=1}^\infty(f_{n_{k+1}}-f_{n_k})$ exists and is finite a.e.\ in $E$. Moreover, since $\phi\geq0$ is increasing and $|S|\leq|\widetilde{S}|$ a.e., we have $\phi(|S|)\in L(E)$ and then $S\in L_\phi(E)$.
+
+Now we can show that $S_m\to S$ in ${L_\phi(E)}$ as $m\to\infty$:
+$$\|S_m-S\|_{L_\phi(E)}\leq\sum_{k=m+1}^{\infty}\|f_{n_{k+1}}-f_{n_k}\|_{L_\phi(E)}\leq \sum_{k=m+1}^{\infty}2^{-k}=2^{-m}\to 0.$$
+Note that $f_{n_m}=S_{m-1}+f_{n_1}$, thus $f_{n_m}\to S+f_{n_1}\eqqcolon f$ in ${L_\phi(E)}$ as $m\to\infty$. Recall that $\{f_m\}$ is a Cauchy sequence in ${L_\phi(E)}$, then 
+$$\|f_m-f\|_{L_\phi(E)}\leq\|f_m-f_{n_m}\|_{L_\phi(E)}+\|f_{n_m}-f\|_{L_\phi(E)}\to0$$
+as $m\to\infty$. 
+\end{exercise}
+\begin{exercise}{8.32}[Convolution on the multiplicative group $(\mathbf{R}^+,\frac{\rmd y}{y})$] Given $x\in(0,\infty)$,
+the change of variable $z = x / y$ yields that
+$$F(x)=\int_0^\infty f\left(\frac{x}{y}\right)g(y)\frac{\rmd y}{y}=\int_0^\infty f(z)g\left(\frac{x}{z}\right)\frac{\rmd z}{z}.$$
+
+For $p=\infty$, we have
+    $F(x)\leq [g]_\infty\int_0^\infty f\left(z\right)\frac{\rmd z}{z}=[g]_\infty[f]_1$,
+which proves $[F]_\infty\leq [f]_1[g]_\infty$.
+
+For $1\leq p<\infty$, note that
+\begin{equation*}
+    \begin{aligned}
+    [F]_p&=\left[\int_0^\infty\left(\int_0^\infty f(z)g\left(\frac{x}{z}\right)\frac{\rmd z}{z}\right)^p\frac{\rmd x}{x}\right]^{1/p}\\
+    (\text{by Minkowski's inequality},\textbf{Exercise}\ \ref{88})&\leq\int_0^\infty\left[\int_0^\infty\left( f(z)g\left(\frac{x}{z}\right)\frac{1}{z}\frac{1}{x^{1/p}}\right)^p\rmd x\right]^{1/p}\rmd z\\
+    &=\int_0^\infty\left[\int_0^\infty g\left(\frac{x}{z}\right)^p\frac{\rmd x}{x}\right]^{1/p}f(z)\frac{\rmd z}{z}\\
+    &=\int_0^\infty\left[\int_0^\infty g\left(x\right)^p\frac{\rmd x}{x}\right]^{1/p}f(z)\frac{\rmd z}{z}\\
+    &=[f]_1[g]_p.
+    \end{aligned}
+\end{equation*}
+\end{exercise}
+
